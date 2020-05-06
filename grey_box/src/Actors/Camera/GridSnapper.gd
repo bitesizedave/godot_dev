@@ -1,12 +1,13 @@
 extends Position2D
 
-export var grid_size: = Vector2()
-export var grid_position: = Vector2()
+var grid_size: = Vector2()
+var grid_position: = Vector2()
 
 onready var parent = get_parent()
 
 func _ready() -> void:
-	grid_size = OS.get_screen_size()
+#	grid_size = OS.get_screen_size()*$Camera2D.zoom #for fullscreen
+	grid_size = OS.get_real_window_size()*$Camera2D.zoom
 	set_as_toplevel(true)
 	update_grid_position()
 	
