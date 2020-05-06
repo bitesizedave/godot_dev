@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="DON\'T PLAY" type="Button"]
+margin_top = 36.0
+margin_right = 135.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "DON'T PLAY"
