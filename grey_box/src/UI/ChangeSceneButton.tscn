@@ -1,14 +1,13 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://src/UI/QuitButton.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/ChangeSceneButton.gd" type="Script" id=1]
 
-[node name="DON\'T PLAY" type="Button"]
-margin_top = 36.0
+[node name="ChangeSceneButton" type="Button"]
 margin_right = 135.0
-margin_bottom = 68.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "DON'T PLAY"
+text = "PLAY"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

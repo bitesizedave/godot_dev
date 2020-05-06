@@ -42,6 +42,6 @@ script = ExtResource( 3 )
 current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true
-smoothing_speed = 3.0
+smoothing_speed = 8.0
 [connection signal="area_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_area_entered"]
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]

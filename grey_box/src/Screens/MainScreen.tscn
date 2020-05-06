@@ -1,14 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/background.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/QuitButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/UI/PlayButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/ChangeSceneButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=4]
+[ext_resource path="res://src/UI/Title.tscn" type="PackedScene" id=5]
 
 [node name="MainScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.0
 margin_top = 1.0
+theme = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -20,17 +23,9 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 2
 
-[node name="Title" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -20.0
-margin_top = 240.0
-margin_right = 20.0
-margin_bottom = 254.0
-text = "GAME"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Title" parent="." instance=ExtResource( 5 )]
+margin_top = 152.0
+margin_bottom = 176.0
 
 [node name="Menu" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -46,5 +41,8 @@ __meta__ = {
 }
 
 [node name="PLAY" parent="Menu" instance=ExtResource( 3 )]
+margin_right = 134.0
+next_scene_path = "res://src/Levels/Level.tscn"
 
 [node name="DON\'T PLAY" parent="Menu" instance=ExtResource( 2 )]
+margin_right = 134.0
