@@ -40,8 +40,9 @@ script = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="GridSnapper"]
 current = true
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 3, 3 )
 smoothing_enabled = true
 smoothing_speed = 8.0
+editor_draw_limits = true
 [connection signal="area_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_area_entered"]
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
