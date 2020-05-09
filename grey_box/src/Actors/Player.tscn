@@ -39,6 +39,7 @@ position = Vector2( 0, -500 )
 script = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="GridSnapper"]
+position = Vector2( 20, 0 )
 current = true
 zoom = Vector2( 3, 3 )
 smoothing_enabled = true
