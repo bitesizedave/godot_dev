@@ -1,24 +1,53 @@
-extends KinematicBody2D
+extends Actor
+class_name Player, "res://assets/square.png"
 
-export var speed: = 1200
-export var jump_speed: = -1800
-export var gravity: = 4000
+export var stomp_impulse: = 1000.0
 
-var velocity: = Vector2.ZERO
+func _on_area_entered(area: Area2D) -> void:
+	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
 
-func get_input():
-	velocity.x = 0
-	velocity.x = get_direction().x * speed
-	
-func get_direction() -> Vector2:
-	return Vector2(
-		Input.get_action_strength("right") - Input.get_action_strength("left")
-		,Input.get_action_strength("down") - Input.get_action_strength("up"))
+func _on_body_entered(body: PhysicsBody2D) -> void:
+	die()
+
+func _ready() -> void:
+	print("controllers connected: ",Input.get_connected_joypads())
 
 func _physics_process(delta: float) -> void:
-	get_input()
-	velocity.y += gravity * delta
-	velocity = move_and_slide(velocity, Vector2.UP)
-	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
-			velocity.y = jump_speed
+	var is_jump_interrupted: = Input.is_action_just_released("jump") && _velocity.y < 0.0
+	var direction: = get_direction()
+	_velocity = calculate_move_velocity(_velocity, direction, speed,is_jump_interrupted)
+	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
+
+func get_direction() -> Vector2:
+	return Vector2(
+		Input.get_action_strength("right") - Input.get_action_strength("left"),
+		-1.0 if Input.is_action_just_pressed("jump") && is_on_floor() else 1.0
+	)
+
+func calculate_move_velocity(
+		linear_velocity: Vector2,
+		direction: Vector2,
+		speed: Vector2,
+		is_jump_interrupted: bool
+	) -> Vector2:
+	var out: = linear_velocity 
+	out.x = speed.x * direction.x
+	out.y += gravity * get_physics_process_delta_time()
+	if direction.y == -1.0:
+		out.y = speed.y * direction.y
+	if is_jump_interrupted:
+		out.y = 0.0
+	return out
+
+func calculate_stomp_velocity(linear_velocity: Vector2, impulse: float) -> Vector2:
+		var out: = linear_velocity
+		out.y = -impulse
+		return out
+		
+func die() -> void:
+	WorldData.deaths += 1
+	queue_free()
+
+
+
+

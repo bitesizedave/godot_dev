@@ -8,15 +8,31 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Actor",
+"language": "GDScript",
+"path": "res://src/Actors/Actor.gd"
+}, {
+"base": "Actor",
+"class": "Player",
+"language": "GDScript",
+"path": "res://src/Actors/Player.gd"
+} ]
 _global_script_class_icons={
-
+"Actor": "",
+"Player": "res://assets/square.png"
 }
 
 [application]
 
 config/name="Upgrade Platformer"
+run/main_scene="res://src/Levels/MainLevel.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+WorldData="*res://src/Autoload/WorldData.tscn"
 
 [input]
 
