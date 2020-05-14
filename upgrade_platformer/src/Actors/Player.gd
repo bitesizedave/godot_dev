@@ -1,5 +1,5 @@
 extends Actor
-class_name Player, "res://assets/square.png"
+class_name Player#, "res://assets/square.png"
 
 export var stomp_impulse: = 1000.0
 
