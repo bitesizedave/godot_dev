@@ -3,17 +3,13 @@ extends Position2D
 var grid_size: = Vector2()
 var grid_position: = Vector2()
 var zoom_level: = Vector2()
-export var start_position: = Vector2(0,0)
 
 onready var parent = get_parent()
 
 func _ready() -> void:
-	zoom_level = $Camera2D.zoom
-#	grid_size = OS.get_screen_size()*zoom_level #for fullscreen
-	grid_size = OS.get_real_window_size()*zoom_level
+	grid_size = OS.get_real_window_size()
 	set_as_toplevel(true)
-#	update_grid_position()
-	self.position = start_position
+	update_grid_position()
 	
 func _physics_process(delta: float) -> void:
 	update_grid_position()

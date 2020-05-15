@@ -1,5 +1,5 @@
 extends Actor
-class_name Player#, "res://assets/square.png"
+class_name PlayerSquare#, "res://assets/square.png"
 
 export var stomp_impulse: = 1000.0
 
@@ -47,7 +47,3 @@ func calculate_stomp_velocity(linear_velocity: Vector2, impulse: float) -> Vecto
 func die() -> void:
 	WorldData.deaths += 1
 	queue_free()
-
-
-
-

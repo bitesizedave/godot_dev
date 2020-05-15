@@ -15,19 +15,20 @@ _global_script_classes=[ {
 "path": "res://src/Actors/Actor.gd"
 }, {
 "base": "Actor",
-"class": "Player",
+"class": "PlayerSquare",
 "language": "GDScript",
-"path": "res://src/Actors/Player.gd"
+"path": "res://src/Actors/PlayerSquare.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
-"Player": ""
+"PlayerSquare": ""
 }
 
 [application]
 
 config/name="Upgrade Platformer"
 run/main_scene="res://src/Levels/MainLevel.tscn"
+run/disable_stdout=true
 config/icon="res://icon.png"
 
 [autoload]
