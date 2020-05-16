@@ -13,9 +13,10 @@ extents = Vector2( 8, 8 )
 [node name="PlayerSquare" type="KinematicBody2D"]
 collision_mask = 8
 script = ExtResource( 2 )
-gravity = 666
+max_speed = Vector2( 1600, 1600 )
+gravity = 3000
 stomp_impulse = 100.0
-player_speed = Vector2( 333, 360 )
+player_speed = Vector2( 300, 300 )
 acceleration = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

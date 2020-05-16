@@ -5,6 +5,7 @@ export var stomp_impulse: = 1000.0
 export var player_speed: = Vector2(300.0,360.0)
 export (float, 0.0, 1.0) var acceleration = 0.25
 export (float, 0.0, 1.0) var friction = 0.9
+export var drop_speed: = 100.0
 
 func _on_area_entered(area: Area2D) -> void:
 	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
@@ -25,7 +26,7 @@ func _physics_process(delta: float) -> void:
 func get_direction() -> Vector2:
 	return Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
-		-1.0 if Input.is_action_just_pressed("jump") && is_on_floor() else 1.0
+		-1.0 if Input.is_action_just_pressed("jump") && is_on_floor() && !is_dropping() else 1.0
 	)
 
 func calculate_move_velocity(
@@ -53,10 +54,17 @@ func calculate_stomp_velocity(linear_velocity: Vector2, impulse: float) -> Vecto
 		return out
 
 func is_dropping() -> bool:
-	return Input.get_action_strength("down") && Input.get_action_strength("jump") && is_on_floor()
+	if (Input.get_action_strength("down") 
+	&& Input.is_action_just_pressed("jump") 
+	&& is_on_floor()):
+#		print("is_dropping() true")
+		return true
+	else: return false 
+	
 
 func drop() -> void:
-	 position.y += 1
+	position.y += 2
+	_velocity.y += drop_speed
 
 func die() -> void:
 	WorldData.deaths += 1
