@@ -16,7 +16,7 @@ script = ExtResource( 2 )
 max_speed = Vector2( 1600, 1600 )
 gravity = 10000
 stomp_impulse = 100.0
-player_speed = Vector2( 300, 50 )
+player_speed = Vector2( 300, 100 )
 acceleration = 0.2
 jump_boost = 5.0
 
