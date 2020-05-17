@@ -8,10 +8,10 @@ onready var parent = get_parent()
 func _ready() -> void:
 	grid_size = OS.get_real_window_size()
 	set_as_toplevel(true)
-#	update_grid_position()
+	update_grid_position()
 	
 func _physics_process(delta: float) -> void:
-	update_grid_position()
+	if !WorldData.get_wrapping(): update_grid_position()
 
 func update_grid_position():
 	var x = round(parent.position.x/grid_size.x)
@@ -21,5 +21,4 @@ func update_grid_position():
 		return
 	grid_position = new_grid_position
 	self.position = grid_position * grid_size
-	print(grid_position.x,grid_position.y)
 

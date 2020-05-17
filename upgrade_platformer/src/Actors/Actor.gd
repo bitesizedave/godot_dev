@@ -4,11 +4,17 @@ class_name Actor
 const FLOOR_NORMAL: = Vector2.UP
 
 export var max_speed: = Vector2(1600.0,1600.0)
-export var gravity: =  512
+var gravity: = 750
 var _velocity: = Vector2.ZERO
 
 
 func _physics_process(delta: float) -> void:
-	
 	if _velocity.y > max_speed.y:
 		_velocity.y = max_speed.y 
+	if Input.is_action_just_pressed("debug_wrapping"): WorldData.toggle_wrapping()
+	set_position(position)
+
+func set_position(position: Vector2) -> void:
+	if WorldData.get_wrapping(): 
+		position.x = wrapi(position.x, 0, position.x/OS.get_real_window_size().x)
+		position.y = wrapi(position.y, 0, position.y/OS.get_real_window_size().y)
