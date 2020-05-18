@@ -28,7 +28,6 @@ collision_mask = 2
 shape = SubResource( 2 )
 
 [node name="GridSnapper" type="Position2D" parent="."]
-position = Vector2( 0, -160 )
 script = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="GridSnapper"]
