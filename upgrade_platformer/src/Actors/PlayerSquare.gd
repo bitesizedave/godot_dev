@@ -1,9 +1,9 @@
 extends Actor
 class_name PlayerSquare#, "res://assets/square.png"
 
-export var player_speed: = Vector2(333.0,333.0)
+export var player_speed: = Vector2(333.0, 444.0)
 export (float, 0.0, 1.0) var acceleration = 0.2
-export (float, 0.0, 1.0) var friction = 0.8
+export (float, 0.0, 1.0) var friction = 0.3
 export var drop_speed: = 100.0
 export var jump_floatyness_dampener: = 3
 export var jump_assist_counter: = 5
@@ -28,7 +28,6 @@ func _physics_process(delta: float) -> void:
 	set_is_jumping()
 	set_is_jump_interrupted()
 	
-	
 
 func get_direction() -> Vector2:
 	return Vector2(
@@ -48,10 +47,10 @@ func calculate_move_velocity(
 	else:
 		out.x = lerp(out.x, 0.0, friction)
 	out.y += gravity * get_physics_process_delta_time()
-	if is_jump_interrupted:
-		out.y = 0.0
+	if is_jump_interrupted && _velocity.y < 0.0 :
+		out.y = out.y*friction
 	if direction.y == -1.0 && can_jump && !is_jumping:
-		out.y = speed.y * direction.y
+		out.y = speed.y * direction.y 
 	return out
 
 
@@ -70,7 +69,6 @@ func set_jump_assist_counter() -> void:
 		jac -= 1
 	else:
 		jac = 0
-	print("jac = ",jac)
 
 func set_can_jump() -> void:
 	if jac > 0:
@@ -84,7 +82,7 @@ func set_is_jumping() -> void:
 
 
 func set_is_jump_interrupted() -> bool:
-	return Input.is_action_just_released("jump") && !is_jumping
+	return Input.is_action_just_released("jump") 
 
 func die() -> void:
 	WorldData.deaths += 1
