@@ -51,13 +51,13 @@ func get_camera_position() -> Vector2:
 	return camera_position
 
 func get_screen_left_edge() -> float:
-	return (camera_position.x - OS.get_real_window_size.x()/2)
+	return (camera_position.x - OS.get_real_window_size().x/2)
 
 func get_screen_right_edge() -> float:
-	return (camera_position.x + OS.get_real_window_size.x()/2)
+	return (camera_position.x + OS.get_real_window_size().x/2)
 
 func get_screen_top_edge() -> float:
-	return (camera_position.y - OS.get_real_window_size.y()/2)
+	return (camera_position.y - OS.get_real_window_size().y/2)
 
 func get_screen_bottom_edge() -> float:
-	return (camera_position.y + OS.get_real_window_size.y()/2)
+	return (camera_position.y + OS.get_real_window_size().y/2)

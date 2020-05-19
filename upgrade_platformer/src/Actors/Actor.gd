@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 		_velocity.y = max_speed.y 
 	if Input.is_action_just_pressed("debug_wrapping"): WorldData.toggle_wrapping()
 	self.position = wrap_position(self.position)
-	print("self.position = ",self.position)
+#	print("self.position = ",self.position)
 
 func wrap_position(position: Vector2) -> Vector2:
 	if WorldData.wrapping: 
