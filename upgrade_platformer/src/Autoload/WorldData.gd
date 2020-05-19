@@ -9,6 +9,10 @@ var score: = 0 setget set_score, get_score
 var deaths: = 0 setget set_deaths, get_deaths
 var wrapping: = false setget set_wrapping, get_wrapping
 var camera_position: = Vector2() setget set_camera_position, get_camera_position 
+var screen_left_edge: = 0.0 setget ,get_screen_left_edge
+var screen_right_edge: = 0.0 setget ,get_screen_right_edge
+var screen_top_edge: = 0.0 setget ,get_screen_top_edge
+var screen_bottom_edge: = 0.0 setget ,get_screen_bottom_edge
 
 func reset() -> void:
 	score = 0
@@ -45,3 +49,15 @@ func set_camera_position(value: Vector2) -> void:
 	print("camera_position = ",camera_position)
 func get_camera_position() -> Vector2:
 	return camera_position
+
+func get_screen_left_edge() -> float:
+	return (camera_position.x - OS.get_real_window_size.x()/2)
+
+func get_screen_right_edge() -> float:
+	return (camera_position.x + OS.get_real_window_size.x()/2)
+
+func get_screen_top_edge() -> float:
+	return (camera_position.y - OS.get_real_window_size.y()/2)
+
+func get_screen_bottom_edge() -> float:
+	return (camera_position.y + OS.get_real_window_size.y()/2)

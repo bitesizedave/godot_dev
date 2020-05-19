@@ -19,14 +19,13 @@ func _on_body_entered(body: PhysicsBody2D) -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_dropping(): drop()
-	var is_jump_interrupted = set_is_jump_interrupted()
+	var is_jump_interrupted = get_is_jump_interrupted()
 	var direction: = get_direction()
 	_velocity = calculate_move_velocity(_velocity, direction, player_speed,is_jump_interrupted)
 	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
 	set_jump_assist_counter()
 	set_can_jump()
 	set_is_jumping()
-	set_is_jump_interrupted()
 	
 
 func get_direction() -> Vector2:
@@ -81,7 +80,7 @@ func set_is_jumping() -> void:
 	else: is_jumping = false
 
 
-func set_is_jump_interrupted() -> bool:
+func get_is_jump_interrupted() -> bool:
 	return Input.is_action_just_released("jump") 
 
 func die() -> void:
