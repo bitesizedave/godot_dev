@@ -33,6 +33,7 @@ config/icon="res://icon.png"
 [autoload]
 
 WorldData="*res://src/Autoload/WorldData.tscn"
+PlayerData="*res://src/Autoload/PlayerData.tscn"
 
 [display]
 

@@ -6,6 +6,7 @@ signal wrapping_toggled
 signal camera_position_updated
 
 var score: = 0 setget set_score, get_score
+
 var deaths: = 0 setget set_deaths, get_deaths
 var wrapping: = false setget set_wrapping, get_wrapping
 var camera_position: = Vector2() setget set_camera_position, get_camera_position 
