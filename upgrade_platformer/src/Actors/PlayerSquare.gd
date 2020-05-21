@@ -9,7 +9,6 @@ export var jump_floatyness_dampener: = 3
 export var jump_assist_counter: = 5
 var jac: = 0
 var can_jump: = false
-var is_jumping: = false
 var jump_count: = 0
 
 func _on_body_entered(body: PhysicsBody2D) -> void:
@@ -22,13 +21,11 @@ func _physics_process(delta: float) -> void:
 	if is_dropping(): drop()
 	set_jump_assist_counter()
 	set_can_jump()
-	set_is_jumping()
 	set_jump_counter()
 	var is_jump_interrupted = get_is_jump_interrupted()
 	var direction: = get_direction()
 	_velocity = calculate_move_velocity(_velocity, direction, player_speed,is_jump_interrupted)
 	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
-	
 	
 
 func get_direction() -> Vector2:
@@ -52,7 +49,7 @@ func calculate_move_velocity(
 	out.y += gravity * get_physics_process_delta_time()
 	if is_jump_interrupted and _velocity.y < 0.0 :
 		out.y = out.y*friction
-	if direction.y == -1.0 and can_jump and not is_jumping:
+	if direction.y == -1.0 and can_jump:
 		out.y = speed.y * direction.y 
 		jump_count -= 1
 	return out
@@ -80,6 +77,7 @@ func set_jump_assist_counter() -> void:
 	else:
 		jac = 0
 
+
 func set_can_jump() -> void:
 	if jac > 0:
 		can_jump = true
@@ -87,10 +85,6 @@ func set_can_jump() -> void:
 		can_jump = true
 	else: 
 		can_jump = false
-
-func set_is_jumping() -> void:
-	if _velocity.y < 0.0 and Input.get_action_strength("jump") > 0 : is_jumping = true
-	else: is_jumping = false
 
 
 func get_is_jump_interrupted() -> bool:
