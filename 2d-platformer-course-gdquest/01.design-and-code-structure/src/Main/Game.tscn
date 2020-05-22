@@ -23,7 +23,7 @@ script = ExtResource( 2 )
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 424.0
-margin_bottom = 584.0
+margin_bottom = 1064.0
 mouse_filter = 2
 
 [node name="DebugPanel" parent="UI/DebugDock/Column" instance=ExtResource( 3 )]
@@ -34,7 +34,6 @@ margin_bottom = 102.0
 mouse_filter = 2
 
 [node name="Level1" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="TileMap" type="TileMap" parent="Level1"]
 tile_set = ExtResource( 4 )
