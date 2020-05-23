@@ -7,7 +7,7 @@ Generic State Machine. Initializes states and delegates engine callbacks
 
 export var initial_state: = NodePath()
 
-onready var state: State = $initial_state setget set_state
+onready var state: State = get_node(initial_state) setget set_state
 onready var _state_name: = state.name
 
 

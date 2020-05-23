@@ -33,6 +33,18 @@ anchor_bottom = 0.0
 margin_right = 408.0
 margin_bottom = 102.0
 mouse_filter = 2
+reference_path = NodePath("../../../../Player/StateMachine/Move")
+properties = PoolStringArray( "velocity", "max_speed", "acceleration" )
+
+[node name="DebugPanel2" parent="UI/DebugDock/Column" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 110.0
+margin_right = 408.0
+margin_bottom = 238.0
+mouse_filter = 2
+reference_path = NodePath("../../../../Player/StateMachine")
+properties = PoolStringArray( "_state_name" )
 
 [node name="Level1" type="Node2D" parent="."]
 
@@ -71,4 +83,6 @@ position = Vector2( 1480, -600 )
 position = Vector2( 1560, 630 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 453.419, 677.647 )
+position = Vector2( 541.077, 650.118 )
+
+[editable path="Player"]
