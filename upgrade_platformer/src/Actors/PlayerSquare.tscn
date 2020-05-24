@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/square.png" type="Texture" id=1]
-[ext_resource path="res://src/Actors/PlayerSquare.gd" type="Script" id=2]
+[ext_resource path="res://src/Actors/Player/States/Idle.gd" type="Script" id=2]
 [ext_resource path="res://src/Actors/GridSnapper.gd" type="Script" id=3]
+[ext_resource path="res://src/Main/StateMachine/StateMachine.gd" type="Script" id=4]
+[ext_resource path="res://src/Actors/Player/States/Move.gd" type="Script" id=5]
+[ext_resource path="res://src/Actors/Player/States/Air.gd" type="Script" id=6]
+[ext_resource path="res://src/Actors/Player/States/Run.gd" type="Script" id=7]
+[ext_resource path="res://src/Actors/Player/Player.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -12,8 +17,23 @@ extents = Vector2( 8, 8 )
 
 [node name="PlayerSquare" type="KinematicBody2D"]
 collision_mask = 8
+script = ExtResource( 8 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 4 )
+initial_state = NodePath("Move/Air")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+
+[node name="Idle" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 2 )
-player_speed = Vector2( 300, 100 )
+
+[node name="Run" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 7 )
+
+[node name="Air" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
