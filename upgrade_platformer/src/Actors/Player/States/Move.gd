@@ -4,9 +4,10 @@ Parent state that abstracts and handles basic movement
 Move-related children states can delegate movement to it, or use its utility functions
 """
 
-export var max_speed_default: = Vector2(500.0, 1500.0)
-export var acceleration_default: = Vector2(100000, 3000.0)
-export var jump_impulse: = 900.0
+export var max_speed_default: = Vector2(333.0, 1500.0)
+export var gravity = 1500.0
+var acceleration_default: = Vector2(100000, gravity)
+export var jump_impulse: = 444.0
 
 var acceleration: = acceleration_default
 var max_speed: = max_speed_default
