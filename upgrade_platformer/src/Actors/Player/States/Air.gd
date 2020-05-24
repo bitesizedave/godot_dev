@@ -9,16 +9,23 @@ You can pass a msg to this state, every key is optional:
 """
 
 
-export var acceleration_x: = 5000.0
+#export var acceleration_x: = 5000.0
+var jump_power: = PlayerData.jump_power
+
+var jump_count: = 0
+
 
 
 func unhandled_input(event: InputEvent) -> void:
 	var move: = get_parent()
+	if event.is_action_pressed("jump") and jump_count < PlayerData.jump_count:
+		jump()
 	move.unhandled_input(event)
 
 
 func physics_process(delta: float) -> void:
 	var move: = get_parent()
+	move.velocity *= move.get_move_direction()
 	move.physics_process(delta)
 
 	# Landing
@@ -30,19 +37,27 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	var move: = get_parent()
 	move.enter(msg)
-	
-	move.acceleration.x = acceleration_x
 	if "velocity" in msg:
-		move.velocity = msg.velocity 
+		move.velocity = msg.velocity
 		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)
-	if "impulse" in msg:
-		move.velocity += calculate_jump_velocity(msg.impulse)
+	if "impulse" in msg: # when jump button is pressed
+		jump()
+	else: # for falling off of ledges
+		jump_count += 1
 
 
 func exit() -> void:
 	var move: = get_parent()
-	move.acceleration = move.acceleration_default
+#	move.acceleration = move.acceleration_default
+	jump_count = 0
 	move.exit()
+
+
+func jump():
+	var move: = get_parent()
+	move.velocity.y = 0.0
+	move.velocity += calculate_jump_velocity(jump_power)
+	jump_count += 1
 
 
 """
@@ -55,5 +70,6 @@ func calculate_jump_velocity(impulse: float = 0.0) -> Vector2:
 		move.max_speed,
 		Vector2(0.0, impulse),
 		1.0,
-		Vector2.UP
+		Vector2.UP,
+		move.max_fall_speed
 	)

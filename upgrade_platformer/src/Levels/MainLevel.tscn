@@ -24,9 +24,10 @@ margin_bottom = -66.4216
 rect_scale = Vector2( 0.401179, 0.401179 )
 
 [node name="Column" parent="DebugDock" index="0"]
-margin_bottom = 118.0
+margin_bottom = 144.0
 
 [node name="DebugPanel2" parent="DebugDock/Column" index="0"]
+margin_bottom = 128.0
 reference_path = NodePath("../../../PlayerSquare/StateMachine")
 
 [editable path="PlayerSquare"]
