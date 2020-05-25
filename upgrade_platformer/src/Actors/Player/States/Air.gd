@@ -11,7 +11,7 @@ You can pass a msg to this state, every key is optional:
 
 #export var acceleration_x: = 5000.0
 var jump_power: = PlayerData.jump_power
-
+var air_deceleration: = 0.6
 var jump_count: = 0
 
 
@@ -25,7 +25,9 @@ func unhandled_input(event: InputEvent) -> void:
 
 func physics_process(delta: float) -> void:
 	var move: = get_parent()
-	move.velocity *= move.get_move_direction()
+	if move.get_move_direction().x == 0:
+		move.velocity.x *= air_deceleration
+#	move.velocity *= move.get_move_direction()
 	move.physics_process(delta)
 
 	# Landing

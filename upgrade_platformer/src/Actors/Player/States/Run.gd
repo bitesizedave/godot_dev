@@ -5,6 +5,7 @@ Delegates movement to its parent Move state and extends it
 with state transitions
 """
 
+var run_deceleration: = .6
 
 func unhandled_input(event: InputEvent) -> void:
 	var move: = get_parent()
@@ -15,7 +16,9 @@ func physics_process(delta: float) -> void:
 	var move: = get_parent()
 	if owner.is_on_floor():
 		if move.get_move_direction().x == 0.0:
-			_state_machine.transition_to("Move/Idle")
+			move.velocity.x *= run_deceleration
+			if abs(move.velocity.x) <= 0.1:
+				_state_machine.transition_to("Move/Idle")
 	else:
 		_state_machine.transition_to("Move/Air")
 	move.physics_process(delta)
