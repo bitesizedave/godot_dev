@@ -1,3 +1,4 @@
+
 extends State
 """
 Horizontal movement on the ground.
@@ -5,7 +6,8 @@ Delegates movement to its parent Move state and extends it
 with state transitions
 """
 
-var run_deceleration: = .6
+var run_deceleration: = 0.6
+
 
 func unhandled_input(event: InputEvent) -> void:
 	var move: = get_parent()

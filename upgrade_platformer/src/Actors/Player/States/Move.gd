@@ -1,3 +1,4 @@
+
 extends State
 """
 Parent state that abstracts and handles basic movement
@@ -6,7 +7,7 @@ Move-related children states can delegate movement to it, or use its utility fun
 
 export var max_speed_default: = Vector2(333.0, 1500.0)
 export var gravity = 1500.0
-var acceleration_default: = Vector2(4500, gravity)
+var acceleration_default: = Vector2(100000, gravity)
 export var max_fall_speed: = 1500.0
 
 
@@ -16,11 +17,8 @@ var velocity: = Vector2.ZERO
 
 
 func unhandled_input(event: InputEvent) -> void:
-	if owner.is_on_floor() and event.is_action_pressed("jump") and event.get_action_strength("down") > 0:
-		_state_machine.transition_to("Move/Air", { drop = true })
 	if owner.is_on_floor() and event.is_action_pressed("jump"):
 		_state_machine.transition_to("Move/Air", { impulse = true })
-	
 
 
 func physics_process(delta: float) -> void:

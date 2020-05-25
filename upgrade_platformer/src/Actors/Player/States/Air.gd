@@ -1,3 +1,4 @@
+
 extends State
 """
 Manages Air movement, including jumping and landing.
@@ -13,23 +14,21 @@ You can pass a msg to this state, every key is optional:
 var jump_power: = PlayerData.jump_power
 var air_deceleration: = 0.6
 var jump_count: = 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-var ledge_assist_counter: = 60
+var ledge_assist_counter: = 10
 var ledge_assist: = 0
-var is_ledge_falling: = false
-var drop_veloctiy: = 50.0
-=======
-
->>>>>>> parent of 4744685... Got ledge assist up and running (off ledges)
-=======
-
->>>>>>> parent of 4744685... Got ledge assist up and running (off ledges)
+var can_ledge_assist_jump: = false
 
 
 func unhandled_input(event: InputEvent) -> void:
 	var move: = get_parent()
-	if event.is_action_pressed("jump") and jump_count < PlayerData.jump_count:
+	if (event.is_action_pressed("jump") 
+		and jump_count < PlayerData.jump_count 
+		and can_ledge_assist_jump):
+		jump()
+		ledge_assist = 0
+		can_ledge_assist_jump = false
+	elif (event.is_action_pressed("jump") 
+		and jump_count < PlayerData.jump_count):
 		jump()
 	move.unhandled_input(event)
 
@@ -38,7 +37,10 @@ func physics_process(delta: float) -> void:
 	var move: = get_parent()
 	if move.get_move_direction().x == 0:
 		move.velocity.x *= air_deceleration
-#	move.velocity *= move.get_move_direction()
+	if can_ledge_assist_jump: 
+		ledge_assist += 1
+	if ledge_assist > ledge_assist_counter:
+		can_ledge_assist_jump = false
 	move.physics_process(delta)
 
 	# Landing
@@ -53,31 +55,21 @@ func enter(msg: Dictionary = {}) -> void:
 	if "velocity" in msg:
 		move.velocity = msg.velocity
 		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)
+		can_ledge_assist_jump = false
 	if "impulse" in msg: # when jump button is pressed
 		jump()
-<<<<<<< HEAD
-<<<<<<< HEAD
-		is_ledge_falling = false
-	if "drop" in msg:
-		move.velocity.y += drop_veloctiy
-		is_ledge_falling = false
-	if "ledge_fall" in msg:
-		is_ledge_falling = true
+		can_ledge_assist_jump = false
+	else:
+		can_ledge_assist_jump = true
 #	
-=======
-	else: # for falling off of ledges
-		jump_count += 1
->>>>>>> parent of 4744685... Got ledge assist up and running (off ledges)
-=======
-	else: # for falling off of ledges
-		jump_count += 1
->>>>>>> parent of 4744685... Got ledge assist up and running (off ledges)
 
 
 func exit() -> void:
 	var move: = get_parent()
 #	move.acceleration = move.acceleration_default
 	jump_count = 0
+	ledge_assist = 0
+	can_ledge_assist_jump = false
 	move.exit()
 
 

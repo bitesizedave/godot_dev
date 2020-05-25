@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Levels/MainTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/UI/debug/DebugDock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Actors/PlayerSquare.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/debug/DebugPanel.tscn" type="PackedScene" id=4]
 
 [node name="MainLevel" type="Node2D"]
 
@@ -24,11 +25,20 @@ margin_bottom = -66.4216
 rect_scale = Vector2( 0.401179, 0.401179 )
 
 [node name="Column" parent="DebugDock" index="0"]
-margin_bottom = 144.0
+margin_bottom = 286.0
 
 [node name="DebugPanel2" parent="DebugDock/Column" index="0"]
 margin_bottom = 128.0
 reference_path = NodePath("../../../PlayerSquare/StateMachine")
+
+[node name="DebugPanel" parent="DebugDock/Column" index="1" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 136.0
+margin_right = 408.0
+margin_bottom = 238.0
+reference_path = NodePath("../../../PlayerSquare/StateMachine/Move/Air")
+properties = PoolStringArray( "ledge_assist", "jump_count", "can_ledge_assist_jump" )
 
 [editable path="PlayerSquare"]
 
