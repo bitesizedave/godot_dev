@@ -13,17 +13,19 @@ You can pass a msg to this state, every key is optional:
 var jump_power: = PlayerData.jump_power
 var air_deceleration: = 0.6
 var jump_count: = 0
+<<<<<<< HEAD
 var ledge_assist_counter: = 60
 var ledge_assist: = 0
 var is_ledge_falling: = false
 var drop_veloctiy: = 50.0
+=======
+
+>>>>>>> parent of 4744685... Got ledge assist up and running (off ledges)
 
 
 func unhandled_input(event: InputEvent) -> void:
 	var move: = get_parent()
-	if event.is_action_pressed("jump") and jump_count < PlayerData.jump_count and ledge_assist <= ledge_assist_counter and is_ledge_falling:
-		jump()
-	elif event.is_action_pressed("jump") and jump_count < PlayerData.jump_count:
+	if event.is_action_pressed("jump") and jump_count < PlayerData.jump_count:
 		jump()
 	move.unhandled_input(event)
 
@@ -32,8 +34,7 @@ func physics_process(delta: float) -> void:
 	var move: = get_parent()
 	if move.get_move_direction().x == 0:
 		move.velocity.x *= air_deceleration
-	if is_ledge_falling: 
-		ledge_assist += 1
+#	move.velocity *= move.get_move_direction()
 	move.physics_process(delta)
 
 	# Landing
@@ -48,9 +49,9 @@ func enter(msg: Dictionary = {}) -> void:
 	if "velocity" in msg:
 		move.velocity = msg.velocity
 		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)
-		is_ledge_falling = false
 	if "impulse" in msg: # when jump button is pressed
 		jump()
+<<<<<<< HEAD
 		is_ledge_falling = false
 	if "drop" in msg:
 		move.velocity.y += drop_veloctiy
@@ -58,14 +59,16 @@ func enter(msg: Dictionary = {}) -> void:
 	if "ledge_fall" in msg:
 		is_ledge_falling = true
 #	
+=======
+	else: # for falling off of ledges
+		jump_count += 1
+>>>>>>> parent of 4744685... Got ledge assist up and running (off ledges)
 
 
 func exit() -> void:
 	var move: = get_parent()
 #	move.acceleration = move.acceleration_default
 	jump_count = 0
-	ledge_assist = 0
-	is_ledge_falling = false
 	move.exit()
 
 
@@ -74,8 +77,6 @@ func jump():
 	move.velocity.y = 0.0
 	move.velocity += calculate_jump_velocity(jump_power)
 	jump_count += 1
-	ledge_assist = 0
-	is_ledge_falling = false
 
 
 """
@@ -91,5 +92,3 @@ func calculate_jump_velocity(impulse: float = 0.0) -> Vector2:
 		Vector2.UP,
 		move.max_fall_speed
 	)
-
-
