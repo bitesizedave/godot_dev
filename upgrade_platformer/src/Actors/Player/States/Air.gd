@@ -16,6 +16,7 @@ var jump_count: = 0
 var ledge_assist_counter: = 60
 var ledge_assist: = 0
 var is_ledge_falling: = false
+var drop_veloctiy: = 50.0
 
 
 func unhandled_input(event: InputEvent) -> void:
@@ -51,7 +52,10 @@ func enter(msg: Dictionary = {}) -> void:
 	if "impulse" in msg: # when jump button is pressed
 		jump()
 		is_ledge_falling = false
-	else:
+	if "drop" in msg:
+		move.velocity.y += drop_veloctiy
+		is_ledge_falling = false
+	if "ledge_fall" in msg:
 		is_ledge_falling = true
 #	
 
