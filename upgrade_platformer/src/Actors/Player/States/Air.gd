@@ -14,10 +14,14 @@ var jump_power: = PlayerData.jump_power
 var air_deceleration: = 0.6
 var jump_count: = 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 var ledge_assist_counter: = 60
 var ledge_assist: = 0
 var is_ledge_falling: = false
 var drop_veloctiy: = 50.0
+=======
+
+>>>>>>> parent of 4744685... Got ledge assist up and running (off ledges)
 =======
 
 >>>>>>> parent of 4744685... Got ledge assist up and running (off ledges)
@@ -52,6 +56,7 @@ func enter(msg: Dictionary = {}) -> void:
 	if "impulse" in msg: # when jump button is pressed
 		jump()
 <<<<<<< HEAD
+<<<<<<< HEAD
 		is_ledge_falling = false
 	if "drop" in msg:
 		move.velocity.y += drop_veloctiy
@@ -59,6 +64,10 @@ func enter(msg: Dictionary = {}) -> void:
 	if "ledge_fall" in msg:
 		is_ledge_falling = true
 #	
+=======
+	else: # for falling off of ledges
+		jump_count += 1
+>>>>>>> parent of 4744685... Got ledge assist up and running (off ledges)
 =======
 	else: # for falling off of ledges
 		jump_count += 1
