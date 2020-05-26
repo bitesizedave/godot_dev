@@ -14,22 +14,24 @@ You can pass a msg to this state, every key is optional:
 var jump_power: = PlayerData.jump_power
 var air_deceleration: = 0.6
 var jump_count: = 0
-var ledge_assist_counter: = 10
-var ledge_assist: = 0
-var can_ledge_assist_jump: = false
+var is_ledge_falling = false
 
+onready var ledge_assist: Timer = $LedgeAssist
 
 func unhandled_input(event: InputEvent) -> void:
 	var move: = get_parent()
-	if (event.is_action_pressed("jump") 
-		and jump_count < PlayerData.jump_count 
-		and can_ledge_assist_jump):
-		jump()
-		ledge_assist = 0
-		can_ledge_assist_jump = false
-	elif (event.is_action_pressed("jump") 
+	if (event.is_action_pressed("jump") #jumping from the ground with ledge_assist
+		and ledge_assist.time_left > 0.0):
+			jump()
+	elif (event.is_action_pressed("jump")
+		and is_ledge_falling
+		and jump_count < PlayerData.jump_count -1):
+			jump()
+	elif (event.is_action_pressed("jump")
+		and not is_ledge_falling
 		and jump_count < PlayerData.jump_count):
-		jump()
+			jump()
+	
 	move.unhandled_input(event)
 
 
@@ -37,11 +39,9 @@ func physics_process(delta: float) -> void:
 	var move: = get_parent()
 	if move.get_move_direction().x == 0:
 		move.velocity.x *= air_deceleration
-	if can_ledge_assist_jump: 
-		ledge_assist += 1
-	if ledge_assist > ledge_assist_counter:
-		can_ledge_assist_jump = false
 	move.physics_process(delta)
+	if ledge_assist.time_left > 0.0:
+		is_ledge_falling = true
 
 	# Landing
 	if owner.is_on_floor():
@@ -55,21 +55,16 @@ func enter(msg: Dictionary = {}) -> void:
 	if "velocity" in msg:
 		move.velocity = msg.velocity
 		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)
-		can_ledge_assist_jump = false
 	if "impulse" in msg: # when jump button is pressed
 		jump()
-		can_ledge_assist_jump = false
 	else:
-		can_ledge_assist_jump = true
-#	
-
+		ledge_assist.start()
 
 func exit() -> void:
 	var move: = get_parent()
 #	move.acceleration = move.acceleration_default
 	jump_count = 0
-	ledge_assist = 0
-	can_ledge_assist_jump = false
+	is_ledge_falling = false
 	move.exit()
 
 
