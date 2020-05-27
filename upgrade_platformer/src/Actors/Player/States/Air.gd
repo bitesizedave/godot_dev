@@ -34,7 +34,6 @@ func unhandled_input(event: InputEvent) -> void:
 		and not is_ledge_falling
 		and jump_count < PlayerData.jump_count):
 			jump()
-	
 	move.unhandled_input(event)
 
 
