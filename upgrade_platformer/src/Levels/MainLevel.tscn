@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Levels/MainTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/UI/debug/DebugDock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Actors/PlayerSquare.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/debug/DebugPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=5]
 
 [node name="MainLevel" type="Node2D"]
 
@@ -29,7 +30,7 @@ margin_bottom = 205.578
 rect_scale = Vector2( 0.401179, 0.401179 )
 
 [node name="Column" parent="DebugDock" index="0"]
-margin_bottom = 390.0
+margin_bottom = 450.0
 
 [node name="DebugPanel2" parent="DebugDock/Column" index="0"]
 margin_bottom = 128.0
@@ -49,9 +50,15 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 272.0
 margin_right = 408.0
-margin_bottom = 374.0
+margin_bottom = 434.0
 reference_path = NodePath("../../../PlayerSquare/StateMachine/Move/Air")
 properties = PoolStringArray( "is_ledge_falling", "jump_count" )
+
+[node name="Coin" parent="." instance=ExtResource( 5 )]
+position = Vector2( 80, -16 )
+
+[node name="Coin2" parent="." instance=ExtResource( 5 )]
+position = Vector2( -80, -48 )
 
 [editable path="PlayerSquare"]
 

@@ -4,8 +4,10 @@ signal score_updated
 signal player_died
 signal wrapping_toggled
 signal camera_position_updated
+signal coins_updated
 
 var score: = 0 setget set_score, get_score
+var coins: = 0 setget set_coins, get_coins
 
 var deaths: = 0 setget set_deaths, get_deaths
 var wrapping: = false setget set_wrapping, get_wrapping
@@ -22,7 +24,8 @@ func reset() -> void:
 func set_score(value: int) -> void:
 	score = value
 	emit_signal("score_updated")
-	
+
+
 func get_score() -> int:
 	return score
 
@@ -37,28 +40,45 @@ func set_wrapping(value: bool) -> void:
 	wrapping = value
 	emit_signal("wrapping_toggled")
 	print("Wrapping toggled: ",wrapping)
-	
+
+
 func toggle_wrapping() -> void:
 	set_wrapping(!wrapping)
 
+
 func get_wrapping() -> bool:
 	return wrapping
+
 
 func set_camera_position(value: Vector2) -> void:
 	camera_position = value
 	emit_signal("camera_position_updated")
 	print("camera_position = ",camera_position)
+
+
 func get_camera_position() -> Vector2:
 	return camera_position
+
 
 func get_screen_left_edge() -> float:
 	return (camera_position.x - OS.get_real_window_size().x/2)
 
+
 func get_screen_right_edge() -> float:
 	return (camera_position.x + OS.get_real_window_size().x/2)
+
 
 func get_screen_top_edge() -> float:
 	return (camera_position.y - OS.get_real_window_size().y/2)
 
+
 func get_screen_bottom_edge() -> float:
 	return (camera_position.y + OS.get_real_window_size().y/2)
+
+
+func set_coins(value: int):
+	coins = value
+	emit_signal("coins_updated")
+
+func get_coins() -> int:
+	return coins
