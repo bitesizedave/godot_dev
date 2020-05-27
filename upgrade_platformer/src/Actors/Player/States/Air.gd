@@ -18,6 +18,9 @@ var is_ledge_falling = false
 
 onready var ledge_assist: Timer = $LedgeAssist
 
+func _ready():
+	ledge_assist.connect("timeout", self, "on_ledge_assist_timeout")
+
 func unhandled_input(event: InputEvent) -> void:
 	var move: = get_parent()
 	if (event.is_action_pressed("jump") #jumping from the ground with ledge_assist
@@ -40,8 +43,6 @@ func physics_process(delta: float) -> void:
 	if move.get_move_direction().x == 0:
 		move.velocity.x *= air_deceleration
 	move.physics_process(delta)
-	if ledge_assist.time_left > 0.0:
-		is_ledge_falling = true
 
 	# Landing
 	if owner.is_on_floor():
@@ -56,9 +57,11 @@ func enter(msg: Dictionary = {}) -> void:
 		move.velocity = msg.velocity
 		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)
 	if "impulse" in msg: # when jump button is pressed
+		is_ledge_falling = false
 		jump()
 	else:
 		ledge_assist.start()
+		is_ledge_falling = true
 
 func exit() -> void:
 	var move: = get_parent()
@@ -88,3 +91,7 @@ func calculate_jump_velocity(impulse: float = 0.0) -> Vector2:
 		Vector2.UP,
 		move.max_fall_speed
 	)
+
+
+func on_ledge_assist_timeout():
+	is_ledge_falling = true

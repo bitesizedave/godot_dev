@@ -3,7 +3,7 @@ extends Node
 signal player_jump_count_updated
 signal player_jump_power_updated
 
-var jump_count: = 2 setget set_jump_count, get_jump_count
+var jump_count: = 1 setget set_jump_count, get_jump_count
 var jump_power: = 444.0 setget set_jump_power, get_jump_power
 
 func set_jump_count(value: int) -> void:

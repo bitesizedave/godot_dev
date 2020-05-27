@@ -25,11 +25,11 @@ one_shot = true
 margin_left = -367.44
 margin_top = -200.422
 margin_right = 72.5605
-margin_bottom = -66.4216
+margin_bottom = 205.578
 rect_scale = Vector2( 0.401179, 0.401179 )
 
 [node name="Column" parent="DebugDock" index="0"]
-margin_bottom = 518.0
+margin_bottom = 390.0
 
 [node name="DebugPanel2" parent="DebugDock/Column" index="0"]
 margin_bottom = 128.0
