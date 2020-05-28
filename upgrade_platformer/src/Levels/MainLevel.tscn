@@ -22,6 +22,10 @@ tile_data = PoolIntArray( -458756, 0, 0, -524283, 0, 0, -524282, 0, 0, -524281, 
 wait_time = 0.3
 one_shot = true
 
+[node name="DropTimer" type="Timer" parent="PlayerSquare/StateMachine/Move" index="3"]
+wait_time = 0.1
+one_shot = true
+
 [node name="DebugDock" parent="." instance=ExtResource( 2 )]
 margin_left = -367.44
 margin_top = -200.422

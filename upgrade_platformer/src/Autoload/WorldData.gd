@@ -80,5 +80,6 @@ func set_coins(value: int):
 	coins = value
 	emit_signal("coins_updated")
 
+
 func get_coins() -> int:
 	return coins
