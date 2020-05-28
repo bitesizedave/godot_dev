@@ -4,12 +4,12 @@ var grid_size: = Vector2()
 var grid_position: = Vector2() 
 
 onready var parent = get_parent()
-onready var grandparent = parent.get_owner()
+onready var grandparent = get_parent().get_owner()
 
 func _ready() -> void:
 	grid_size = OS.get_real_window_size()
 	set_as_toplevel(true)
-#	update_grid_start_position()
+	update_grid_start_position()
 	
 func _physics_process(delta: float) -> void:
 	if !WorldData.wrapping: update_grid_position()
