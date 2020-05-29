@@ -23,6 +23,7 @@ func update_grid_position():
 	grid_position = new_grid_position
 	self.position = grid_position * grid_size
 	WorldData.camera_position = self.position
+	print(new_grid_position.x,new_grid_position.y)
 	
 func update_grid_start_position():
 	var x = round(grandparent.position.x/grid_size.x)

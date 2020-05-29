@@ -16,6 +16,13 @@ var screen_left_edge: = 0.0 setget ,get_screen_left_edge
 var screen_right_edge: = 0.0 setget ,get_screen_right_edge
 var screen_top_edge: = 0.0 setget ,get_screen_top_edge
 var screen_bottom_edge: = 0.0 setget ,get_screen_bottom_edge
+var camera_positions: = {
+	"main_screen": Vector2(0.0, 0.0),
+	"left_screen": Vector2(-768.0, 0.0),
+	"right_screen": Vector2(768.0, 0.0),
+	"bottom_screen": Vector2(0.0, 432.0),
+	"top_screen": Vector2(0.0, -432.0)
+}
 
 func reset() -> void:
 	score = 0

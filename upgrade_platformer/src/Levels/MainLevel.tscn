@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Levels/MainTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/UI/debug/DebugDock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Actors/PlayerSquare.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Main/Camera/GridSnapper.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=5]
 
 [node name="MainLevel" type="Node2D"]
@@ -16,15 +17,7 @@ format = 1
 tile_data = PoolIntArray( 720823, 0, 0, 720824, 0, 0, 720825, 0, 0, 720826, 0, 0, 720827, 0, 0, 720828, 0, 0, 720829, 0, 0, 720830, 0, 0, 720831, 0, 0, 720832, 0, 0, 720833, 0, 0, 720834, 0, 0, 720835, 0, 0, 720836, 0, 0, 720837, 0, 0, 720838, 0, 0, 720839, 0, 0, 720840, 0, 0, 720841, 0, 0, 720842, 0, 0, 720843, 0, 0, 720844, 0, 0, 720845, 0, 0, 720846, 0, 0, 720847, 0, 0, 720848, 0, 0, 720849, 0, 0, 720850, 0, 0, 720851, 0, 0, 720852, 0, 0, 720853, 0, 0, 720854, 0, 0, 720855, 0, 0, 720856, 0, 0, 720857, 0, 0, 720858, 0, 0, 720859, 0, 0, 720860, 0, 0, 720861, 0, 0, 720862, 0, 0, 720863, 0, 0, 720864, 0, 0, 720865, 0, 0, 720866, 0, 0, 720867, 0, 0, 720868, 0, 0, 720869, 0, 0, 720870, 0, 0, 720871, 0, 0, 720872, 0, 0, 720873, 0, 0, 720874, 0, 0, 720875, 0, 0, 720876, 0, 0, 720877, 0, 0, 720878, 0, 0, 720879, 0, 0, 720880, 0, 0, 720881, 0, 0, 720882, 0, 0, 720883, 0, 0, 720884, 0, 0, 720885, 0, 0, 720886, 0, 0, 720887, 0, 0, 720888, 0, 0, 720889, 0, 0, 720890, 0, 0, 720891, 0, 0, 720892, 0, 0, 720893, 0, 0, 720894, 0, 0, 720895, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655385, 0, 0, 655386, 0, 0, 655387, 0, 0, 655388, 0, 0, 655389, 0, 0, 655390, 0, 0, 655391, 0, 0, 655392, 0, 0, 655393, 0, 0, 655394, 0, 0, 655395, 0, 0, 655396, 0, 0, 655397, 0, 0, 655398, 0, 0, 655399, 0, 0, 655400, 0, 0, 655401, 0, 0, 655402, 0, 0, 655403, 0, 0, 655404, 0, 0, 655405, 0, 0, 655406, 0, 0, 655407, 0, 0, 655408, 0, 0, 655409, 0, 0, 655410, 0, 0, 655411, 0, 0, 655412, 0, 0, 655413, 0, 0, 655414, 0, 0, 655415, 0, 0, 655416, 0, 0, 655417, 0, 0, 655418, 0, 0, 655419, 0, 0, 655420, 0, 0, 655421, 0, 0, 655422, 0, 0, 655423, 0, 0, 655424, 0, 0, 655425, 0, 0, 655426, 0, 0, 655427, 0, 0, 655428, 0, 0, 655429, 0, 0, 655430, 0, 0, 655431, 0, 0, 655432, 0, 0 )
 
 [node name="PlayerSquare" parent="." instance=ExtResource( 3 )]
-position = Vector2( -331.578, 150.526 )
-
-[node name="LedgeAssist" type="Timer" parent="PlayerSquare/StateMachine/Move/Air" index="0"]
-wait_time = 0.3
-one_shot = true
-
-[node name="DropTimer" type="Timer" parent="PlayerSquare/StateMachine/Move" index="3"]
-wait_time = 0.1
-one_shot = true
+position = Vector2( -304, 144 )
 
 [node name="DebugDock" parent="." instance=ExtResource( 2 )]
 margin_left = -367.44
@@ -42,6 +35,8 @@ reference_path = NodePath("../../../PlayerSquare/StateMachine")
 
 [node name="Coin" parent="." instance=ExtResource( 5 )]
 position = Vector2( -0.0377808, 91.2166 )
+
+[node name="GridSnapper" parent="." instance=ExtResource( 4 )]
 
 [editable path="PlayerSquare"]
 
