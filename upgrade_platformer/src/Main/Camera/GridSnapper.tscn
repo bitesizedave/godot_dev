@@ -2,8 +2,6 @@
 
 [ext_resource path="res://src/Main/Camera/GridSnapper.gd" type="Script" id=1]
 
-
-
 [node name="GridSnapper" type="Position2D"]
 script = ExtResource( 1 )
 
