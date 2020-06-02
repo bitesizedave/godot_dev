@@ -25,11 +25,13 @@ var screen_bottom_edge: = 0.0 setget ,get_screen_bottom_edge
 #}
 
 onready var battle_room_dimensions: = {
-	"br_left": -OS.get_real_window_size().x/2,
-	"br_right": OS.get_real_window_size().x/2,
-	"br_top": -OS.get_real_window_size().y/2,
-	"br_bottom": OS.get_real_window_size().y/2 
+	"br_left": -ProjectSettings.get("display/window/size/width")/2,
+	"br_right": ProjectSettings.get("display/window/size/width")/2,
+	"br_top": -ProjectSettings.get("display/window/size/height")/2,
+	"br_bottom": ProjectSettings.get("display/window/size/height")/2 
 }
+
+onready var project_window_size = Vector2(ProjectSettings.get("display/window/size/width"), ProjectSettings.get("display/window/size/height"))
 
 func reset() -> void:
 	score = 0
@@ -74,19 +76,19 @@ func get_camera_position() -> Vector2:
 
 
 func get_screen_left_edge() -> float:
-	return (camera_position.x - OS.get_real_window_size().x/2)
+	return (camera_position.x - project_window_size.x/2)
 
 
 func get_screen_right_edge() -> float:
-	return (camera_position.x + OS.get_real_window_size().x/2)
+	return (camera_position.x + project_window_size.x/2)
 
 
 func get_screen_top_edge() -> float:
-	return (camera_position.y - OS.get_real_window_size().y/2)
+	return (camera_position.y - project_window_size.y/2)
 
 
 func get_screen_bottom_edge() -> float:
-	return (camera_position.y + OS.get_real_window_size().y/2)
+	return (camera_position.y + project_window_size.y/2)
 
 
 func set_coins(value: int):
