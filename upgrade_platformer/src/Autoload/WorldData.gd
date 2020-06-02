@@ -16,12 +16,19 @@ var screen_left_edge: = 0.0 setget ,get_screen_left_edge
 var screen_right_edge: = 0.0 setget ,get_screen_right_edge
 var screen_top_edge: = 0.0 setget ,get_screen_top_edge
 var screen_bottom_edge: = 0.0 setget ,get_screen_bottom_edge
-const CAMERA_POSITIONS: = {
-	"MAIN_SCREEN": Vector2(0.0, 0.0),
-	"LEFT_SCREEN": Vector2(-768.0, 0.0),
-	"RIGHT_SCREEN": Vector2(768.0, 0.0),
-	"BOTTOM_SCREEN": Vector2(0.0, 432.0),
-	"TOP_SCREEN": Vector2(0.0, -432.0)
+#const CAMERA_POSITIONS: = {
+#	"MAIN_SCREEN": Vector2(0.0, 0.0),
+#	"LEFT_SCREEN": Vector2(-768.0, 0.0),
+#	"RIGHT_SCREEN": Vector2(768.0, 0.0),
+#	"BOTTOM_SCREEN": Vector2(0.0, 432.0),
+#	"TOP_SCREEN": Vector2(0.0, -432.0)
+#}
+
+onready var battle_room_dimensions: = {
+	"br_left": -OS.get_real_window_size().x/2,
+	"br_right": OS.get_real_window_size().x/2,
+	"br_top": -OS.get_real_window_size().y/2,
+	"br_bottom": OS.get_real_window_size().y/2 
 }
 
 func reset() -> void:
@@ -60,7 +67,6 @@ func get_wrapping() -> bool:
 func set_camera_position(value: Vector2) -> void:
 	camera_position = value
 	emit_signal("camera_position_updated")
-	print("camera_position = ",camera_position)
 
 
 func get_camera_position() -> Vector2:

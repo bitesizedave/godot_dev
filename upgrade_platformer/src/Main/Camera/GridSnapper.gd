@@ -12,28 +12,26 @@ func _ready() -> void:
 #	update_grid_start_position()
 	
 func _physics_process(delta: float) -> void:
-	if !WorldData.wrapping: update_grid_position()
+	if (not WorldData.wrapping):
+			update_grid_position()
 
 func update_grid_position():
-	var x = round(player.position.x/grid_size.x)
-	var y = round(player.position.y/grid_size.y)
-	var new_grid_position = Vector2(x,y)
-	if grid_position == new_grid_position:
-		return
-	grid_position = new_grid_position
-	self.position = grid_position * grid_size
-	WorldData.camera_position = self.position
-	print(new_grid_position.x,new_grid_position)
-	
-#func update_grid_start_position():
-#	var x = round(grandparent.position.x/grid_size.x)
-#	var y = round(grandparent.position.y/grid_size.y)
-#	var new_grid_position = Vector2(x,y)
-#	if grid_position == new_grid_position:
-#		return
-#	grid_position = new_grid_position
-#	self.position = grid_position * grid_size
-#	WorldData.camera_position = self.position
+	if player.position.x > WorldData.battle_room_dimensions.br_right:
+		self.position = Vector2(OS.get_real_window_size().x, 0)
+		WorldData.camera_position = self.position
+	elif player.position.x < WorldData.battle_room_dimensions.br_left:
+		self.position = Vector2(-OS.get_real_window_size().x, 0)
+		WorldData.camera_position = self.position
+	elif player.position.y > WorldData.battle_room_dimensions.br_bottom:
+		self.position = Vector2(0, OS.get_real_window_size().y)
+		WorldData.camera_position = self.position
+	elif player.position.y < WorldData.battle_room_dimensions.br_top:
+		self.position = Vector2(0, -OS.get_real_window_size().y)
+		WorldData.camera_position = self.position
+	else: 
+		self.position = Vector2(0.0, 0.0)
+		WorldData.camera_position = self.position
+
 	
 
 
