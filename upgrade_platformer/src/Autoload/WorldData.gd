@@ -89,6 +89,7 @@ func get_screen_top_edge() -> float:
 
 func get_screen_bottom_edge() -> float:
 	return (camera_position.y + project_window_size.y/2)
+	
 
 
 func set_coins(value: int):

@@ -13,25 +13,40 @@ func _physics_process(delta: float) -> void:
 	if _velocity.y > max_speed.y:
 		_velocity.y = max_speed.y 
 	if Input.is_action_just_pressed("debug_wrapping"): WorldData.toggle_wrapping()
-	self.position = wrap_position(self.position)
-#	print("self.position = ",self.position)
+	if WorldData.wrapping:
+		self.position = wrap_position(true, true, true, true)
+	elif not WorldData.wrapping and self.position.y < WorldData.battle_room_dimensions.br_top:
+		self.position = wrap_position(true, true, false, true)
+#		print("top")
+	elif not WorldData.wrapping and self.position.x > WorldData.battle_room_dimensions.br_right:
+		self.position = wrap_position(true, true, true, false)
+#		print("right")
+	elif not WorldData.wrapping and self.position.y > WorldData.battle_room_dimensions.br_bottom:
+		self.position = wrap_position(false, true, true, true)
+#		print("bottom")
+	elif not WorldData.wrapping and self.position.x < WorldData.battle_room_dimensions.br_left:
+		self.position = wrap_position(true, false, true, true)
+#		print("left")
 
-func wrap_position(position: Vector2) -> Vector2:
-	var new_position: = Vector2(position)
-	if WorldData.wrapping: 
-		new_position.x = wrapf(position.x, WorldData.get_screen_left_edge(), WorldData.get_screen_right_edge())
-		new_position.y = wrapf(position.y, WorldData.get_screen_top_edge(), WorldData.get_screen_bottom_edge())
-	if (position.x > WorldData.battle_room_dimensions.br_right): 
-		if position.x > WorldData.battle_room_dimensions.br_right + WorldData.project_window_size.x:
-			new_position.x = WorldData.battle_room_dimensions.br_right
-	if (position.x < WorldData.battle_room_dimensions.br_left): 
-		if position.x < WorldData.battle_room_dimensions.br_left - WorldData.project_window_size.x:
-			new_position.x = WorldData.battle_room_dimensions.br_left
-	if (position.y > WorldData.battle_room_dimensions.br_bottom):
-		if position.y >= WorldData.battle_room_dimensions.br_bottom + WorldData.project_window_size.y:
-			new_position.y = WorldData.battle_room_dimensions.br_bottom
-	if (position.y < WorldData.battle_room_dimensions.br_top):
-		if position.y >= WorldData.battle_room_dimensions.br_top - WorldData.project_window_size.y:
-			new_position.y = WorldData.battle_room_dimensions.br_top
+func wrap_position(top_wrap: bool, right_wrap: bool, bottom_wrap: bool, left_wrap: bool) -> Vector2:
+	var new_position: = Vector2(self.position)
+	if right_wrap:
+		if position.x > WorldData.get_screen_right_edge():
+			new_position.x = WorldData.get_screen_left_edge()
+	if left_wrap:
+		if position.x < WorldData.get_screen_left_edge():
+			new_position.x = WorldData.get_screen_right_edge()
+	if bottom_wrap:
+		if position.y > WorldData.get_screen_bottom_edge():
+			new_position.y = WorldData.get_screen_top_edge()
+	if top_wrap:
+		if position.y < WorldData.get_screen_top_edge():
+			new_position.y = WorldData.get_screen_bottom_edge()
+#	new_position.x = wrapf(position.x, 
+#		WorldData.get_screen_left_edge() if left_wrap else null, 
+#		WorldData.get_screen_right_edge() if right_wrap else self.position.x)
+#	new_position.y = wrapf(position.y, 
+#		WorldData.get_screen_top_edge() if top_wrap else self.position.y, 
+#		WorldData.get_screen_bottom_edge() if bottom_wrap else self.position.y)
 	return new_position
-	
+
