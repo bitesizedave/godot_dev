@@ -76,20 +76,19 @@ func get_camera_position() -> Vector2:
 
 
 func get_screen_left_edge() -> float:
-	return (camera_position.x - project_window_size.x/2)
+	return (camera_position.x - project_window_size.x/2 -1)
 
 
 func get_screen_right_edge() -> float:
-	return (camera_position.x + project_window_size.x/2)
+	return (camera_position.x + project_window_size.x/2 +1)
 
 
 func get_screen_top_edge() -> float:
-	return (camera_position.y - project_window_size.y/2)
+	return (camera_position.y - project_window_size.y/2 - 1)
 
 
 func get_screen_bottom_edge() -> float:
-	return (camera_position.y + project_window_size.y/2)
-	
+	return (camera_position.y + project_window_size.y/2 + 1)
 
 
 func set_coins(value: int):

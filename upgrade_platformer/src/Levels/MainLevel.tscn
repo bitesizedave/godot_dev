@@ -38,6 +38,11 @@ position = Vector2( -0.0377808, 91.2166 )
 
 [node name="GridSnapper" parent="." instance=ExtResource( 4 )]
 
+[node name="Camera2D" parent="GridSnapper" index="0"]
+process_mode = 0
+
 [editable path="PlayerSquare"]
 
 [editable path="DebugDock"]
+
+[editable path="GridSnapper"]
