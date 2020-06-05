@@ -30,7 +30,8 @@ func update_grid_position():
 #	elif (player.position.y < WorldData.battle_room_dimensions.br_top):
 		self.position = Vector2(0, -ProjectSettings.get("display/window/size/height"))
 		WorldData.camera_position = self.position
-	else: 
+	elif (WorldData.is_in_battle_room(player.position)
+		and not WorldData.is_in_battle_room(self.position)): 
 		self.position = Vector2(0.0, 0.0)
 		WorldData.camera_position = self.position
 

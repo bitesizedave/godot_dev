@@ -74,6 +74,13 @@ func set_camera_position(value: Vector2) -> void:
 	emit_signal("camera_position_updated")
 
 
+func is_in_battle_room(position: Vector2) -> bool:
+	return (position.x < battle_room_dimensions.br_right
+		and position.x > battle_room_dimensions.br_left
+		and position.y < battle_room_dimensions.br_bottom
+		and position.y > battle_room_dimensions.br_top)
+
+
 func is_in_top_room(position: Vector2) -> bool:
 	return (position.x > battle_room_dimensions.br_left
 		and position.x < battle_room_dimensions.br_right
