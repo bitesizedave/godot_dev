@@ -5,17 +5,17 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("debug_wrapping"): WorldData.toggle_wrapping()
 	if WorldData.wrapping:
 		self.position = wrap_position(true, true, true, true)
-	elif self.position.y < WorldData.battle_room_dimensions.br_top:
-		self.position.y = wrap_position(true, true, false, true).y
+	elif (WorldData.is_in_top_room(self.position)):
+		self.position = wrap_position(true, true, false, true)
 #		print("top")
-	elif self.position.y > WorldData.battle_room_dimensions.br_bottom:
-		self.position.y = wrap_position(false, true, true, true).y
+	elif (WorldData.is_in_bottom_room(self.position)):
+		self.position = wrap_position(false, true, true, true)
 #		print("bottom")
-	elif self.position.x > WorldData.battle_room_dimensions.br_right:
-		self.position.x = wrap_position(true, true, true, false).x
+	elif (WorldData.is_in_right_room(self.position)):
+		self.position = wrap_position(true, true, true, false)
 #		print("right")
-	elif self.position.x < WorldData.battle_room_dimensions.br_left:
-		self.position.x = wrap_position(true, false, true, true).x
+	elif (WorldData.is_in_left_room(self.position)):
+		self.position = wrap_position(true, false, true, true)
 #		print("left")
 	else: self.position = wrap_position(true, true, true, true)
 #	print(position)

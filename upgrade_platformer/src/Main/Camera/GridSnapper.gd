@@ -11,21 +11,23 @@ func _ready() -> void:
 #	set_as_toplevel(true)
 #	update_grid_start_position()
 	
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if (not WorldData.wrapping):
 			update_grid_position()
 
 func update_grid_position():
-	if player.position.x > WorldData.battle_room_dimensions.br_right:
+	if (WorldData.is_in_right_room(player.position)):
 		self.position = Vector2(ProjectSettings.get("display/window/size/width"), 0)
 		WorldData.camera_position = self.position
-	elif player.position.x < WorldData.battle_room_dimensions.br_left:
+	elif (WorldData.is_in_left_room(player.position)):
 		self.position = Vector2(-ProjectSettings.get("display/window/size/width"), 0)
 		WorldData.camera_position = self.position
-	elif player.position.y > WorldData.battle_room_dimensions.br_bottom:
+	elif (WorldData.is_in_bottom_room(player.position)):
+#	elif (player.position.y > WorldData.battle_room_dimensions.br_bottom):
 		self.position = Vector2(0, ProjectSettings.get("display/window/size/height"))
 		WorldData.camera_position = self.position
-	elif player.position.y < WorldData.battle_room_dimensions.br_top:
+	elif (WorldData.is_in_top_room(player.position)):
+#	elif (player.position.y < WorldData.battle_room_dimensions.br_top):
 		self.position = Vector2(0, -ProjectSettings.get("display/window/size/height"))
 		WorldData.camera_position = self.position
 	else: 

@@ -45,12 +45,15 @@ func set_score(value: int) -> void:
 func get_score() -> int:
 	return score
 
+
 func set_deaths(value: int) -> void:
 	deaths = value
 	emit_signal("player_died")
 
+
 func get_deaths() -> int:
 	return deaths
+
 
 func set_wrapping(value: bool) -> void:
 	wrapping = value
@@ -71,24 +74,47 @@ func set_camera_position(value: Vector2) -> void:
 	emit_signal("camera_position_updated")
 
 
+func is_in_top_room(position: Vector2) -> bool:
+	return (position.x > battle_room_dimensions.br_left
+		and position.x < battle_room_dimensions.br_right
+		and position.y < battle_room_dimensions.br_top)
+
+
+func is_in_bottom_room(position: Vector2) -> bool:
+	return (position.x > battle_room_dimensions.br_left
+		and position.x < battle_room_dimensions.br_right
+		and position.y > battle_room_dimensions.br_bottom)
+
+
+func is_in_left_room(position: Vector2) -> bool:
+	return (position.x < battle_room_dimensions.br_left
+		and position.y > battle_room_dimensions.br_top
+		and position.y < battle_room_dimensions.br_bottom)
+
+
+func is_in_right_room(position: Vector2) -> bool:
+	return (position.x > battle_room_dimensions.br_right
+		and position.y > battle_room_dimensions.br_top
+		and position.y < battle_room_dimensions.br_bottom)
+
 func get_camera_position() -> Vector2:
 	return camera_position
 
 
 func get_screen_left_edge() -> float:
-	return (camera_position.x - project_window_size.x/2 -1)
+	return (camera_position.x - project_window_size.x/2)
 
 
 func get_screen_right_edge() -> float:
-	return (camera_position.x + project_window_size.x/2 +1)
+	return (camera_position.x + project_window_size.x/2)
 
 
 func get_screen_top_edge() -> float:
-	return (camera_position.y - project_window_size.y/2 - 1)
+	return (camera_position.y - project_window_size.y/2)
 
 
 func get_screen_bottom_edge() -> float:
-	return (camera_position.y + project_window_size.y/2 + 1)
+	return (camera_position.y + project_window_size.y/2)
 
 
 func set_coins(value: int):
