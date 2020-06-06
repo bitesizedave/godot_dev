@@ -12,7 +12,8 @@ onready var _state_machine: = _get_state_machine(self)
 
 
 func unhandled_input(event: InputEvent) -> void:
-	pass
+	if event.is_action_pressed("dash"):
+		_state_machine.transition_to("Attack/Dash")
 
 
 func physics_process(delta: float) -> void:
