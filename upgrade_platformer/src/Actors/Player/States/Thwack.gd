@@ -20,7 +20,8 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
-	pass
+	print("THWACK!")
+	
 
 
 func exit() -> void:

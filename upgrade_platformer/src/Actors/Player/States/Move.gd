@@ -20,6 +20,10 @@ func _ready():
 	drop_timer.connect("timeout", self, "on_DropTimer_timeout")
 
 func unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("dash"):
+		_state_machine.transition_to("Attack/Dash")
+	elif event.is_action_pressed("thwack"):
+		_state_machine.transition_to("Attack/Thwack")
 	if owner.is_on_floor() and event.is_action_pressed("jump") and Input.get_action_strength("down") > 0.0:
 		owner.set_collision_mask_bit(WORLD_BIT_LAYER, false)
 		drop_timer.start()
@@ -29,6 +33,7 @@ func unhandled_input(event: InputEvent) -> void:
 		_state_machine.transition_to("Move/Air", { impulse = true })
 	elif event.is_action_released("jump") and not owner.get_collision_mask_bit(WORLD_BIT_LAYER):
 		owner.set_collision_mask_bit(WORLD_BIT_LAYER, true)
+	
 
 
 

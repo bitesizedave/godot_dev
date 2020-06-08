@@ -14,17 +14,11 @@ onready var _state_machine: = _get_state_machine(self)
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash"):
 		_state_machine.transition_to("Attack/Dash")
+	if event.is_action_pressed("thwack"):
+		_state_machine.transition_to("Attack/Thwack")
 
 
 func physics_process(delta: float) -> void:
-	pass
-
-
-func enter(msg: Dictionary = {}) -> void:
-	pass
-
-
-func exit() -> void:
 	pass
 
 
@@ -32,3 +26,10 @@ func _get_state_machine(node: Node) -> Node:
 	if node != null and not node.is_in_group("state_machine"):
 		return _get_state_machine(node.get_parent())
 	return node
+
+
+static func get_attack_direction() -> Vector2:
+	return Vector2(
+		Input.get_action_strength("right") - Input.get_action_strength("left"),
+		Input.get_action_strength("down") - Input.get_action_strength("up")
+	)
