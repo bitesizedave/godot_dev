@@ -8,10 +8,11 @@ with state transitions
 var attack: = get_parent()
 var dash_velocity: = Vector2()
 export var max_dash_velocity: = Vector2(2000.0, 2000.0)
-export var dash_acceleration_default: = 10000.0
+export var dash_acceleration_default: = 25000.0
 var dash_acceleration: = dash_acceleration_default
 onready var dash_timer: Timer = $DashTimer
 var velocity: = Vector2.ZERO
+var facing_direction: = Vector2.ZERO
 
 
 func _ready():
@@ -27,19 +28,27 @@ func physics_process(delta: float) -> void:
 	if attack.get_attack_direction().x == 0.0 and owner.is_on_floor() and dash_timer.get_time_left() ==  0.0:
 		_state_machine.transition_to("Move/Idle")
 	elif attack.get_attack_direction().x > 0.0 and owner.is_on_floor() and dash_timer.get_time_left() ==  0.0:
-		_state_machine.transition_to("Move/Run")
+		_state_machine.transition_to("Move/Run", { "dash_direction": attack.direction })
 	elif dash_timer.get_time_left() ==  0.0:
-		_state_machine.transition_to("Move/Air")
-	dash_velocity = calculate_dash_velocity(dash_velocity, max_dash_velocity, dash_acceleration, delta, attack.get_attack_direction())
-	velocity = owner.move_and_slide(dash_velocity, owner.FLOOR_NORMAL)
+		_state_machine.transition_to("Move/Air", { "dash_direction": attack.direction})
+	dash_velocity = calculate_dash_velocity(dash_velocity, 
+		max_dash_velocity, 
+		dash_acceleration, delta, 
+		facing_direction if attack.get_attack_direction() == Vector2.ZERO else attack.get_attack_direction())
+	dash_velocity = owner.move_and_slide(dash_velocity, owner.FLOOR_NORMAL)
 
 
 func enter(msg: Dictionary = {}) -> void:
 	dash_timer.start()
+	dash_velocity = Vector2.ZERO
+	if "facing_direction" in msg:
+		facing_direction = msg["facing_direction"]
+
 
 
 func exit() -> void:
-	pass
+	var attack = get_parent()
+	dash_velocity = Vector2.ZERO
 
 
 static func calculate_dash_velocity(

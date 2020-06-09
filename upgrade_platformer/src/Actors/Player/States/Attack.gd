@@ -9,17 +9,22 @@ Use State as a child of a StateMachine node.
 
 
 onready var _state_machine: = _get_state_machine(self)
+var facing_direction: = Vector2.ZERO
+var direction: = Vector2.ZERO
 
 
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash"):
+		direction = get_attack_direction()
 		_state_machine.transition_to("Attack/Dash")
 	if event.is_action_pressed("thwack"):
+		direction = get_attack_direction()
 		_state_machine.transition_to("Attack/Thwack")
 
 
-func physics_process(delta: float) -> void:
-	pass
+
+#func enter(msg: Dictionary = {}) -> void:
+#	pass
 
 
 func _get_state_machine(node: Node) -> Node:

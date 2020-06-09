@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/square.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Player/States/Idle.gd" type="Script" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://src/Actors/Player/States/Run.gd" type="Script" id=7]
 [ext_resource path="res://src/Actors/Player/Player.gd" type="Script" id=8]
 [ext_resource path="res://src/Actors/Player/States/Dash.gd" type="Script" id=9]
-[ext_resource path="res://src/Actors/Player/States/Thwack.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -53,11 +52,10 @@ script = ExtResource( 9 )
 
 [node name="DashTimer" type="Timer" parent="StateMachine/Attack/Dash"]
 process_mode = 0
-wait_time = 0.2
+wait_time = 0.1
 one_shot = true
 
 [node name="Thwack" type="Node" parent="StateMachine/Attack"]
-script = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
