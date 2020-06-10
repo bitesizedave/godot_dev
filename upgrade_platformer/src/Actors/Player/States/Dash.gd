@@ -28,16 +28,17 @@ func _ready():
 
 func physics_process(delta: float) -> void:
 	var attack: = get_parent()
-	if attack.get_attack_direction().x == 0.0 and owner.is_on_floor() and dash_timer.get_time_left() ==  0.0:
+	var attack_direction = attack.get_attack_direction()
+	if attack_direction.x == 0.0 and owner.is_on_floor() and dash_timer.get_time_left() ==  0.0:
 		_state_machine.transition_to("Move/Idle")
-	elif attack.get_attack_direction().x > 0.0 and owner.is_on_floor() and dash_timer.get_time_left() ==  0.0:
-		_state_machine.transition_to("Move/Run", { "dash_direction": attack.direction })
+	elif attack_direction.x > 0.0 and owner.is_on_floor() and dash_timer.get_time_left() ==  0.0:
+		_state_machine.transition_to("Move/Run", { "dash_direction": attack_direction })
 	elif dash_timer.get_time_left() ==  0.0:
-		_state_machine.transition_to("Move/Air", { "dash_direction": attack.direction})
+		_state_machine.transition_to("Move/Air", { "dash_direction": attack_direction})
 	dash_velocity = calculate_dash_velocity(dash_velocity, 
 		max_dash_velocity, 
 		dash_acceleration, delta, 
-		facing_direction if attack.get_attack_direction() == Vector2.ZERO else attack.get_attack_direction())
+		facing_direction if attack_direction == Vector2.ZERO else attack_direction)
 	dash_velocity = owner.move_and_slide(dash_velocity, owner.FLOOR_NORMAL)
 
 
@@ -51,7 +52,6 @@ func enter(msg: Dictionary = {}) -> void:
 
 
 func exit() -> void:
-	dash_velocity = Vector2.ZERO
 	emit_signal("dash_ended")
 
 
