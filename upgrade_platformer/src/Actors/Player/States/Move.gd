@@ -26,15 +26,18 @@ func unhandled_input(event: InputEvent) -> void:
 		velocity = Vector2.ZERO
 	elif event.is_action_pressed("thwack"):
 		_state_machine.transition_to("Attack/Thwack")
-	if owner.is_on_floor() and event.is_action_pressed("jump") and Input.get_action_strength("down") > 0.0:
+	if owner.is_on_floor() and Input.is_action_just_pressed("jump") and Input.get_action_strength("down") > 0.0:
 		owner.set_collision_mask_bit(WORLD_BIT_LAYER, false)
 		drop_timer.start()
 		_state_machine.transition_to("Move/Air")
-		
 	elif owner.is_on_floor() and event.is_action_pressed("jump"):
 		_state_machine.transition_to("Move/Air", { impulse = true })
 	elif event.is_action_released("jump") and not owner.get_collision_mask_bit(WORLD_BIT_LAYER):
 		owner.set_collision_mask_bit(WORLD_BIT_LAYER, true)
+	if owner.is_on_floor() and Input.is_action_just_pressed("dash") and Input.get_action_strength("down") > 0.0:
+		owner.set_collision_mask_bit(WORLD_BIT_LAYER, false)
+		drop_timer.start()
+		_state_machine.transition_to("Attack/Dash")
 
 
 func physics_process(delta: float) -> void:

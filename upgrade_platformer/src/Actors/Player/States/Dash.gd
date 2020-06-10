@@ -5,10 +5,13 @@ Delegates movement to its parent Move state and extends it
 with state transitions
 """
 
+signal dash_started
+signal dash_ended
+
 var attack: = get_parent()
 var dash_velocity: = Vector2()
-export var max_dash_velocity: = Vector2(2000.0, 2000.0)
-export var dash_acceleration_default: = 25000.0
+export var max_dash_velocity: = Vector2(2500.0, 2500.0)
+export var dash_acceleration_default: = 35000.0
 var dash_acceleration: = dash_acceleration_default
 onready var dash_timer: Timer = $DashTimer
 var velocity: = Vector2.ZERO
@@ -40,6 +43,7 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	dash_timer.start()
+	emit_signal("dash_started")
 	dash_velocity = Vector2.ZERO
 	if "facing_direction" in msg:
 		facing_direction = msg["facing_direction"]
@@ -47,8 +51,8 @@ func enter(msg: Dictionary = {}) -> void:
 
 
 func exit() -> void:
-	var attack = get_parent()
 	dash_velocity = Vector2.ZERO
+	emit_signal("dash_ended")
 
 
 static func calculate_dash_velocity(
@@ -59,7 +63,8 @@ static func calculate_dash_velocity(
 		move_direction: Vector2
 	) -> Vector2:
 	var new_velocity: = old_velocity
-	new_velocity += move_direction * acceleration * delta
+#	new_velocity += move_direction.normalized() * acceleration * delta
+	new_velocity = move_direction.normalized() * max_dash_velocity
 	new_velocity.x = clamp(new_velocity.x, -max_dash_velocity.x, max_dash_velocity.x)
 	new_velocity.y = clamp(new_velocity.y, -max_dash_velocity.y, max_dash_velocity.y)
 	return new_velocity

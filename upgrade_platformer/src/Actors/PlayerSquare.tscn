@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/square.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Player/States/Idle.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://src/Actors/Player/States/Run.gd" type="Script" id=7]
 [ext_resource path="res://src/Actors/Player/Player.gd" type="Script" id=8]
 [ext_resource path="res://src/Actors/Player/States/Dash.gd" type="Script" id=9]
+[ext_resource path="res://src/Actors/Player/PlayerSquareSprite.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -41,7 +42,7 @@ wait_time = 0.3
 one_shot = true
 
 [node name="DropTimer" type="Timer" parent="StateMachine/Move"]
-wait_time = 0.1
+wait_time = 0.05
 one_shot = true
 
 [node name="Attack" type="Node" parent="StateMachine"]
@@ -60,13 +61,16 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="PlayerSquareSprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+script = ExtResource( 10 )
 
 [node name="OuchieDetector" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OuchieDetector"]
 shape = SubResource( 2 )
+[connection signal="dash_ended" from="StateMachine/Attack/Dash" to="PlayerSquareSprite" method="_on_dash_ended"]
+[connection signal="dash_started" from="StateMachine/Attack/Dash" to="PlayerSquareSprite" method="_on_dash_started"]
 [connection signal="area_entered" from="OuchieDetector" to="." method="_on_area_entered"]
 [connection signal="body_entered" from="OuchieDetector" to="." method="_on_body_entered"]
