@@ -48,6 +48,10 @@ func enter(msg: Dictionary = {}):
 		if msg["dash_direction"].y > 0:
 			velocity.y = max_fall_speed
 			print("downward_dash")
+		if msg["dash_direction"].x > 0:
+			velocity.x = max_speed.x
+		if msg["dash_direction"].x < 0:
+			velocity.x = -max_speed.x
 
 
 func exit():

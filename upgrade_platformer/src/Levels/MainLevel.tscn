@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Levels/MainTileset.tres" type="TileSet" id=1]
-[ext_resource path="res://src/UI/debug/DebugDock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Actors/PlayerSquare.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Main/Camera/GridSnapper.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=5]
@@ -19,30 +18,7 @@ tile_data = PoolIntArray( -1114139, 0, 0, -1114138, 0, 0, -1114137, 0, 0, -11141
 [node name="PlayerSquare" parent="." instance=ExtResource( 3 )]
 position = Vector2( -304, 144 )
 
-[node name="DebugDock" parent="." instance=ExtResource( 2 )]
-margin_left = -367.44
-margin_top = -200.422
-margin_right = 72.5605
-margin_bottom = 205.578
-rect_scale = Vector2( 0.401179, 0.401179 )
-
-[node name="Column" parent="DebugDock" index="0"]
-margin_bottom = 390.0
-
-[node name="DebugPanel2" parent="DebugDock/Column" index="0"]
-margin_bottom = 128.0
-reference_path = NodePath("../../../PlayerSquare/StateMachine")
-
 [node name="Coin" parent="." instance=ExtResource( 5 )]
 position = Vector2( -0.0377808, 34.2166 )
 
 [node name="GridSnapper" parent="." instance=ExtResource( 4 )]
-
-[node name="Camera2D" parent="GridSnapper" index="0"]
-process_mode = 0
-
-[editable path="PlayerSquare"]
-
-[editable path="DebugDock"]
-
-[editable path="GridSnapper"]

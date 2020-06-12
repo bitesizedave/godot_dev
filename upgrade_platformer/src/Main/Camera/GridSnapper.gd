@@ -8,7 +8,7 @@ onready var player: = get_node("../PlayerSquare")
 
 func _ready() -> void:
 	grid_size = Vector2(ProjectSettings.get("display/window/size/width"), ProjectSettings.get("display/window/size/height"))
-#	set_as_toplevel(true)
+	set_as_toplevel(true)
 #	update_grid_start_position()
 	
 func _process(delta: float) -> void:
