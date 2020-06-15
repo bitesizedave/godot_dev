@@ -7,5 +7,4 @@ func _ready():
 	score.text = str(WorldData.battle_score)
 
 func on_battle_score_updated():
-	print("on_battle_score_updated_werkin")
 	score.text = str(WorldData.battle_score)
