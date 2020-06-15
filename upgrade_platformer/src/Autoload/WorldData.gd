@@ -6,11 +6,15 @@ signal wrapping_toggled
 signal camera_position_updated
 signal battle_score_updated
 signal coin_value_updated
+signal game_state_updated
+signal battle_ended
+
+enum {BATTLING, NOT_BATTLING}
+var game_state: = 0 setget set_game_state, get_game_state
 
 var score: = 0 setget set_score, get_score
 onready var battle_score: = 0 setget set_battle_score, get_battle_score
 onready var coin_value: = 1 setget set_coin_value, get_coin_value
-
 var deaths: = 0 setget set_deaths, get_deaths
 var wrapping: = false setget set_wrapping, get_wrapping
 var camera_position: = Vector2() setget set_camera_position, get_camera_position 
@@ -34,6 +38,11 @@ onready var battle_room_dimensions: = {
 }
 
 onready var project_window_size = Vector2(ProjectSettings.get("display/window/size/width"), ProjectSettings.get("display/window/size/height"))
+
+func _process(delta):
+	if get_tree().get_nodes_in_group("battle_stuff").size() <= 0:
+		set_game_state(NOT_BATTLING)
+		emit_signal("battle_ended")
 
 func reset() -> void:
 	score = 0
@@ -142,3 +151,11 @@ func set_coin_value(value: int):
 
 func get_coin_value() -> int:
 	return coin_value
+
+
+func set_game_state(value: int):
+	game_state = value
+	emit_signal("game_state_updated")
+
+func get_game_state() -> int:
+	return game_state

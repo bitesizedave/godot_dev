@@ -1,6 +1,6 @@
-extends MarginContainer
+extends HBoxContainer
 
-onready var score = $Score
+onready var score = $ScoreBox/ScoreLabel
 
 func _ready():
 	WorldData.connect("battle_score_updated", self, "on_battle_score_updated")

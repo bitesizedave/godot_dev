@@ -2,16 +2,24 @@
 
 [ext_resource path="res://src/UI/GUI/BattleScore.gd" type="Script" id=1]
 
-[node name="BattleScore" type="MarginContainer"]
+[node name="BattleScore" type="HBoxContainer"]
+anchor_left = 1.0
 anchor_right = 1.0
-margin_left = 10.0
+margin_left = -384.0
 margin_top = 10.0
+margin_right = -10.0
 margin_bottom = 14.0
+alignment = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="."]
-margin_right = 758.0
+[node name="ScoreBox" type="MarginContainer" parent="."]
+margin_left = 374.0
+margin_right = 374.0
 margin_bottom = 14.0
+
+[node name="ScoreLabel" type="Label" parent="ScoreBox"]
+margin_bottom = 14.0
+align = 1
