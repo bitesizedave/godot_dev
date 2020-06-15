@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Levels/MainTileset.tres" type="TileSet" id=1]
+[ext_resource path="res://src/UI/GUI/BattleScore.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Actors/PlayerSquare.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/Main/Camera/GridSnapper.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Main/Camera/Camera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=5]
 
 [node name="MainLevel" type="Node2D"]
@@ -18,7 +19,13 @@ tile_data = PoolIntArray( -1114139, 0, 0, -1114138, 0, 0, -1114137, 0, 0, -11141
 [node name="PlayerSquare" parent="." instance=ExtResource( 3 )]
 position = Vector2( -304, 144 )
 
-[node name="Coin" parent="." instance=ExtResource( 5 )]
+[node name="Coin" parent="." groups=[
+"coins",
+] instance=ExtResource( 5 )]
 position = Vector2( -0.0377808, 34.2166 )
 
-[node name="GridSnapper" parent="." instance=ExtResource( 4 )]
+[node name="Camera" parent="." instance=ExtResource( 4 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BattleScore" parent="CanvasLayer" instance=ExtResource( 2 )]

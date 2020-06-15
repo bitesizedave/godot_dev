@@ -4,10 +4,12 @@ signal score_updated
 signal player_died
 signal wrapping_toggled
 signal camera_position_updated
-signal coins_updated
+signal battle_score_updated
+signal coin_value_updated
 
 var score: = 0 setget set_score, get_score
-var coins: = 0 setget set_coins, get_coins
+onready var battle_score: = 0 setget set_battle_score, get_battle_score
+onready var coin_value: = 1 setget set_coin_value, get_coin_value
 
 var deaths: = 0 setget set_deaths, get_deaths
 var wrapping: = false setget set_wrapping, get_wrapping
@@ -124,10 +126,19 @@ func get_screen_bottom_edge() -> float:
 	return (camera_position.y + project_window_size.y/2)
 
 
-func set_coins(value: int):
-	coins = value
-	emit_signal("coins_updated")
+func set_battle_score(value: int):
+	battle_score = value
+	emit_signal("battle_score_updated")
 
 
-func get_coins() -> int:
-	return coins
+func get_battle_score() -> int:
+	return battle_score
+
+
+func set_coin_value(value: int):
+	coin_value = value
+	emit_signal("coin_value_updated")
+
+
+func get_coin_value() -> int:
+	return coin_value

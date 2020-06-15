@@ -1,4 +1,4 @@
-extends Position2D
+extends Camera2D
 
 var grid_size: = Vector2()
 var grid_position: = Vector2() 

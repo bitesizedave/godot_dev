@@ -4,3 +4,4 @@
 
 [node name="WorldData" type="Node"]
 script = ExtResource( 1 )
+[connection signal="battle_score_updated" from="." to="." method="_on_WorldData_battle_score_updated"]
