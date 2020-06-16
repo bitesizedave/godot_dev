@@ -22,13 +22,6 @@ var screen_left_edge: = 0.0 setget ,get_screen_left_edge
 var screen_right_edge: = 0.0 setget ,get_screen_right_edge
 var screen_top_edge: = 0.0 setget ,get_screen_top_edge
 var screen_bottom_edge: = 0.0 setget ,get_screen_bottom_edge
-#const CAMERA_POSITIONS: = {
-#	"MAIN_SCREEN": Vector2(0.0, 0.0),
-#	"LEFT_SCREEN": Vector2(-768.0, 0.0),
-#	"RIGHT_SCREEN": Vector2(768.0, 0.0),
-#	"BOTTOM_SCREEN": Vector2(0.0, 432.0),
-#	"TOP_SCREEN": Vector2(0.0, -432.0)
-#}
 
 onready var battle_room_dimensions: = {
 	"br_left": -ProjectSettings.get("display/window/size/width")/2,
