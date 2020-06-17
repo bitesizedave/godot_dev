@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Objects/Coin.gd"
 }, {
+"base": "Node",
+"class": "GameState",
+"language": "GDScript",
+"path": "res://src/Autoload/GameState/GameState.gd"
+}, {
+"base": "Node",
+"class": "GameStateMachine",
+"language": "GDScript",
+"path": "res://src/Autoload/GameState/GameStateMachine.gd"
+}, {
 "base": "Actor",
 "class": "Player",
 "language": "GDScript",
@@ -58,6 +68,8 @@ _global_script_class_icons={
 "Actor": "",
 "Attack": "res://assets/icons/state.svg",
 "Coin": "",
+"GameState": "res://assets/icons/state.svg",
+"GameStateMachine": "res://assets/icons/state_machine.svg",
 "Player": "",
 "PlayerSquare": "",
 "State": "res://assets/icons/state.svg",

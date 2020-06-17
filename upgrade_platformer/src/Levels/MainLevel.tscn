@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Levels/MainTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/UI/GUI/GUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Actors/PlayerSquare.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Main/Camera/Camera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Autoload/GameState/GameStateMachine.tscn" type="PackedScene" id=6]
 
 [node name="MainLevel" type="Node2D"]
 
@@ -24,6 +25,26 @@ position = Vector2( -304, 144 )
 ] instance=ExtResource( 5 )]
 position = Vector2( -0.0377808, 34.2166 )
 
+[node name="Coin2" parent="." groups=[
+"coins",
+] instance=ExtResource( 5 )]
+position = Vector2( -128.431, 0.136292 )
+
+[node name="Coin3" parent="." groups=[
+"coins",
+] instance=ExtResource( 5 )]
+position = Vector2( 127.547, 1.21365 )
+
+[node name="Coin4" parent="." groups=[
+"coins",
+] instance=ExtResource( 5 )]
+position = Vector2( -0.0377808, -29.2506 )
+
 [node name="Camera" parent="." instance=ExtResource( 4 )]
 
 [node name="GUI" parent="." instance=ExtResource( 2 )]
+
+[node name="GameStateMachine" parent="." instance=ExtResource( 6 )]
+initial_game_state = NodePath("NotBattling")
+
+[editable path="GameStateMachine"]
