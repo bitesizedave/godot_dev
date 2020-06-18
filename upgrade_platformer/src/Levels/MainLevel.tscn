@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Levels/MainTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/UI/GUI/GUI.tscn" type="PackedScene" id=2]
@@ -6,8 +6,24 @@
 [ext_resource path="res://src/Main/Camera/Camera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Autoload/GameState/GameStateMachine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/square.png" type="Texture" id=7]
 
 [node name="MainLevel" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="BackgroundRect" type="TextureRect" parent="Background"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
