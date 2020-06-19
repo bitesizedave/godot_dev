@@ -2,7 +2,6 @@ extends KinematicBody2D
 class_name WrappingObject
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("debug_wrapping"): WorldData.toggle_wrapping()
 	if WorldData.wrapping:
 		self.position = wrap_position(true, true, true, true)
 	elif (WorldData.is_in_top_room(self.position)):

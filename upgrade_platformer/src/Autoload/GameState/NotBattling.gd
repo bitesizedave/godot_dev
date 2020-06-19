@@ -5,10 +5,15 @@ The lowest leaf tries to handle callbacks, and if it can't, it delegates the wor
 It's up to the user to call the parent state's functions, e.g. `get_parent().physics_process(delta)`
 Use State as a child of a StateMachine node.
 """
+
 signal not_battling_entered
 
+#onready var main_level: Node = get_node("/root/MainScene")
+#onready var background_rect: TextureRect = get_node("MainLevel/Background/BackgroundRect")
+
 func unhandled_input(event: InputEvent) -> void:
-	pass
+	if event.is_action_pressed("toggle_battle_state"):
+		_game_state_machine.transition_to("Battling")
 
 
 func physics_process(delta: float) -> void:
@@ -16,8 +21,8 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
-	BattleTimer.timer.stop()
 	emit_signal("not_battling_entered")
+	
 
 
 func exit() -> void:

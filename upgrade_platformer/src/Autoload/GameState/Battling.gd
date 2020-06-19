@@ -6,10 +6,12 @@ It's up to the user to call the parent state's functions, e.g. `get_parent().phy
 Use State as a child of a StateMachine node.
 """
 
+signal battling_entered
 
 
 func unhandled_input(event: InputEvent) -> void:
-	pass
+	if event.is_action_pressed("toggle_battle_state"):
+		_game_state_machine.transition_to("NotBattling")
 
 
 func physics_process(delta: float) -> void:
@@ -17,7 +19,7 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
-	pass
+	emit_signal("battling_entered")
 
 
 func exit() -> void:
