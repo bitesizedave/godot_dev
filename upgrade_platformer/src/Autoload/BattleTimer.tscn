@@ -2,7 +2,5 @@
 
 [ext_resource path="res://src/Autoload/BattleTimer.gd" type="Script" id=1]
 
-[node name="BattleTimer" type="Node"]
+[node name="BattleTimer" type="Timer"]
 script = ExtResource( 1 )
-
-[node name="Timer" type="Timer" parent="."]

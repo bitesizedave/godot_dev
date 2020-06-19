@@ -27,12 +27,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "GameState",
 "language": "GDScript",
-"path": "res://src/Autoload/GameState/GameState.gd"
+"path": "res://src/Main/GameState/GameState.gd"
 }, {
 "base": "Node",
 "class": "GameStateMachine",
 "language": "GDScript",
-"path": "res://src/Autoload/GameState/GameStateMachine.gd"
+"path": "res://src/Main/GameState/GameStateMachine.gd"
 }, {
 "base": "Actor",
 "class": "Player",
@@ -89,6 +89,7 @@ config/icon="res://icon.png"
 WorldData="*res://src/Autoload/WorldData.tscn"
 PlayerData="*res://src/Autoload/PlayerData.tscn"
 BattleTimer="*res://src/Autoload/BattleTimer.tscn"
+ScoreTimer="*res://src/Autoload/ScoreTimer.tscn"
 
 [display]
 
