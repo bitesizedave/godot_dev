@@ -1,16 +1,15 @@
 extends Node
 
 signal score_updated
-signal player_died
 signal wrapping_toggled
 signal camera_position_updated
 signal battle_score_updated
 signal coin_value_updated
+signal hard_reset
 
 var score: = 0 setget set_score, get_score
 onready var battle_score: = 0 setget set_battle_score, get_battle_score
 onready var coin_value: = 1 setget set_coin_value, get_coin_value
-var deaths: = 0 setget set_deaths, get_deaths
 var wrapping: = false setget set_wrapping, get_wrapping
 var camera_position: = Vector2() setget set_camera_position, get_camera_position 
 var screen_left_edge: = 0.0 setget ,get_screen_left_edge
@@ -28,9 +27,15 @@ onready var battle_room_dimensions: = {
 onready var project_window_size = Vector2(ProjectSettings.get("display/window/size/width"), ProjectSettings.get("display/window/size/height"))
 
 
-func reset() -> void:
-	score = 0
-	deaths = 0
+func _unhandled_input(event):
+	if event.is_action_pressed("hard_reset"):
+		hard_reset()
+
+
+func hard_reset() -> void:
+	set_score(0)
+	set_battle_score(0)
+	emit_signal("hard_reset")
 
 
 func set_score(value: int) -> void:
@@ -41,14 +46,6 @@ func set_score(value: int) -> void:
 func get_score() -> int:
 	return score
 
-
-func set_deaths(value: int) -> void:
-	deaths = value
-	emit_signal("player_died")
-
-
-func get_deaths() -> int:
-	return deaths
 
 
 func set_wrapping(value: bool) -> void:

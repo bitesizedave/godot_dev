@@ -23,5 +23,5 @@ func enter(msg: Dictionary = {}) -> void:
 
 
 func exit() -> void:
-	var _scoretime = BattleTimer.BATTLE_TIME - BattleTimer.get_battle_time_left() 
+	var _scoretime = BattleTimer.BATTLE_TIME - BattleTimer.time_left 
 	ScoreTimer.set_score_time(_scoretime)
