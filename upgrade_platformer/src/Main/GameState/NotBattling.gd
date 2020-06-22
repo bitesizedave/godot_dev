@@ -21,6 +21,9 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
+	ScoreTimer.set_score_time(BattleTimer.BATTLE_TIME - BattleTimer.time_left)
+	ScoreTimer.start()
+	print("not_battling_entered")
 	emit_signal("not_battling_entered")
 	
 

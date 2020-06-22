@@ -6,14 +6,14 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 15.3846
 
-[node name="Coin" type="Area2D"]
+[node name="Coin" type="Area2D" groups=[
+"BATTLE_OBJECTS",
+]]
 scale = Vector2( 0.519999, 0.519999 )
 collision_layer = 4
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="." groups=[
-"battle_stuff",
-]]
+[node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.909804, 0.901961, 0.282353, 1 )
 scale = Vector2( 1.86063, 1.86063 )
 texture = ExtResource( 1 )

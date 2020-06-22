@@ -15,10 +15,15 @@ func unhandled_input(event: InputEvent) -> void:
 
 
 func physics_process(delta: float) -> void:
-	pass
+	if get_tree().get_nodes_in_group("BATTLE_OBJECTS").size() <= 0:
+		_game_state_machine.transition_to("NotBattling")
 
 
 func enter(msg: Dictionary = {}) -> void:
+	BattleTimer.wait_time = BattleTimer.BATTLE_TIME
+	BattleTimer.start()
+	WorldData.battle_score = 0
+	print("battling entered")
 	emit_signal("battling_entered")
 
 
