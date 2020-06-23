@@ -6,6 +6,7 @@ signal camera_position_updated
 signal battle_score_updated
 signal coin_value_updated
 signal hard_reset
+signal instant_battle_started
 
 var score: = 0 setget set_score, get_score
 onready var battle_score: = 0 setget set_battle_score, get_battle_score
@@ -30,6 +31,9 @@ onready var project_window_size = Vector2(ProjectSettings.get("display/window/si
 func _unhandled_input(event):
 	if event.is_action_pressed("hard_reset"):
 		hard_reset()
+	if event.is_action_pressed("start_battle"):
+		set_battle_score(0)
+		emit_signal("instant_battle_started")
 
 
 func hard_reset() -> void:

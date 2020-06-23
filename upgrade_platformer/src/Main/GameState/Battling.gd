@@ -6,8 +6,6 @@ It's up to the user to call the parent state's functions, e.g. `get_parent().phy
 Use State as a child of a StateMachine node.
 """
 
-signal battling_entered
-
 
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_battle_state"):
@@ -23,8 +21,7 @@ func enter(msg: Dictionary = {}) -> void:
 	BattleTimer.wait_time = BattleTimer.BATTLE_TIME
 	BattleTimer.start()
 	WorldData.battle_score = 0
-	print("battling entered")
-	emit_signal("battling_entered")
+	GameStateData.set_game_state(GameStateData.BATTLING)
 
 
 func exit() -> void:

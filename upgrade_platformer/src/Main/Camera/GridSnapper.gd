@@ -2,6 +2,7 @@ extends Camera2D
 
 var grid_size: = Vector2()
 var grid_position: = Vector2() 
+var _resetting: = false
 
 onready var player: = get_node("../PlayerSquare")
 #onready var grandparent = get_parent().get_owner()
@@ -9,10 +10,11 @@ onready var player: = get_node("../PlayerSquare")
 func _ready() -> void:
 	grid_size = Vector2(ProjectSettings.get("display/window/size/width"), ProjectSettings.get("display/window/size/height"))
 	set_as_toplevel(true)
-#	update_grid_start_position()
+	WorldData.connect("hard_reset", self, "_on_reset")
+	
 	
 func _process(delta: float) -> void:
-	if (not WorldData.wrapping):
+	if (not WorldData.wrapping and not _resetting):
 			update_grid_position()
 
 func update_grid_position():
@@ -34,8 +36,4 @@ func update_grid_position():
 		and not WorldData.is_in_battle_room(self.position)): 
 		self.position = Vector2(0.0, 0.0)
 		WorldData.camera_position = self.position
-
-	
-
-
 
