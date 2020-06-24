@@ -7,10 +7,12 @@ signal battle_score_updated
 signal coin_value_updated
 signal hard_reset
 signal instant_battle_started
+signal start_coins_updated
 
 var score: = 0 setget set_score, get_score
 onready var battle_score: = 0 setget set_battle_score, get_battle_score
 onready var coin_value: = 1 setget set_coin_value, get_coin_value
+onready var start_coins: = 9 setget set_start_coins, get_start_coins
 var wrapping: = false setget set_wrapping, get_wrapping
 var camera_position: = Vector2() setget set_camera_position, get_camera_position 
 var screen_left_edge: = 0.0 setget ,get_screen_left_edge
@@ -136,3 +138,12 @@ func set_coin_value(value: int):
 
 func get_coin_value() -> int:
 	return coin_value
+
+
+func set_start_coins(value: int):
+	start_coins = value
+	emit_signal("start_coins_updated")
+
+
+func get_start_coins() -> int:
+	return start_coins

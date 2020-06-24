@@ -1,9 +1,6 @@
 extends Node2D
 
 
-onready var coin_scene = preload("res://src/Objects/Coin.tscn")
-
-
 func _ready():
 	WorldData.connect("hard_reset", self, "on_hard_reset")
 	WorldData.connect("instant_battle_started", self, "on_instant_battle_started")
@@ -12,10 +9,9 @@ func _ready():
 
 func _on_battling_entered():
 	WorldData.set_wrapping(true)
-	var coin = coin_scene.instance()
-	add_child(coin)
-	coin.position = Vector2(0,0)
-	print("gamemanager battling entered",str(OS.get_time()))
+#	var coin = coin_scene.instance()
+#	add_child(coin)
+#	coin.position = Vector2(0,0)
 
 func _on_not_battling_entered():
 	get_tree().call_group("BATTLE_OBJECTS","queue_free")

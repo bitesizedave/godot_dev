@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Levels/MainTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/UI/GUI/GUI.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/Main/Camera/Camera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Levels/Background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Main/GameState/GameStateMachine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Levels/BattleStartCoins.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Levels/GameManager.gd" type="Script" id=9]
 
 [node name="MainLevel" type="Node2D"]
@@ -29,6 +30,8 @@ position = Vector2( -328, 152 )
 [node name="Camera" parent="." instance=ExtResource( 4 )]
 
 [node name="GUI" parent="." instance=ExtResource( 2 )]
+
+[node name="BattleStartCoins" parent="." instance=ExtResource( 7 )]
 
 [editable path="GameStateMachine"]
 
