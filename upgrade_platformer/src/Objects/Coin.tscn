@@ -8,6 +8,7 @@ radius = 15.3846
 
 [node name="Coin" type="Area2D" groups=[
 "BATTLE_OBJECTS",
+"COINS",
 ]]
 scale = Vector2( 0.519999, 0.519999 )
 collision_layer = 4

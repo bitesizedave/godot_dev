@@ -56,6 +56,12 @@ process_mode = 0
 wait_time = 0.08
 one_shot = true
 
+[node name="TopDashRay" type="RayCast2D" parent="StateMachine/Attack/Dash"]
+enabled = true
+
+[node name="BottomDashRay" type="RayCast2D" parent="StateMachine/Attack/Dash"]
+enabled = true
+
 [node name="Thwack" type="Node" parent="StateMachine/Attack"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

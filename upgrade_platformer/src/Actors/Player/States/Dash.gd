@@ -8,7 +8,7 @@ with state transitions
 signal dash_started
 signal dash_ended
 
-var attack: = get_parent()
+onready var attack: = get_parent()
 var dash_velocity: = Vector2()
 export var max_dash_velocity: = Vector2(2500.0, 2500.0)
 export var dash_acceleration_default: = 35000.0
@@ -16,17 +16,17 @@ var dash_acceleration: = dash_acceleration_default
 onready var dash_timer: Timer = $DashTimer
 var velocity: = Vector2.ZERO
 var facing_direction: = Vector2.ZERO
+onready var top_dash_ray: = $TopDashRay
+onready var bottom_dash_ray: = $BottomDashRay
 
 
 func _ready():
 	dash_timer.connect("timeout", self, "on_DashTimer_timeout")
-
-
-#func unhandled_input(event: InputEvent) -> void:
-#	attack.unhandled_input(event)
+	
 
 
 func physics_process(delta: float) -> void:
+	var last_position = attack.owner.get_node("CollisionShape2D").get_global_position()
 	var attack: = get_parent()
 	var attack_direction = attack.get_attack_direction()
 	if attack_direction.x == 0.0 and owner.is_on_floor() and dash_timer.get_time_left() ==  0.0:
@@ -40,19 +40,29 @@ func physics_process(delta: float) -> void:
 		dash_acceleration, delta, 
 		facing_direction if attack_direction == Vector2.ZERO else attack_direction)
 	dash_velocity = owner.move_and_slide(dash_velocity, owner.FLOOR_NORMAL)
-
+	top_dash_ray.position = attack.owner.position - Vector2(0, attack.owner.get_node("CollisionShape2D").shape.extents.y/1.5)
+	top_dash_ray.cast_to = last_position - owner.position
+	top_dash_ray.force_raycast_update()
+	if top_dash_ray.is_colliding():
+		var object = top_dash_ray.get_collider()
+	bottom_dash_ray.position = attack.owner.position + Vector2(0, attack.owner.get_node("CollisionShape2D").shape.extents.y/1.5)
+	bottom_dash_ray.cast_to = last_position - owner.position
+	bottom_dash_ray.force_raycast_update()
 
 func enter(msg: Dictionary = {}) -> void:
+	var last_position = attack.owner.get_node("CollisionShape2D").get_global_position()
 	dash_timer.start()
 	emit_signal("dash_started")
 	dash_velocity = Vector2.ZERO
 	if "facing_direction" in msg:
 		facing_direction = msg["facing_direction"]
-
-
+	top_dash_ray.enabled = true
+	bottom_dash_ray.enabled = true
 
 func exit() -> void:
 	emit_signal("dash_ended")
+	top_dash_ray.enabled = false
+	bottom_dash_ray.enabled = false
 
 
 static func calculate_dash_velocity(
@@ -72,3 +82,7 @@ static func calculate_dash_velocity(
 
 func on_DashTimer_timeout():
 	return
+
+
+func _set_dash_ray():
+	pass
