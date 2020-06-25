@@ -7,7 +7,7 @@ with state transitions
 
 signal dash_started
 signal dash_ended
-signal raycast_hit
+signal dash_raycast_hit
 
 onready var attack: = get_parent()
 var dash_velocity: = Vector2()
@@ -19,6 +19,7 @@ var velocity: = Vector2.ZERO
 var facing_direction: = Vector2.ZERO
 onready var top_dash_ray: = $TopDashRay
 onready var bottom_dash_ray: = $BottomDashRay
+var start_position: Vector2
 
 func _ready():
 	dash_timer.connect("timeout", self, "on_DashTimer_timeout")
@@ -40,19 +41,10 @@ func physics_process(delta: float) -> void:
 		dash_acceleration, delta, 
 		facing_direction if attack_direction == Vector2.ZERO else attack_direction)
 	dash_velocity = owner.move_and_slide(dash_velocity, owner.FLOOR_NORMAL)
-	
-	#Point the raycasts toward the previous position and emit signal when colliding
 	top_dash_ray.position = attack.owner.position - Vector2(0, attack.owner.get_node("CollisionShape2D").shape.extents.y/1.5)
-	top_dash_ray.cast_to = last_position - attack.owner.position
-	top_dash_ray.force_raycast_update()
-	if top_dash_ray.is_colliding():
-		emit_signal("raycast_hit", top_dash_ray.get_collider())
-	top_dash_ray.force_raycast_update()
+	dash_ray_collision_check(top_dash_ray, start_position)
 	bottom_dash_ray.position = attack.owner.position + Vector2(0, attack.owner.get_node("CollisionShape2D").shape.extents.y/1.5)
-	bottom_dash_ray.cast_to = last_position - attack.owner.position
-	bottom_dash_ray.force_raycast_update()
-	if bottom_dash_ray.is_colliding():
-		emit_signal("raycast_hit", bottom_dash_ray.get_collider())
+	dash_ray_collision_check(bottom_dash_ray, start_position)
 
 
 
@@ -65,6 +57,7 @@ func enter(msg: Dictionary = {}) -> void:
 		facing_direction = msg["facing_direction"]
 	top_dash_ray.enabled = true
 	bottom_dash_ray.enabled = true
+	start_position = attack.owner.get_node("CollisionShape2D").get_global_position()
 
 
 func exit() -> void:
@@ -88,5 +81,9 @@ static func calculate_dash_velocity(
 	return new_velocity
 
 
-func on_DashTimer_timeout():
-	return
+#Point the raycasts toward the previous position and emit signal when colliding
+func dash_ray_collision_check(ray: RayCast2D, last_position: Vector2):
+	ray.cast_to = last_position - attack.owner.position
+	ray.force_raycast_update()
+	if ray.is_colliding():
+		emit_signal("dash_raycast_hit", ray.get_collider())
