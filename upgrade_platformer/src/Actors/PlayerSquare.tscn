@@ -48,7 +48,10 @@ one_shot = true
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource( 3 )
 
-[node name="Dash" type="Node" parent="StateMachine/Attack"]
+[node name="Dash" type="Node" parent="StateMachine/Attack" groups=[
+"ATTACK",
+"DASH",
+]]
 script = ExtResource( 9 )
 
 [node name="DashTimer" type="Timer" parent="StateMachine/Attack/Dash"]
@@ -58,9 +61,13 @@ one_shot = true
 
 [node name="TopDashRay" type="RayCast2D" parent="StateMachine/Attack/Dash"]
 enabled = true
+collision_mask = 6
+collide_with_areas = true
 
 [node name="BottomDashRay" type="RayCast2D" parent="StateMachine/Attack/Dash"]
 enabled = true
+collision_mask = 6
+collide_with_areas = true
 
 [node name="Thwack" type="Node" parent="StateMachine/Attack"]
 
