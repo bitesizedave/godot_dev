@@ -17,19 +17,18 @@ var dash_acceleration: = dash_acceleration_default
 onready var dash_timer: Timer = $DashTimer
 var velocity: = Vector2.ZERO
 var facing_direction: = Vector2.ZERO
-onready var top_dash_ray: = $TopDashRay
-onready var bottom_dash_ray: = $BottomDashRay
-#var start_position: Vector2
+
+
 
 func _ready():
 	dash_timer.connect("timeout", self, "on_DashTimer_timeout")
-	
 
 
 func physics_process(delta: float) -> void:
 	var last_position = attack.owner.get_global_position()
 	var attack: = get_parent()
 	var attack_direction = attack.get_attack_direction()
+	var player_extents = attack.owner.get_node("CollisionShape2D").shape.extents
 	if attack_direction.x == 0.0 and owner.is_on_floor() and dash_timer.get_time_left() ==  0.0:
 		_state_machine.transition_to("Move/Idle")
 	elif attack_direction.x > 0.0 and owner.is_on_floor() and dash_timer.get_time_left() ==  0.0:
@@ -41,10 +40,6 @@ func physics_process(delta: float) -> void:
 		dash_acceleration, delta, 
 		facing_direction if attack_direction == Vector2.ZERO else attack_direction)
 	dash_velocity = owner.move_and_slide(dash_velocity, owner.FLOOR_NORMAL)
-	top_dash_ray.position = attack.owner.position - Vector2(0, attack.owner.get_node("CollisionShape2D").shape.extents.y/1.5)
-	dash_ray_collision_check(top_dash_ray, last_position)
-	bottom_dash_ray.position = attack.owner.position + Vector2(0, attack.owner.get_node("CollisionShape2D").shape.extents.y/1.5)
-	dash_ray_collision_check(bottom_dash_ray, last_position)
 
 
 
@@ -55,15 +50,12 @@ func enter(msg: Dictionary = {}) -> void:
 	dash_velocity = Vector2.ZERO
 	if "facing_direction" in msg:
 		facing_direction = msg["facing_direction"]
-	top_dash_ray.enabled = true
-	bottom_dash_ray.enabled = true
-#	start_position = attack.owner.get_node("CollisionShape2D").get_global_position()
+
 
 
 func exit() -> void:
 	emit_signal("dash_ended")
-	top_dash_ray.enabled = false
-	bottom_dash_ray.enabled = false
+
 
 
 static func calculate_dash_velocity(
@@ -80,10 +72,3 @@ static func calculate_dash_velocity(
 	new_velocity.y = clamp(new_velocity.y, -max_dash_velocity.y, max_dash_velocity.y)
 	return new_velocity
 
-
-#Point the raycasts toward the previous position and emit signal when colliding
-func dash_ray_collision_check(ray: RayCast2D, last_position: Vector2):
-	ray.cast_to = last_position - attack.owner.position
-	ray.force_raycast_update()
-	if ray.is_colliding():
-		emit_signal("dash_raycast_hit", ray.get_collider())

@@ -18,7 +18,7 @@ func _on_raycast_hit(object: Coin):
 
 
 func collect_coin():
+	queue_free()
 	WorldData.battle_score += coin_value
 	WorldData.score += coin_value
-	queue_free()
 	emit_signal("coin_collected")
