@@ -56,7 +56,7 @@ script = ExtResource( 9 )
 
 [node name="DashTimer" type="Timer" parent="StateMachine/Attack/Dash"]
 process_mode = 0
-wait_time = 0.08
+wait_time = 0.105
 one_shot = true
 
 [node name="TopDashRay" type="RayCast2D" parent="StateMachine/Attack/Dash"]

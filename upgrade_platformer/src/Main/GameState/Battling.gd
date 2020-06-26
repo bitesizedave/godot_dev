@@ -15,7 +15,7 @@ func unhandled_input(event: InputEvent) -> void:
 func physics_process(delta: float) -> void:
 	if get_tree().get_nodes_in_group("BATTLE_OBJECTS").size() <= 0:
 		_game_state_machine.transition_to("NotBattling")
-
+	pass
 
 func enter(msg: Dictionary = {}) -> void:
 	BattleTimer.wait_time = BattleTimer.BATTLE_TIME

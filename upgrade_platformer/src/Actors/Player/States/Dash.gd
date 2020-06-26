@@ -19,7 +19,7 @@ var velocity: = Vector2.ZERO
 var facing_direction: = Vector2.ZERO
 onready var top_dash_ray: = $TopDashRay
 onready var bottom_dash_ray: = $BottomDashRay
-var start_position: Vector2
+#var start_position: Vector2
 
 func _ready():
 	dash_timer.connect("timeout", self, "on_DashTimer_timeout")
@@ -42,9 +42,9 @@ func physics_process(delta: float) -> void:
 		facing_direction if attack_direction == Vector2.ZERO else attack_direction)
 	dash_velocity = owner.move_and_slide(dash_velocity, owner.FLOOR_NORMAL)
 	top_dash_ray.position = attack.owner.position - Vector2(0, attack.owner.get_node("CollisionShape2D").shape.extents.y/1.5)
-	dash_ray_collision_check(top_dash_ray, start_position)
+	dash_ray_collision_check(top_dash_ray, last_position)
 	bottom_dash_ray.position = attack.owner.position + Vector2(0, attack.owner.get_node("CollisionShape2D").shape.extents.y/1.5)
-	dash_ray_collision_check(bottom_dash_ray, start_position)
+	dash_ray_collision_check(bottom_dash_ray, last_position)
 
 
 
@@ -57,7 +57,7 @@ func enter(msg: Dictionary = {}) -> void:
 		facing_direction = msg["facing_direction"]
 	top_dash_ray.enabled = true
 	bottom_dash_ray.enabled = true
-	start_position = attack.owner.get_node("CollisionShape2D").get_global_position()
+#	start_position = attack.owner.get_node("CollisionShape2D").get_global_position()
 
 
 func exit() -> void:
@@ -74,8 +74,8 @@ static func calculate_dash_velocity(
 		move_direction: Vector2
 	) -> Vector2:
 	var new_velocity: = old_velocity
-#	new_velocity += move_direction.normalized() * acceleration * delta
-	new_velocity = move_direction.normalized() * max_dash_velocity
+	new_velocity += move_direction.normalized() * acceleration * delta
+#	new_velocity = move_direction.normalized() * max_dash_velocity
 	new_velocity.x = clamp(new_velocity.x, -max_dash_velocity.x, max_dash_velocity.x)
 	new_velocity.y = clamp(new_velocity.y, -max_dash_velocity.y, max_dash_velocity.y)
 	return new_velocity

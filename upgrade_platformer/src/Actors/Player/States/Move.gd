@@ -24,8 +24,8 @@ func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash"):
 		_state_machine.transition_to("Attack/Dash", { "facing_direction": facing_direction })
 		velocity = Vector2.ZERO
-#	elif event.is_action_pressed("thwack"):
-#		_state_machine.transition_to("Attack/Thwack")
+	elif event.is_action_pressed("thwack"):
+		_state_machine.transition_to("Attack/Thwack")
 	if owner.is_on_floor() and Input.is_action_just_pressed("jump") and Input.get_action_strength("down") > 0.0:
 		owner.set_collision_mask_bit(PASSTHROUGH_BIT_LAYER, false)
 		drop_timer.start()
