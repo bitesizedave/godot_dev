@@ -43,3 +43,4 @@ func transition_to(target_state_path: String, msg: Dictionary = {}) -> void:
 func set_state(value: State) -> void:
 	state = value
 	_state_name = state.name
+	_state_name = state.name

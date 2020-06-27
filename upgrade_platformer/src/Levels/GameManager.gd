@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var start_battle_scene = preload("res://src/Objects/StartBattle.tscn")
 
 func _ready():
 	WorldData.connect("hard_reset", self, "on_hard_reset")
@@ -9,9 +10,7 @@ func _ready():
 
 func _on_battling_entered():
 	WorldData.set_wrapping(true)
-#	var coin = coin_scene.instance()
-#	add_child(coin)
-#	coin.position = Vector2(0,0)
+
 
 func _on_not_battling_entered():
 	get_tree().call_group("BATTLE_OBJECTS","queue_free")
@@ -35,7 +34,10 @@ func on_instant_battle_started():
 		camera.position = Vector2.ZERO
 		WorldData.camera_position = Vector2.ZERO
 		player.position = PlayerData.player_game_start_position
-		game_state_machine.transition_to("Battling")
+		var start_battle = start_battle_scene.instance()
+		start_battle.position = Vector2(PlayerData.player_game_start_position.x+32, PlayerData.player_game_start_position.y)
+		add_child(start_battle)
+#		game_state_machine.transition_to("Battling")
 		yield(get_tree().create_timer(0.1), "timeout")
 		WorldData.set_wrapping(true)
 		camera.smoothing_enabled = true

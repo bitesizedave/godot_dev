@@ -4,7 +4,7 @@ signal battling_entered
 signal not_battling_entered
 
 
-var game_state: = 0 setget set_game_state
+var game_state: = 1 setget set_game_state
 enum {BATTLING,NOT_BATTLING}
 
 
