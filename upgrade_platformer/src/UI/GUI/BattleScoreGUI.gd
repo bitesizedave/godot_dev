@@ -9,6 +9,8 @@ func _ready():
 	GameStateData.connect("battling_entered", self, "_on_battling_entered")
 	GameStateData.connect("not_battling_entered", self, "_on_not_battling_entered")
 	score.text = str(WorldData.battle_score)
+	score.rect_pivot_offset.y = score.rect_size.y/2
+	score.rect_pivot_offset.x = 5 #not a typo
 
 func _on_battle_score_updated():
 	score.text = str(WorldData.battle_score)
