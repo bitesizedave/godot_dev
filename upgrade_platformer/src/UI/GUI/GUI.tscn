@@ -5,9 +5,6 @@
 [ext_resource path="res://src/UI/GUI/TotalScoreGUI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/GUI/PointsPerHourGUI.tscn" type="PackedScene" id=4]
 
-
-
-
 [node name="GUI" type="CanvasLayer"]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

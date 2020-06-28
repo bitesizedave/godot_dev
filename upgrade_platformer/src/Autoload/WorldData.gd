@@ -33,9 +33,7 @@ onready var project_window_size = Vector2(ProjectSettings.get("display/window/si
 func _unhandled_input(event):
 	if event.is_action_pressed("hard_reset"):
 		hard_reset()
-	if event.is_action_pressed("start_battle"):
-		set_battle_score(0)
-		emit_signal("instant_battle_started")
+
 
 
 func hard_reset() -> void:
