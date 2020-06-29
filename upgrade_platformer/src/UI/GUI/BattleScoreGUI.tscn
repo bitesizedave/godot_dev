@@ -3,11 +3,13 @@
 [ext_resource path="res://src/UI/GUI/BattleScoreGUI.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/NotoSansKR-Regular.otf" type="DynamicFontData" id=2]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=1]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 0.486275 )
 use_mipmaps = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "base"
 length = 0.001
 tracks/0/type = "value"
@@ -35,8 +37,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "fade_in"
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -63,8 +64,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "fade_out"
+[sub_resource type="Animation" id=4]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -79,8 +79,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "pulse"
+[sub_resource type="Animation" id=5]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_scale")
@@ -123,12 +122,12 @@ margin_bottom = 432.0
 [node name="ScoreLabel" type="Label" parent="ScoreBox"]
 margin_top = 203.0
 margin_bottom = 228.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 align = 1
 
 [node name="ScoreLabelAnimationPlayer" type="AnimationPlayer" parent="ScoreBox/ScoreLabel"]
 method_call_mode = 1
-anims/base = SubResource( 4 )
-anims/fade_in = SubResource( 1 )
-anims/fade_out = SubResource( 2 )
-anims/pulse = SubResource( 3 )
+anims/base = SubResource( 2 )
+anims/fade_in = SubResource( 3 )
+anims/fade_out = SubResource( 4 )
+anims/pulse = SubResource( 5 )

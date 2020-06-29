@@ -11,7 +11,7 @@ var thwack
 var thwack_velocity: = Vector2.ZERO
 onready var attack: = get_parent()
 var attack_direction: Vector2
-var thwack_offset: = 10.0
+var thwack_offset: = 18.0
 
 func unhandled_input(event: InputEvent) -> void:
 	pass
@@ -23,13 +23,16 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
-	print("THWACK!")
 	thwack = thwack_area_scene.instance()
 	add_child(thwack)
 	thwack.connect("done_thwackin", self, "_on_done_thwackin")
-	var attack_direction = attack.get_attack_direction()
-	thwack.position = owner.position
-	thwack.look_at((owner.position + attack_direction))
+	var attack_direction = attack.get_attack_direction().normalized()
+	thwack.position = owner.position 
+	thwack.look_at(owner.position + attack_direction)
+	var thwack_direction = Vector2(cos(thwack.rotation), sin(thwack.rotation))
+	thwack.position += thwack_direction * thwack_offset
+	
+	
 	
 	
 
