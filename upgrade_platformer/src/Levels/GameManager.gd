@@ -34,7 +34,6 @@ func on_instant_battle_started():
 		var player = $PlayerSquare
 		var game_state_machine = $GameStateMachine
 		get_tree().call_group("BATTLE_OBJECTS","queue_free")
-		camera.smoothing_enabled = false
 		camera.position = Vector2.ZERO
 		WorldData.camera_position = Vector2.ZERO
 		player.position = PlayerData.player_game_start_position
