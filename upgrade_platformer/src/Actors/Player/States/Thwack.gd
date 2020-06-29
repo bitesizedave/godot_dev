@@ -1,5 +1,4 @@
-extends Node
-class_name Thwack, "res://assets/icons/state.svg"
+extends State
 """
 State interface to use in Hierarchical State Machines.
 The lowest leaf tries to handle callbacks, and if it can't, it delegates the work to its parent.
@@ -7,25 +6,40 @@ It's up to the user to call the parent state's functions, e.g. `get_parent().phy
 Use State as a child of a StateMachine node.
 """
 
-
-onready var _state_machine: = _get_state_machine(self)
-
+onready var thwack_area_scene = preload("res://src/Actors/Player/ThwackArea.tscn")
+var thwack
+var thwack_velocity: = Vector2.ZERO
+onready var attack: = get_parent()
+var attack_direction: Vector2
+var thwack_offset: = 10.0
 
 func unhandled_input(event: InputEvent) -> void:
 	pass
 
 
 func physics_process(delta: float) -> void:
-	pass
+	owner.move_and_slide(thwack_velocity, owner.FLOOR_NORMAL)
+	
 
 
 func enter(msg: Dictionary = {}) -> void:
 	print("THWACK!")
+	thwack = thwack_area_scene.instance()
+	add_child(thwack)
+	thwack.connect("done_thwackin", self, "_on_done_thwackin")
+	var attack_direction = attack.get_attack_direction()
+	thwack.position = owner.position
+	thwack.look_at((owner.position + attack_direction))
+	
 	
 
 
 func exit() -> void:
 	pass
+
+
+func _on_done_thwackin():
+	_state_machine.transition_to("Move/Idle")
 
 
 func _get_state_machine(node: Node) -> Node:

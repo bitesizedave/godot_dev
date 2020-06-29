@@ -54,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Main/StateMachine/StateMachine.gd"
 }, {
-"base": "Node",
-"class": "Thwack",
-"language": "GDScript",
-"path": "res://src/Actors/Player/States/Thwack.gd"
-}, {
 "base": "KinematicBody2D",
 "class": "WrappingObject",
 "language": "GDScript",
@@ -74,7 +69,6 @@ _global_script_class_icons={
 "PlayerSquare": "",
 "State": "res://assets/icons/state.svg",
 "StateMachine": "res://assets/icons/state_machine.svg",
-"Thwack": "res://assets/icons/state.svg",
 "WrappingObject": ""
 }
 
@@ -171,6 +165,7 @@ start_battle={
 2d_physics/layer_2="enemies"
 2d_physics/layer_3="coins"
 2d_physics/layer_4="jump_through"
+2d_physics/layer_5="player_attack"
 
 [physics]
 
