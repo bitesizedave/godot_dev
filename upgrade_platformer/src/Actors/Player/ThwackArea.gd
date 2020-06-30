@@ -1,4 +1,5 @@
 extends Area2D
+class_name ThwackArea, "res://assets/thwack.png"
 
 onready var timer = $ThwackTimer
 signal done_thwackin
@@ -14,5 +15,4 @@ func _on_thwack_timer_timeout():
 
 
 func _on_area_entered(area):
-	print(get_parent().attack_direction)
-	emit_signal("you_got_thwacked", area, get_parent().attack_direction)
+	emit_signal("you_got_thwacked", area, get_parent().attack_direction, self.get_overlapping_areas())

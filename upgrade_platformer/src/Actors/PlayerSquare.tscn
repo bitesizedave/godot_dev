@@ -63,6 +63,11 @@ one_shot = true
 [node name="Thwack" type="Node" parent="StateMachine/Attack"]
 script = ExtResource( 11 )
 
+[node name="AfterThwackDelayTimer" type="Timer" parent="StateMachine/Attack/Thwack"]
+process_mode = 0
+wait_time = 0.05
+one_shot = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 

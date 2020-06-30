@@ -2,7 +2,7 @@ extends Node2D
 
 onready var start_coins: = WorldData.start_coins
 var coin_positions: = []
-onready var coin_scene = preload("res://src/Objects/Coin.tscn")
+onready var coin_scene = preload("res://src/Objects/Coin/Coin.tscn")
 
 func _ready():
 	GameStateData.connect("battling_entered", self, "_on_battling_entered")

@@ -9,10 +9,11 @@ Use State as a child of a StateMachine node.
 onready var thwack_area_scene = preload("res://src/Actors/Player/ThwackArea.tscn")
 var thwack
 var thwack_velocity: = Vector2.ZERO
-onready var attack: = get_parent()
 var attack_direction: Vector2
 var thwack_offset: = 18.0
 var facing_direction: = Vector2.ZERO
+onready var attack: = get_parent()
+onready var after_thwack_delay_timer = $AfterThwackDelayTimer
 
 func unhandled_input(event: InputEvent) -> void:
 	pass
@@ -45,6 +46,8 @@ func exit() -> void:
 
 
 func _on_done_thwackin():
+	after_thwack_delay_timer.start()
+	yield(after_thwack_delay_timer, "timeout")
 	_state_machine.transition_to("Move/Idle")
 
 
