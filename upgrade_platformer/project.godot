@@ -19,10 +19,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Actors/Player/States/Attack.gd"
 }, {
-"base": "Area2D",
+"base": "WrappingObject",
 "class": "Coin",
 "language": "GDScript",
 "path": "res://src/Objects/Coin/Coin.gd"
+}, {
+"base": "Area2D",
+"class": "CoinArea",
+"language": "GDScript",
+"path": "res://src/Objects/Coin/CoinArea.gd"
 }, {
 "base": "Node",
 "class": "GameState",
@@ -67,7 +72,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Actor": "",
 "Attack": "res://assets/icons/state.svg",
-"Coin": "",
+"Coin": "res://assets/circle.png",
+"CoinArea": "",
 "GameState": "res://assets/icons/state.svg",
 "GameStateMachine": "res://assets/icons/state_machine.svg",
 "Player": "",
@@ -91,6 +97,7 @@ PlayerData="*res://src/Autoload/PlayerData.tscn"
 BattleTimer="*res://src/Autoload/BattleTimer.tscn"
 ScoreTimer="*res://src/Autoload/ScoreTimer.tscn"
 GameStateData="*res://src/Autoload/GameStateData.tscn"
+CoinData="*res://src/Autoload/CoinData.tscn"
 
 [display]
 

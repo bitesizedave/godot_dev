@@ -6,6 +6,8 @@
 [sub_resource type="DynamicFont" id=1]
 outline_size = 2
 outline_color = Color( 0, 0, 0, 0.486275 )
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 2 )
 
 [node name="BattleTimerGUI" type="HBoxContainer"]

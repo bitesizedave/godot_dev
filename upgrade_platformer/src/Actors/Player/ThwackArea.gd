@@ -12,7 +12,3 @@ func _ready():
 func _on_thwack_timer_timeout():
 	$ThwackAP.play("thwack_fade")
 	emit_signal("done_thwackin")
-
-
-func _on_area_entered(area):
-	emit_signal("you_got_thwacked", area, get_parent().attack_direction, self.get_overlapping_areas())

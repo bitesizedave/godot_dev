@@ -7,6 +7,7 @@
 outline_size = 2
 outline_color = Color( 0, 0, 0, 0.486275 )
 use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=2]
