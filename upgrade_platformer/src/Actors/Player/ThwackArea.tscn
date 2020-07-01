@@ -38,6 +38,7 @@ tracks/1/keys = {
 "ATTACK",
 "THWACK",
 ]]
+scale = Vector2( 1.84, 1.84 )
 collision_layer = 16
 collision_mask = 38
 script = ExtResource( 1 )
