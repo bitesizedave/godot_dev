@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-onready var pph_label = $PointsPerHourLabel
+onready var ppm_label = $PointsPerMinuteLabel
 
 func _ready():
 	ScoreTimer.connect("score_timer_updated", self, "_on_score_timer_updated")
@@ -12,10 +12,10 @@ func _process(delta):
 
 func _on_score_timer_updated():
 	if ScoreTimer.score_per_hour() == 0.0:
-		pph_label.modulate = Color(1, 1, 1, 0)
+		ppm_label.modulate = Color(1, 1, 1, 0)
 	else: 
-		pph_label.modulate = Color(1, 1, 1, 1)
-		pph_label.text = str(round(ScoreTimer.score_per_hour()), "\nan\nhour")
+		ppm_label.modulate = Color(1, 1, 1, 1)
+		ppm_label.text = str(round(ScoreTimer.score_per_minute()), "\nper\nminute")
 
 
 func _on_score_timer_timeout():

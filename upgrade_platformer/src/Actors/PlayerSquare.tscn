@@ -82,9 +82,9 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OuchieDetector"]
 shape = SubResource( 2 )
-[connection signal="dash_ended" from="StateMachine/Attack/Dash" to="." method="_on_dash_ended"]
 [connection signal="dash_ended" from="StateMachine/Attack/Dash" to="PlayerSquareSprite" method="_on_dash_ended"]
-[connection signal="dash_started" from="StateMachine/Attack/Dash" to="." method="_on_dash_started"]
+[connection signal="dash_ended" from="StateMachine/Attack/Dash" to="." method="_on_dash_ended"]
 [connection signal="dash_started" from="StateMachine/Attack/Dash" to="PlayerSquareSprite" method="_on_dash_started"]
+[connection signal="dash_started" from="StateMachine/Attack/Dash" to="." method="_on_dash_started"]
 [connection signal="area_entered" from="OuchieDetector" to="." method="_on_area_entered"]
 [connection signal="body_entered" from="OuchieDetector" to="." method="_on_body_entered"]

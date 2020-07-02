@@ -16,7 +16,9 @@ onready var attack: = get_parent()
 onready var after_thwack_delay_timer = $AfterThwackDelayTimer
 
 func unhandled_input(event: InputEvent) -> void:
-	pass
+	if event.is_action_pressed("thwack"):
+		after_thwack_delay_timer.stop()
+		_state_machine.transition_to("Attack/Thwack", { "facing_direction": facing_direction })
 
 
 func physics_process(delta: float) -> void:

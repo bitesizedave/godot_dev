@@ -32,7 +32,7 @@ tracks/0/keys = {
 ]]
 scale = Vector2( 0.519999, 0.519999 )
 collision_layer = 4
-collision_mask = 17
+collision_mask = 21
 script = ExtResource( 4 )
 
 [node name="CoinAreaDetector" type="Area2D" parent="."]
@@ -57,7 +57,7 @@ script = ExtResource( 2 )
 process_mode = 0
 one_shot = true
 
-[node name="Sprite" type="Sprite" parent="CoinAreaDetector"]
+[node name="CoinSprite" type="Sprite" parent="CoinAreaDetector"]
 modulate = Color( 0.909804, 0.901961, 0.282353, 1 )
 scale = Vector2( 1.86063, 1.86063 )
 texture = ExtResource( 1 )

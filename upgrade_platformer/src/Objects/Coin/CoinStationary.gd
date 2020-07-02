@@ -18,7 +18,7 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	var coin_anim = get_parent().owner.get_node("CoinAP")
-	coin_anim.play("coin_bob")
+#	coin_anim.play("coin_bob")
 
 func exit() -> void:
 	pass
