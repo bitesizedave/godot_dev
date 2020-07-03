@@ -30,14 +30,14 @@ tracks/0/keys = {
 "BATTLE_OBJECTS",
 "COINS",
 ]]
-scale = Vector2( 0.519999, 0.519999 )
+scale = Vector2( 0.479998, 0.479998 )
 collision_layer = 4
 collision_mask = 21
 script = ExtResource( 4 )
 
 [node name="CoinAreaDetector" type="Area2D" parent="."]
 collision_layer = 2147483652
-collision_mask = 2147483665
+collision_mask = 2147483669
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoinAreaDetector"]
@@ -55,6 +55,7 @@ script = ExtResource( 2 )
 
 [node name="CoinThwackedTimer" type="Timer" parent="CoinAreaDetector/CoinStateMachine/CoinThwacked"]
 process_mode = 0
+wait_time = 2.0
 one_shot = true
 
 [node name="CoinSprite" type="Sprite" parent="CoinAreaDetector"]
