@@ -27,15 +27,14 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	if "thwack_direction" in msg:
 		thwack_direction = msg["thwack_direction"]
-		owner.move_and_slide(Vector2.ZERO, Vector2.UP)
-		initial_thwack_velocity = thwack_impulse * thwack_direction
+		modified_thwack_velocity = thwack_direction
 		thwack_timer.start()
 		emit_signal("thwack_entered")
 	if "consecutive_thwack_value" in msg:
 		consecutive_thwack_value = msg["consecutive_thwack_value"]
-		if consecutive_thwack_value > 0:
-			modified_thwack_velocity += initial_thwack_velocity * (consecutive_thwack_value + .5)
-		else: modified_thwack_velocity = initial_thwack_velocity
+		print(thwack_direction)
+		modified_thwack_velocity += thwack_impulse * thwack_direction
+		modified_thwack_velocity += consecutive_thwack_value * (thwack_impulse/10) * thwack_direction
 	coin.get_node("CoinAreaDetector/CoinSprite").modulate = Color.green
 
 func exit() -> void:
