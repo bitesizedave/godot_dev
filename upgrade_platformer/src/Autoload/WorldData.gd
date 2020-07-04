@@ -38,7 +38,6 @@ func _unhandled_input(event):
 
 func hard_reset() -> void:
 	set_score(0)
-	set_battle_score(0)
 	emit_signal("hard_reset")
 
 

@@ -98,6 +98,7 @@ BattleTimer="*res://src/Autoload/BattleTimer.tscn"
 ScoreTimer="*res://src/Autoload/ScoreTimer.tscn"
 GameStateData="*res://src/Autoload/GameStateData.tscn"
 CoinData="*res://src/Autoload/CoinData.tscn"
+SaveLoad="*res://src/Autoload/SaveLoad.tscn"
 
 [display]
 
