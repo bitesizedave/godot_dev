@@ -4,7 +4,7 @@ var savefile = "user://savefile.save"
 
 func _ready():
 	GameStateData.connect("not_battling_entered", self, "_on_not_battling_entered")
-	print("gameloaded: ",load_game())
+#	print("gameloaded: ",load_game())
 
 
 func _on_not_battling_entered():
@@ -40,7 +40,7 @@ func load_game() -> bool:
 		print("no score in savefile")
 		return false
 	if load_dictionary.has("score_timer_time_left"):
-		ScoreTimer.start(load_dictionary.score_timer_time_left)
+		ScoreTimer.start(-load_dictionary.score_timer_time_left)
 	else:
 		print("no score_timer_time_left in savefile")
 		return false
