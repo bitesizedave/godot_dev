@@ -32,7 +32,6 @@ func enter(msg: Dictionary = {}) -> void:
 		emit_signal("thwack_entered")
 	if "consecutive_thwack_value" in msg:
 		consecutive_thwack_value = msg["consecutive_thwack_value"]
-		print(thwack_direction)
 		modified_thwack_velocity += thwack_impulse * thwack_direction
 		modified_thwack_velocity += consecutive_thwack_value * (thwack_impulse/10) * thwack_direction
 	coin.get_node("CoinAreaDetector/CoinSprite").modulate = Color.green
