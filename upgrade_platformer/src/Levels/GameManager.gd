@@ -8,7 +8,8 @@ func _ready():
 
 
 func _unhandled_input(event):
-		if event.is_action_pressed("start_battle"):
+		if (event.is_action_pressed("start_battle")
+			or event.is_action_pressed("hard_reset")):
 			WorldData.set_battle_score(0)
 			on_instant_battle_started()
 

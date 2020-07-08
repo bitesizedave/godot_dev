@@ -1,4 +1,3 @@
-
 extends State
 """
 Parent state that abstracts and handles basic movement
@@ -6,10 +5,10 @@ Move-related children states can delegate movement to it, or use its utility fun
 """
 
 export var max_speed_default: = Vector2(333.0, 1500.0)
-export var gravity = 1500.0
-var acceleration_default: = Vector2(100000, gravity)
+onready var gravity = WorldData.gravity
+onready var acceleration_default: = Vector2(100000, WorldData.gravity)
 export var max_fall_speed: = 1500.0
-var acceleration: = acceleration_default
+onready var acceleration: = acceleration_default
 var max_speed: = max_speed_default
 var velocity: = Vector2.ZERO
 var facing_direction: = Vector2.ZERO

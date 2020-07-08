@@ -13,6 +13,7 @@ var thwack_direction: Vector2
 onready var thwack_impulse = CoinData.base_thwack_impulse
 var initial_thwack_velocity: Vector2
 var modified_thwack_velocity: Vector2
+var thwack_friction: = 0.995
 onready var thwack_timer = $CoinThwackedTimer
 onready var coin = get_parent().owner
 var consecutive_thwack_value: int
@@ -20,6 +21,7 @@ var consecutive_thwack_value: int
 
 
 func physics_process(delta: float) -> void:
+	modified_thwack_velocity *= thwack_friction
 	owner.move_and_slide(modified_thwack_velocity 
 	* delta)
 

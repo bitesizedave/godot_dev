@@ -11,6 +11,7 @@ var latest_battle_score:int setget set_latest_battle_score, get_latest_battle_sc
 func _ready():
 	one_shot = false
 	connect("timeout", self, "on_timeout")
+	WorldData.connect("hard_reset", self, "_on_hard_reset")
 
 
 func set_score_time(value: float):
@@ -70,3 +71,8 @@ func set_latest_battle_score(value: int):
 
 func get_latest_battle_score() -> int:
 	return latest_battle_score
+
+
+func _on_hard_reset():
+	latest_battle_score = 0
+	score_time = 0.0
