@@ -7,6 +7,7 @@ It's up to the user to call the parent state's functions, e.g. `get_parent().phy
 Use State as a child of a StateMachine node.
 """
 
+onready var coin = get_parent().owner
 
 func unhandled_input(event: InputEvent) -> void:
 	pass
@@ -18,6 +19,7 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	var coin_anim = get_parent().owner.get_node("CoinAP")
+	coin.get_node("CoinAreaDetector/CoinSprite").modulate = Color.yellow
 #	coin_anim.play("coin_bob")
 
 func exit() -> void:

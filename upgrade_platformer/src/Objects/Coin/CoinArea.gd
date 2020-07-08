@@ -15,11 +15,13 @@ var consecutive_thwack_value = 1
 func _ready():
 	thwack_timer.connect("timeout", self, "_on_coin_timer_timeout")
 
-func _on_body_entered(body: PhysicsBody2D) -> void:
-	if body.is_in_group("PLAYER"):
-		collect_coin()
-	if body.is_in_group("COINS"):
-		collect_coin()
+#func _on_body_entered(body: PhysicsBody2D) -> void:
+#	if body.is_in_group("PLAYER"):
+#		collect_coin()
+#	if body.is_in_group("COINS"):
+#		collect_coin()
+#	if body.is_in_group("JUMP_THROUGH"):
+#		pass
 
 
 func collect_coin():
@@ -37,6 +39,10 @@ func _on_area_entered(area):
 	if area.is_in_group("THWACK"):
 		_coin_state_machine.transition_to("CoinThwacked", {"thwack_direction" : area.get_parent().get_thwack_direction(),
 			"consecutive_thwack_value" : consecutive_thwack_value} )
+	if area.is_in_group("PLAYER"):
+		collect_coin()
+	if area.is_in_group("COIN") and area.get_instance_id() != self.get_instance_id() :
+		collect_coin()
 	coin_ap.stop()
 
 

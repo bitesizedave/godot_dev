@@ -13,7 +13,12 @@ var thwack_direction: Vector2
 onready var thwack_impulse = CoinData.base_thwack_impulse
 var initial_thwack_velocity: Vector2
 var modified_thwack_velocity: Vector2
-var thwack_friction: = 0.995
+var thwack_air_friction: = 0.995
+var thwack_ground_friction: = 0.975
+var bounce: = 0.5
+var bounce_velocity_gate: = 10000.0
+var transition_to_stationary_gate: = 500.00
+onready var gravity: = WorldData.gravity
 onready var thwack_timer = $CoinThwackedTimer
 onready var coin = get_parent().owner
 var consecutive_thwack_value: int
@@ -21,9 +26,25 @@ var consecutive_thwack_value: int
 
 
 func physics_process(delta: float) -> void:
-	modified_thwack_velocity *= thwack_friction
+	modified_thwack_velocity *= thwack_air_friction
+	modified_thwack_velocity.y += gravity
+	if (owner.is_on_floor()
+		and modified_thwack_velocity.y < bounce_velocity_gate):
+		modified_thwack_velocity *= Vector2(thwack_ground_friction, 0.0)
+	if (owner.is_on_floor()
+		and modified_thwack_velocity.y > bounce_velocity_gate):
+			var bounce_velocity: = -modified_thwack_velocity.y * bounce
+			modified_thwack_velocity.y = 0.0
+			modified_thwack_velocity.y += bounce_velocity
 	owner.move_and_slide(modified_thwack_velocity 
-	* delta)
+	* delta, Vector2.UP)
+	print(modified_thwack_velocity)
+	if (abs(modified_thwack_velocity.x) < transition_to_stationary_gate
+		and abs(modified_thwack_velocity.y) < transition_to_stationary_gate
+		and owner.is_on_floor()):
+			_state_machine.transition_to("CoinStationary")
+	
+	
 
 
 func enter(msg: Dictionary = {}) -> void:

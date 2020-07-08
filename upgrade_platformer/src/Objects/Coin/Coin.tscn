@@ -32,12 +32,12 @@ tracks/0/keys = {
 ]]
 scale = Vector2( 0.479998, 0.479998 )
 collision_layer = 4
-collision_mask = 21
+collision_mask = 8
 script = ExtResource( 4 )
 
 [node name="CoinAreaDetector" type="Area2D" parent="."]
 collision_layer = 2147483652
-collision_mask = 2147483669
+collision_mask = 2147483677
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoinAreaDetector"]
@@ -55,7 +55,7 @@ script = ExtResource( 2 )
 
 [node name="CoinThwackedTimer" type="Timer" parent="CoinAreaDetector/CoinStateMachine/CoinThwacked"]
 process_mode = 0
-wait_time = 2.0
+wait_time = 60.0
 one_shot = true
 
 [node name="CoinSprite" type="Sprite" parent="CoinAreaDetector"]
@@ -65,7 +65,6 @@ texture = ExtResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-disabled = true
 
 [node name="CoinAP" type="AnimationPlayer" parent="." groups=[
 "ANIMATION_PLAYER",
