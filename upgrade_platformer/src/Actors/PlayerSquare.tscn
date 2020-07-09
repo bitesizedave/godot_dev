@@ -82,7 +82,9 @@ shape = SubResource( 1 )
 texture = ExtResource( 1 )
 script = ExtResource( 10 )
 
-[node name="OuchieDetector" type="Area2D" parent="."]
+[node name="OuchieDetector" type="Area2D" parent="." groups=[
+"PLAYER",
+]]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OuchieDetector"]

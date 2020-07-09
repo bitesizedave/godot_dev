@@ -4,7 +4,7 @@ signal base_thwack_impulse_updated
 signal thwack_acceleration_updated
 
 
-var base_thwack_impulse: = 80000.0 setget set_base_thwack_impulse, get_base_thwack_impulse
+var base_thwack_impulse: = 120000.0 setget set_base_thwack_impulse, get_base_thwack_impulse
 var thwack_acceleration: = 1.5 setget set_thwack_acceleration, get_thwack_acceleration
 
 

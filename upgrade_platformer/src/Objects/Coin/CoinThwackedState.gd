@@ -38,7 +38,6 @@ func physics_process(delta: float) -> void:
 			modified_thwack_velocity.y += bounce_velocity
 	owner.move_and_slide(modified_thwack_velocity 
 	* delta, Vector2.UP)
-	print(modified_thwack_velocity)
 	if (abs(modified_thwack_velocity.x) < transition_to_stationary_gate
 		and abs(modified_thwack_velocity.y) < transition_to_stationary_gate
 		and owner.is_on_floor()):
