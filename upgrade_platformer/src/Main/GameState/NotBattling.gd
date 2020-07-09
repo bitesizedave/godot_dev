@@ -25,7 +25,7 @@ func enter(msg: Dictionary = {}) -> void:
 	ScoreTimer.update_score_timer(WorldData.battle_score, BattleTimer.BATTLE_TIME - BattleTimer.time_left)
 	GameStateData.set_game_state(GameStateData.NOT_BATTLING)
 	var start_battle = start_battle_scene.instance()
-	start_battle.position = Vector2(PlayerData.player_game_start_position.x+64, PlayerData.player_game_start_position.y-64)
+	start_battle.position = Vector2(PlayerData.player_game_start_position.x+48, PlayerData.player_game_start_position.y-80)
 	add_child(start_battle)
 
 
