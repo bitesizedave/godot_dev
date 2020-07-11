@@ -11,6 +11,7 @@ onready var coin_ap: = get_parent().get_node("CoinAP")
 onready var thwack_acceleration: = CoinData.thwack_acceleration
 var consecutive_thwacks: int
 var consecutive_thwack_value = 1
+onready var thwack_score_added: = CoinData.thwack_score_added
 
 func _ready():
 	thwack_timer.connect("timeout", self, "_on_coin_timer_timeout")
@@ -54,8 +55,8 @@ func _on_coin_timer_timeout():
 
 func _on_you_got_thwacked(area):
 	if area == self:
-		WorldData.battle_score += consecutive_thwack_value
-		WorldData.score += consecutive_thwack_value
+		WorldData.battle_score += thwack_score_added
+		WorldData.score += thwack_score_added
 		consecutive_thwack_value += 1
 
 
