@@ -34,6 +34,8 @@ func unhandled_input(event: InputEvent) -> void:
 		and not is_ledge_falling
 		and jump_count < PlayerData.jump_count):
 			jump()
+	if event.is_action_released("jump") and move.velocity.y < 0:
+		move.velocity.y *= .55
 	move.unhandled_input(event)
 
 
