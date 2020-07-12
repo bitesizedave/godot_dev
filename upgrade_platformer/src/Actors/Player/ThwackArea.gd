@@ -16,4 +16,4 @@ func _on_thwack_timer_timeout():
 
 func _on_area_entered(area):
 	connect("you_got_thwacked", area, "_on_you_got_thwacked")
-	emit_signal("you_got_thwacked", area)
+	emit_signal("you_got_thwacked", area, self.get_instance_id())

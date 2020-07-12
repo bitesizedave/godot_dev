@@ -37,7 +37,7 @@ script = ExtResource( 4 )
 
 [node name="CoinAreaDetector" type="Area2D" parent="."]
 collision_layer = 2147483652
-collision_mask = 2147483677
+collision_mask = 2147483669
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoinAreaDetector"]

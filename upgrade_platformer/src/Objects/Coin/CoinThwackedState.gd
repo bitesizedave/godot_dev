@@ -25,8 +25,6 @@ onready var coin = get_parent().owner
 var consecutive_thwack_value: int
 
 
-
-
 func physics_process(delta: float) -> void:
 	modified_thwack_velocity *= thwack_air_friction
 	modified_thwack_velocity.y += gravity

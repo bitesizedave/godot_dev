@@ -12,6 +12,7 @@ onready var thwack_acceleration: = CoinData.thwack_acceleration
 var consecutive_thwacks: int
 var consecutive_thwack_value = 1
 onready var thwack_score_added: = CoinData.thwack_score_added
+var thwack_instance_id: int
 
 func _ready():
 	thwack_timer.connect("timeout", self, "_on_coin_timer_timeout")
@@ -39,7 +40,7 @@ func _on_area_entered(area):
 		emit_signal("you_got_coin_thwacked", area)
 	if area.is_in_group("THWACK"):
 		_coin_state_machine.transition_to("CoinThwacked", {"thwack_direction" : area.get_parent().get_thwack_direction(),
-			"consecutive_thwack_value" : consecutive_thwack_value} )
+			"consecutive_thwack_value" : consecutive_thwack_value, "thwack_instance_id" : area.get_instance_id()})
 	if area.is_in_group("PLAYER"):
 		collect_coin()
 	if area.is_in_group("COIN") and area.get_instance_id() != self.get_instance_id() :
@@ -53,11 +54,14 @@ func _on_coin_timer_timeout():
 	collect_coin()
 
 
-func _on_you_got_thwacked(area):
-	if area == self:
+func _on_you_got_thwacked(area, thwack_id):
+	if thwack_instance_id == thwack_id:
+		collect_coin()
+	if (area == self and thwack_instance_id != thwack_id):
 		WorldData.battle_score += thwack_score_added
 		WorldData.score += thwack_score_added
 		consecutive_thwack_value += 1
+	thwack_instance_id = thwack_id
 
 
 func _on_you_got_coin_thwacked(area):
