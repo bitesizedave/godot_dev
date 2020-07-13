@@ -16,6 +16,7 @@ var air_deceleration: = 0.6
 var jump_count: = 0
 var is_ledge_falling = false
 
+
 onready var ledge_assist: Timer = $LedgeAssist
 
 func _ready():
