@@ -44,7 +44,8 @@ func physics_process(delta: float) -> void:
 	if (not owner.is_on_floor() 
 		and abs(velocity.y) < top_of_jump_velocity_gate 
 		and Input.is_action_pressed("jump")
-		and top_of_jump_float_factor < 1.0):
+		and top_of_jump_float_factor < 1.0
+		and not drop_timer.time_left > 0.0):
 		velocity.y *= top_of_jump_float_factor
 		top_of_jump_float_factor += 0.0666
 		print("top_of_jump_float_factor: ", top_of_jump_float_factor)
