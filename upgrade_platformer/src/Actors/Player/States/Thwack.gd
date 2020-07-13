@@ -9,6 +9,10 @@ Use State as a child of a StateMachine node.
 onready var thwack_area_scene = preload("res://src/Actors/Player/ThwackArea.tscn")
 var thwack
 var thwack_velocity: = Vector2.ZERO
+var thwack_max_speed: = Vector2(333.0, 333.0)
+onready var gravity = WorldData.gravity
+var thwack_impulse: = 20000.0
+var thwacked_something: = false
 var attack_direction: Vector2
 var thwack_offset: = 18.0
 var facing_direction: = Vector2.ZERO
@@ -22,6 +26,15 @@ func unhandled_input(event: InputEvent) -> void:
 
 
 func physics_process(delta: float) -> void:
+	thwack.position = owner.position 
+	var thwack_direction = Vector2(cos(thwack.rotation), sin(thwack.rotation))
+	thwack.position += thwack_direction * thwack_offset
+	if (thwacked_something
+		and thwack_direction.y > 0.7
+		and thwack_direction.x <= 0.71
+		and thwack_direction.x >= -0.71):
+		thwack_velocity = calculate_thwack_velocity(thwack_velocity,
+			thwack_max_speed, thwack_impulse, delta, -thwack_direction)
 	owner.move_and_slide(thwack_velocity, owner.FLOOR_NORMAL)
 	
 
@@ -42,9 +55,8 @@ func enter(msg: Dictionary = {}) -> void:
 	thwack.position += thwack_direction * thwack_offset
 
 
-
 func exit() -> void:
-	pass
+	thwack_velocity = Vector2.ZERO
 
 
 func _on_done_thwackin():
@@ -64,3 +76,18 @@ func get_thwack_direction() -> Vector2:
 	if input == Vector2.ZERO:
 		return facing_direction
 	else: return input
+
+
+func calculate_thwack_velocity(
+	old_velocity: Vector2,
+	max_speed: Vector2,
+	acceleration: float,
+	delta: float,
+	move_direction: Vector2
+	) -> Vector2:
+	var new_velocity: = old_velocity
+	new_velocity += move_direction * acceleration * delta
+	new_velocity.y += gravity * delta
+	new_velocity.x = clamp(new_velocity.x, -max_speed.x, max_speed.x)
+	new_velocity.y = clamp(new_velocity.y, -max_speed.y, max_speed.y)
+	return new_velocity

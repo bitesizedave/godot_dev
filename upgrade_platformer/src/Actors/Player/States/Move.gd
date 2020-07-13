@@ -53,7 +53,6 @@ func physics_process(delta: float) -> void:
 	if (owner.is_on_floor() 
 		and top_of_jump_float_factor != top_of_jump_float_factor_default):
 			top_of_jump_float_factor = top_of_jump_float_factor_default
-		
 
 
 func enter(msg: Dictionary = {}):

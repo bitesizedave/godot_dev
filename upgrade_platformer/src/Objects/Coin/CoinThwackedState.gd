@@ -61,7 +61,7 @@ func enter(msg: Dictionary = {}) -> void:
 	coin.get_node("CoinAreaDetector/CoinSprite").modulate = Color.green
 
 func exit() -> void:
-	pass
+	consecutive_thwack_value = 0
 
 
 func _get_state_machine(node: Node) -> Node:
