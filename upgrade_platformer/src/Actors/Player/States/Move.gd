@@ -12,7 +12,7 @@ onready var acceleration: = acceleration_default
 var max_speed: = max_speed_default
 var velocity: = Vector2.ZERO
 var facing_direction: = Vector2.ZERO
-var top_of_jump_velocity_gate: = 100.0
+var top_of_jump_velocity_gate: = 10.0
 var top_of_jump_float_factor_default: = 0.0
 var top_of_jump_float_factor: float
 
@@ -42,13 +42,12 @@ func unhandled_input(event: InputEvent) -> void:
 func physics_process(delta: float) -> void:
 	velocity = calculate_velocity(velocity, max_speed, acceleration, delta, get_move_direction(), max_fall_speed)
 	if (not owner.is_on_floor() 
-		and abs(velocity.y) < top_of_jump_velocity_gate 
+		and velocity.y > -top_of_jump_velocity_gate 
 		and Input.is_action_pressed("jump")
 		and top_of_jump_float_factor < 1.0
 		and not drop_timer.time_left > 0.0):
 		velocity.y *= top_of_jump_float_factor
 		top_of_jump_float_factor += 0.0666
-		print("top_of_jump_float_factor: ", top_of_jump_float_factor)
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
 	_set_facing_direction()
 	if (owner.is_on_floor() 
