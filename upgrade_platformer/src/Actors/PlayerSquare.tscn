@@ -72,7 +72,7 @@ script = ExtResource( 11 )
 
 [node name="AfterThwackDelayTimer" type="Timer" parent="StateMachine/Attack/Thwack"]
 process_mode = 0
-wait_time = 0.05
+wait_time = 0.04
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

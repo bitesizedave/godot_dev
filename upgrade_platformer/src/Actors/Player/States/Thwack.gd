@@ -9,9 +9,9 @@ Use State as a child of a StateMachine node.
 onready var thwack_area_scene = preload("res://src/Actors/Player/ThwackArea.tscn")
 var thwack
 var thwack_velocity: = Vector2.ZERO
-var thwack_max_speed: = Vector2(333.0, 333.0)
+var thwack_max_speed: = Vector2(333.0, 666.0)
 onready var gravity = WorldData.gravity
-var thwack_impulse: = 20000.0
+var thwack_impulse: = 50000.0
 var thwacked_something: = false
 var attack_direction: Vector2
 var thwack_offset: = 18.0

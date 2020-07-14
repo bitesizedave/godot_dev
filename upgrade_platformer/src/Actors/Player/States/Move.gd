@@ -6,15 +6,13 @@ Move-related children states can delegate movement to it, or use its utility fun
 
 export var max_speed_default: = Vector2(333.0, 1500.0)
 onready var gravity = WorldData.gravity
-onready var acceleration_default: = Vector2(5666, WorldData.gravity)
+onready var acceleration_default: = Vector2(6666, WorldData.gravity)
 export var max_fall_speed: = 1500.0
 onready var acceleration: = acceleration_default
+var drop_velocity: = 3333.0
 var max_speed: = max_speed_default
 var velocity: = Vector2.ZERO
 var facing_direction: = Vector2.ZERO
-var top_of_jump_velocity_gate: = 10.0
-var top_of_jump_float_factor_default: = 0.0
-var top_of_jump_float_factor: float
 
 const PASSTHROUGH_BIT_LAYER: = 3
 onready var drop_timer: Timer = $DropTimer
@@ -30,6 +28,7 @@ func unhandled_input(event: InputEvent) -> void:
 		_state_machine.transition_to("Attack/Thwack", { "facing_direction": facing_direction })
 	if owner.is_on_floor() and Input.is_action_just_pressed("jump") and Input.get_action_strength("down") > 0.0:
 		owner.set_collision_mask_bit(PASSTHROUGH_BIT_LAYER, false)
+		velocity.y -= drop_velocity
 		drop_timer.start()
 		_state_machine.transition_to("Move/Air")
 	elif owner.is_on_floor() and event.is_action_pressed("jump"):
@@ -41,18 +40,9 @@ func unhandled_input(event: InputEvent) -> void:
 
 func physics_process(delta: float) -> void:
 	velocity = calculate_velocity(velocity, max_speed, acceleration, delta, get_move_direction(), max_fall_speed)
-	if (not owner.is_on_floor() 
-		and velocity.y > -top_of_jump_velocity_gate 
-		and Input.is_action_pressed("jump")
-		and top_of_jump_float_factor < 1.0
-		and not drop_timer.time_left > 0.0):
-		velocity.y *= top_of_jump_float_factor
-		top_of_jump_float_factor += 0.0666
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
 	_set_facing_direction()
-	if (owner.is_on_floor() 
-		and top_of_jump_float_factor != top_of_jump_float_factor_default):
-			top_of_jump_float_factor = top_of_jump_float_factor_default
+
 
 
 func enter(msg: Dictionary = {}):

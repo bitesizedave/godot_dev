@@ -15,6 +15,10 @@ var jump_power: = PlayerData.jump_power
 var air_deceleration: = 0.6
 var jump_count: = 0
 var is_ledge_falling = false
+var velocity
+var top_of_jump_velocity_gate: = 1.0
+var top_of_jump_float_factor_default: = 0.0
+var top_of_jump_float_factor: float
 
 
 onready var ledge_assist: Timer = $LedgeAssist
@@ -42,9 +46,14 @@ func unhandled_input(event: InputEvent) -> void:
 
 func physics_process(delta: float) -> void:
 	var move: = get_parent()
+	move.physics_process(delta)
 	if move.get_move_direction().x == 0:
 		move.velocity.x *= air_deceleration
-	move.physics_process(delta)
+	if (move.velocity.y > -top_of_jump_velocity_gate
+		and top_of_jump_float_factor < 1.0):
+		move.velocity.y *= top_of_jump_float_factor
+		top_of_jump_float_factor += 0.0666
+
 
 	# Landing
 	if owner.is_on_floor():
@@ -70,6 +79,8 @@ func exit() -> void:
 #	move.acceleration = move.acceleration_default
 	jump_count = 0
 	is_ledge_falling = false
+	if (top_of_jump_float_factor != top_of_jump_float_factor_default):
+			top_of_jump_float_factor = top_of_jump_float_factor_default
 	move.exit()
 
 
