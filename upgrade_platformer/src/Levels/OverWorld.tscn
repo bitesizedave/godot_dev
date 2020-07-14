@@ -6,4 +6,7 @@
 
 [node name="MainLevel" parent="." instance=ExtResource( 1 )]
 
+[node name="CoinAddBlock" parent="MainLevel" index="7"]
+position = Vector2( 654, 112 )
+
 [editable path="MainLevel"]
