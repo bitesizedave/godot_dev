@@ -17,14 +17,6 @@ var thwack_instance_id: int
 func _ready():
 	thwack_timer.connect("timeout", self, "_on_coin_timer_timeout")
 
-#func _on_body_entered(body: PhysicsBody2D) -> void:
-#	if body.is_in_group("PLAYER"):
-#		collect_coin()
-#	if body.is_in_group("COINS"):
-#		collect_coin()
-#	if body.is_in_group("JUMP_THROUGH"):
-#		pass
-
 
 func collect_coin():
 	WorldData.battle_score += coin_value

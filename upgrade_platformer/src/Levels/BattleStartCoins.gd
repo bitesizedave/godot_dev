@@ -10,6 +10,7 @@ func _ready():
 		coin_positions.push_back(n.position)
 
 func _on_battling_entered():
+	start_coins = WorldData.start_coins
 	for n in start_coins:
 		var coin = coin_scene.instance()
 		coin.position = coin_positions[n]
