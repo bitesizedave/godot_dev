@@ -1,23 +1,23 @@
 extends State
-"""
-State interface to use in Hierarchical State Machines.
-The lowest leaf tries to handle callbacks, and if it can't, it delegates the work to its parent.
-It's up to the user to call the parent state's functions, e.g. `get_parent().physics_process(delta)`
-Use State as a child of a StateMachine node.
-"""
 
 onready var thwack_area_scene = preload("res://src/Actors/Player/ThwackArea.tscn")
-var thwack
+var thwack: Area2D
+var thwack_raycast: RayCast2D
 var thwack_velocity: = Vector2.ZERO
 var thwack_max_speed: = Vector2(333.0, 666.0)
 onready var gravity = WorldData.gravity
-var thwack_impulse: = 50000.0
+var thwack_impulse_default: = 30000.0
+var thwack_impulse: float
 var thwacked_something_impulse: = false
-var attack_direction: Vector2 setget set_attack_direction, get_attack_direction
+var attack_direction: Vector2 
 var thwack_offset: = 18.0
 var facing_direction: = Vector2.ZERO
 onready var attack: = get_parent()
 onready var after_thwack_delay_timer = $AfterThwackDelayTimer
+
+
+func _ready():
+	thwack_impulse = thwack_impulse_default
 
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("thwack"):
@@ -30,11 +30,14 @@ func physics_process(delta: float) -> void:
 	var thwack_direction = Vector2(cos(thwack.rotation), sin(thwack.rotation))
 	thwack.position += thwack_direction * thwack_offset
 	if (thwacked_something_impulse
-		and thwack_direction.y > 0.7
-		and thwack_direction.x <= 0.71
-		and thwack_direction.x >= -0.71):
+		and get_thwack_direction().y == 1
+		and get_thwack_direction().x <= 1
+		and get_thwack_direction().x >= -1):
+		if thwack_impulse > gravity:
+			thwack_impulse -= gravity
 		thwack_velocity = calculate_thwack_velocity(thwack_velocity,
 			thwack_max_speed, thwack_impulse, delta, -thwack_direction)
+		print("calculating thwack velocity")
 	owner.move_and_slide(thwack_velocity, owner.FLOOR_NORMAL)
 	
 
@@ -43,6 +46,7 @@ func enter(msg: Dictionary = {}) -> void:
 	thwack = thwack_area_scene.instance()
 	add_child(thwack)
 	thwack.connect("done_thwackin", self, "_on_done_thwackin")
+	thwack_raycast = thwack.get_node("ThwackRayCast")
 	if "facing_direction" in msg:
 		facing_direction = msg["facing_direction"]
 	var attack_direction = attack.get_attack_direction()
@@ -57,6 +61,8 @@ func enter(msg: Dictionary = {}) -> void:
 
 func exit() -> void:
 	thwack_velocity = Vector2.ZERO
+	thwack_impulse = thwack_impulse_default
+	thwacked_something_impulse = false
 
 
 func _on_done_thwackin():
@@ -93,9 +99,3 @@ func calculate_thwack_velocity(
 	return new_velocity
 
 
-func set_attack_direction(value: Vector2):
-	attack_direction = value
-
-
-func get_attack_direction() -> Vector2:
-	return attack_direction

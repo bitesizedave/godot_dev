@@ -28,7 +28,7 @@ func collect_coin():
 
 func _on_area_entered(area):
 	if _coin_state_machine.state.name == "CoinThwacked":
-		connect("you_got_coin_thwacked", area, "_on_you_got_coin_thwacked")
+
 		emit_signal("you_got_coin_thwacked", area)
 	if area.is_in_group("THWACK"):
 		_coin_state_machine.transition_to("CoinThwacked", {"thwack_direction" : area.get_parent().get_thwack_direction(),
@@ -46,7 +46,7 @@ func _on_coin_timer_timeout():
 	collect_coin()
 
 
-func _on_you_got_thwacked(area, thwack_id):
+func _on_you_got_thwacked(area, thwack_id, attack_direction):
 	if thwack_instance_id == thwack_id:
 		collect_coin()
 	if (area == self and thwack_instance_id != thwack_id):

@@ -15,7 +15,7 @@ var jump_power: = PlayerData.jump_power
 var air_deceleration: = 0.6
 var jump_count: = 0
 var is_ledge_falling = false
-var velocity
+var velocity 
 var top_of_jump_velocity_gate: = 1.0
 var top_of_jump_float_factor_default: = 0.0
 var top_of_jump_float_factor: float
@@ -53,6 +53,7 @@ func physics_process(delta: float) -> void:
 		and top_of_jump_float_factor < 1.0):
 		move.velocity.y *= top_of_jump_float_factor
 		top_of_jump_float_factor += 0.0666
+
 
 
 	# Landing
