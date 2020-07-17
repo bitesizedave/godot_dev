@@ -28,16 +28,15 @@ func collect_coin():
 
 func _on_area_entered(area):
 	if _coin_state_machine.state.name == "CoinThwacked":
-
+		connect("you_got_coin_thwacked", area, "_on_you_got_coin_thwacked")
 		emit_signal("you_got_coin_thwacked", area)
 	if area.is_in_group("THWACK"):
 		_coin_state_machine.transition_to("CoinThwacked", {"thwack_direction" : area.get_parent().get_thwack_direction(),
 			"consecutive_thwack_value" : consecutive_thwack_value, "thwack_instance_id" : area.get_instance_id()})
 	if area.is_in_group("PLAYER"):
 		collect_coin()
-	if area.is_in_group("COIN") and area.get_instance_id() != self.get_instance_id() :
+	if area.is_in_group("COINS") and area.get_instance_id() != self.get_instance_id() :
 		collect_coin()
-	coin_ap.stop()
 
 
 func _on_coin_timer_timeout():
