@@ -12,8 +12,8 @@ var thwack_velocity: = Vector2.ZERO
 var thwack_max_speed: = Vector2(333.0, 666.0)
 onready var gravity = WorldData.gravity
 var thwack_impulse: = 50000.0
-var thwacked_something: = false
-var attack_direction: Vector2
+var thwacked_something_impulse: = false
+var attack_direction: Vector2 setget set_attack_direction, get_attack_direction
 var thwack_offset: = 18.0
 var facing_direction: = Vector2.ZERO
 onready var attack: = get_parent()
@@ -29,7 +29,7 @@ func physics_process(delta: float) -> void:
 	thwack.position = owner.position 
 	var thwack_direction = Vector2(cos(thwack.rotation), sin(thwack.rotation))
 	thwack.position += thwack_direction * thwack_offset
-	if (thwacked_something
+	if (thwacked_something_impulse
 		and thwack_direction.y > 0.7
 		and thwack_direction.x <= 0.71
 		and thwack_direction.x >= -0.71):
@@ -91,3 +91,11 @@ func calculate_thwack_velocity(
 	new_velocity.x = clamp(new_velocity.x, -max_speed.x, max_speed.x)
 	new_velocity.y = clamp(new_velocity.y, -max_speed.y, max_speed.y)
 	return new_velocity
+
+
+func set_attack_direction(value: Vector2):
+	attack_direction = value
+
+
+func get_attack_direction() -> Vector2:
+	return attack_direction

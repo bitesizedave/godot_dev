@@ -37,7 +37,7 @@ position = Vector2( -328, 152 )
 [node name="BattleStartCoins" parent="." instance=ExtResource( 7 )]
 
 [node name="CoinAddBlock" parent="." instance=ExtResource( 8 )]
-position = Vector2( 660, 96 )
+position = Vector2( 664, 126 )
 
 [editable path="GameStateMachine"]
 

@@ -59,5 +59,11 @@ autostart = true
 
 [node name="ThwackAP" type="AnimationPlayer" parent="."]
 anims/thwack_fade = SubResource( 1 )
+
+[node name="ThwackRayCast" type="RayCast2D" parent="."]
+position = Vector2( -16, 0 )
+enabled = true
+cast_to = Vector2( 25, 0 )
+collision_mask = 64
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
