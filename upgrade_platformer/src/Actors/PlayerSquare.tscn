@@ -45,7 +45,7 @@ wait_time = 0.04
 one_shot = true
 
 [node name="DropTimer" type="Timer" parent="StateMachine/Move"]
-wait_time = 0.04
+wait_time = 0.1
 one_shot = true
 
 [node name="Attack" type="Node" parent="StateMachine"]

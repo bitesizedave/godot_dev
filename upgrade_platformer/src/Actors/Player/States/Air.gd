@@ -19,12 +19,16 @@ var velocity
 var top_of_jump_velocity_gate: = 1.0
 var top_of_jump_float_factor_default: = 0.0
 var top_of_jump_float_factor: float
+onready var drop_timer = get_parent().get_node("DropTimer")
+var is_dropping: bool
+var drop_velocity: = 10.0
 
 
 onready var ledge_assist: Timer = $LedgeAssist
 
 func _ready():
-	ledge_assist.connect("timeout", self, "on_ledge_assist_timeout")
+	ledge_assist.connect("timeout", self, "_on_ledge_assist_timeout")
+	drop_timer.connect("timeout", self, "_on_drop_timer_timeout")
 
 func unhandled_input(event: InputEvent) -> void:
 	var move: = get_parent()
@@ -49,15 +53,22 @@ func physics_process(delta: float) -> void:
 	move.physics_process(delta)
 	if move.get_move_direction().x == 0:
 		move.velocity.x *= air_deceleration
+	#Add some float if the y velocity is small
 	if (move.velocity.y > -top_of_jump_velocity_gate
-		and top_of_jump_float_factor < 1.0):
+		and top_of_jump_float_factor < 1.0
+		and not (drop_timer.time_left > 0.0 or is_dropping)):
 		move.velocity.y *= top_of_jump_float_factor
 		top_of_jump_float_factor += 0.0666
+		print(move.velocity.y)
+	#adjust velocity when dropping
+	if (drop_timer.time_left > 0.0):
+		move.velocity.y += drop_velocity
 
 
 
 	# Landing
 	if owner.is_on_floor():
+		is_dropping = false
 		var target_state: = "Move/Idle" if move.get_move_direction().x == 0 else "Move/Run"
 		_state_machine.transition_to(target_state)
 
@@ -77,7 +88,7 @@ func enter(msg: Dictionary = {}) -> void:
 
 func exit() -> void:
 	var move: = get_parent()
-#	move.acceleration = move.acceleration_default
+	is_dropping = false
 	jump_count = 0
 	is_ledge_falling = false
 	if (top_of_jump_float_factor != top_of_jump_float_factor_default):
@@ -87,6 +98,7 @@ func exit() -> void:
 
 func jump():
 	var move: = get_parent()
+	is_dropping = false
 	move.velocity.y = 0.0
 	move.velocity += calculate_jump_velocity(jump_power)
 	jump_count += 1
@@ -107,5 +119,9 @@ func calculate_jump_velocity(impulse: float = 0.0) -> Vector2:
 	)
 
 
-func on_ledge_assist_timeout():
+func _on_ledge_assist_timeout():
 	is_ledge_falling = true
+
+
+func _on_drop_timer_timeout():
+	is_dropping = true
