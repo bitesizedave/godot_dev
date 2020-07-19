@@ -59,7 +59,6 @@ func physics_process(delta: float) -> void:
 		and not (drop_timer.time_left > 0.0 or is_dropping)):
 		move.velocity.y *= top_of_jump_float_factor
 		top_of_jump_float_factor += 0.0666
-		print(move.velocity.y)
 	#adjust velocity when dropping
 	if (drop_timer.time_left > 0.0):
 		move.velocity.y += drop_velocity
