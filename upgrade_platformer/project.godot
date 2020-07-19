@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Actors/Actor.gd"
 }, {
+"base": "StaticBody2D",
+"class": "AddBlock",
+"language": "GDScript",
+"path": "res://src/Objects/UpgradeBlocks/AddBlock.gd"
+}, {
 "base": "Node",
 "class": "Attack",
 "language": "GDScript",
@@ -71,6 +76,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Actor": "",
+"AddBlock": "",
 "Attack": "res://assets/icons/state.svg",
 "Coin": "res://assets/circle.png",
 "CoinArea": "",
