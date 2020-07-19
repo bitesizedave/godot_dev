@@ -37,7 +37,6 @@ func physics_process(delta: float) -> void:
 			thwack_impulse -= gravity
 		thwack_velocity = calculate_thwack_velocity(thwack_velocity,
 			thwack_max_speed, thwack_impulse, delta, -thwack_direction)
-		print("calculating thwack velocity")
 	owner.move_and_slide(thwack_velocity, owner.FLOOR_NORMAL)
 	
 

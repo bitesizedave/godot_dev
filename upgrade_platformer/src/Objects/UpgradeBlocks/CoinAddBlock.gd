@@ -29,15 +29,14 @@ func _ready():
 func _on_you_got_thwacked(area, thwack_id, attack_dir):
 	attack_direction = attack_dir
 	if attack_dir.y == 1:
-		subtract_area_shape.disabled = false
 		add_area_shape.disabled = true
 	else:
 		subtract_area_shape.disabled = true
-		add_area_shape.disabled = false
 
 func _on_subtract_area_entered(area):
 	if area.is_in_group("THWACK"):
 		area.connect("you_got_thwacked", self, "_on_you_got_thwacked")
+		area.timer.connect("timeout", self, "_on_thwack_timeout")
 		if (level > 1
 			and attack_direction.y == 1):
 			WorldData.score += cost
@@ -47,7 +46,7 @@ func _on_subtract_area_entered(area):
 			cost = round(cost/cost_ramp)
 			level_label.text = str(level)
 			cost_label.text = str("$",cost)
-			print("subtract area entered")
+
 
 
 func _on_subtract_area_exited(area):
@@ -56,6 +55,9 @@ func _on_subtract_area_exited(area):
 func _on_add_area_entered(area):
 	if (area.is_in_group("THWACK")
 		or area.is_in_group("PLAYER")):
+		if area.is_in_group("THWACK"):
+			area.connect("you_got_thwacked", self, "_on_you_got_thwacked")
+			area.timer.connect("timeout", self, "_on_thwack_timeout")
 		if attack_direction.y != 1:
 			if WorldData.score >= cost:
 				WorldData.score -= cost
@@ -65,10 +67,13 @@ func _on_add_area_entered(area):
 				cost = round(cost * cost_ramp)
 				level_label.text = str(level)
 				cost_label.text = str("$",cost)
-				print("add area entered")
+
 
 
 func _on_add_area_exited(area):
 	pass
 
 
+func _on_thwack_timeout():
+	subtract_area_shape.disabled = false
+	add_area_shape.disabled = false
