@@ -7,6 +7,7 @@ onready var subtract_area = $SubtractArea
 onready var subtract_area_shape = $SubtractArea/SubtractShape
 onready var level_label = $LevelLabel
 onready var cost_label = $CostLabel
+onready var block_animation = $AddBlockAP
 var points_spent: int
 var starting_cost: = 1
 var cost: float
@@ -20,11 +21,11 @@ func _ready():
 	subtract_area.connect("area_entered", self, "_on_subtract_area_entered")
 	subtract_area.connect("area_exited", self, "_on_subtract_area_exited")
 	#load level here
-	if level == 1:
-		cost = starting_cost
-	else: cost *= cost_ramp * level
-	level_label.text = str(level)
-	cost_label.text = str("$",cost)
+#	if level == 1:
+#		cost = starting_cost
+#	else: cost *= cost_ramp * level
+#	level_label.text = str(level)
+#	cost_label.text = str("$",cost)
 
 
 func _on_you_got_thwacked(area, thwack_id, attack_dir):
@@ -51,6 +52,7 @@ func _on_subtract_area_entered(area):
 			points_spent -= cost
 			level -= 1
 			subtract_some_stuff()
+			block_animation.play("subtract_block_bounce")
 			cost = round(cost/cost_ramp)
 			level_label.text = str(level)
 			cost_label.text = str("$",cost)
@@ -72,6 +74,7 @@ func _on_add_area_entered(area):
 				points_spent += cost
 				level += 1
 				add_some_stuff()
+				block_animation.play("add_block_bounce")
 				cost = round(cost * cost_ramp)
 				level_label.text = str(level)
 				cost_label.text = str("$",cost)
@@ -85,6 +88,8 @@ func _on_add_area_exited(area):
 func subtract_some_stuff():
 	pass
 
+
 # To be overwritten by children to give their specific blocks functionality
 func add_some_stuff():
 	pass
+
