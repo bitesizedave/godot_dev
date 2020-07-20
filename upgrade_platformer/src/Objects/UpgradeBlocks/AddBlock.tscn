@@ -34,7 +34,8 @@ position = Vector2( 2, -2 )
 shape = SubResource( 1 )
 
 [node name="SquircleSprite" type="Sprite" parent="."]
-position = Vector2( 2, -2 )
+modulate = Color( 1, 0.2, 0.2, 1 )
+position = Vector2( -3.99992, -2 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 1 )
 

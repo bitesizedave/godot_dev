@@ -43,6 +43,7 @@ func _on_thwack_timeout():
 
 
 func _on_subtract_area_entered(area):
+	block_animation.seek(0.0)
 	if area.is_in_group("THWACK"):
 		area.connect("you_got_thwacked", self, "_on_you_got_thwacked")
 		area.timer.connect("timeout", self, "_on_thwack_timeout")
@@ -63,6 +64,7 @@ func _on_subtract_area_exited(area):
 	pass
 
 func _on_add_area_entered(area):
+	block_animation.seek(0.0)
 	if (area.is_in_group("THWACK")
 		or area.is_in_group("PLAYER")):
 		if area.is_in_group("THWACK"):
