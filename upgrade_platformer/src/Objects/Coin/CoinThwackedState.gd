@@ -43,7 +43,8 @@ func physics_process(delta: float) -> void:
 	if (abs(modified_thwack_velocity.x) < transition_to_stationary_gate
 		and abs(modified_thwack_velocity.y) < transition_to_stationary_gate
 		and owner.is_on_floor()):
-			_state_machine.transition_to("CoinStationary")
+#			_state_machine.transition_to("CoinStationary")
+			owner.get_node("CoinAreaDetector").collect_coin()
 	
 	
 

@@ -8,22 +8,47 @@ onready var coin_value: = WorldData.coin_value
 onready var _coin_state_machine = $CoinStateMachine
 onready var thwack_timer: = $CoinStateMachine/CoinThwacked/CoinThwackedTimer
 onready var coin_ap: = get_parent().get_node("CoinAP")
+onready var coin = get_parent()
+onready var coin_sprite: = get_parent().get_node("CoinAreaDetector/CoinSprite")
+onready var battle_score_gui
 onready var thwack_acceleration: = CoinData.thwack_acceleration
 var consecutive_thwacks: int
 var consecutive_thwack_value = 1
 onready var thwack_score_added: = CoinData.thwack_score_added
 var thwack_instance_id: int
+const COIN_LAYER: = 2
+onready var tween_speed: = CoinData.coin_tween_speed
+
 
 func _ready():
 	thwack_timer.connect("timeout", self, "_on_coin_timer_timeout")
-
+	battle_score_gui = coin.find_parent("MainLevel").find_node("BattleScore")
+	connect("coin_collected", battle_score_gui, "_on_coin_collected")
 
 func collect_coin():
+	_coin_state_machine.transition_to("CoinStationary")
+	var coin_tween = Tween.new()
+	add_child(coin_tween)
+	coin_tween.connect("tween_all_completed", self, "_on_coin_tween_completed")
+	set_collision_layer_bit(COIN_LAYER, false)
+	coin.remove_from_group("BATTLE_OBJECTS")
+	coin_sprite.modulate.a = 0.8
+	coin_tween.interpolate_property(coin, "global_position", global_position, 
+		Vector2(WorldData.get_screen_left_edge()+10, WorldData.get_screen_top_edge()+30),
+		tween_speed, Tween.TRANS_EXPO, Tween.EASE_IN)
+	coin_tween.start()
+	var coin_size_tween = Tween.new()
+	add_child(coin_size_tween)
+	coin_size_tween.interpolate_property(coin_sprite, "scale", coin_sprite.scale,
+		coin_sprite.scale * 0.3, tween_speed, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	coin_size_tween.start()
+	emit_signal("coin_collected", tween_speed)
 	WorldData.battle_score += coin_value
 	WorldData.score += coin_value
-	owner.queue_free()
-	emit_signal("coin_collected")
 
+
+func _on_coin_tween_completed():
+	queue_free()
 
 
 func _on_area_entered(area):
