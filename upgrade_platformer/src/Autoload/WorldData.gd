@@ -41,8 +41,8 @@ func _unhandled_input(event):
 func hard_reset() -> void:
 	set_score(0)
 	start_coins = 1
-	var dir = Directory.new()
-	dir.remove("user://savefile.save")
+	SaveLoad.reset()
+	
 	emit_signal("hard_reset")
 
 

@@ -40,7 +40,7 @@ func collect_coin():
 	var coin_size_tween = Tween.new()
 	add_child(coin_size_tween)
 	coin_size_tween.interpolate_property(coin_sprite, "scale", coin_sprite.scale,
-		coin_sprite.scale * 0.3, tween_speed, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		coin_sprite.scale * 0.6, tween_speed, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	coin_size_tween.start()
 	emit_signal("coin_collected", tween_speed)
 	WorldData.battle_score += coin_value

@@ -20,7 +20,9 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
-	if BattleTimer.BATTLE_TIME - BattleTimer.time_left == 0.0: 
+	if (BattleTimer.BATTLE_TIME - BattleTimer.time_left == 0.0
+		and SaveLoad.game_loaded): 
+		ScoreTimer.one_shot = false
 		ScoreTimer.start()
 	ScoreTimer.update_score_timer(WorldData.battle_score, BattleTimer.BATTLE_TIME - BattleTimer.time_left)
 	GameStateData.set_game_state(GameStateData.NOT_BATTLING)

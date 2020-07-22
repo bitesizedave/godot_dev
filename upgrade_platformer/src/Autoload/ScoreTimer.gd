@@ -74,5 +74,8 @@ func get_latest_battle_score() -> int:
 
 
 func _on_hard_reset():
+	stop()
+	one_shot = true
 	latest_battle_score = 0
 	score_time = 0.0
+	wait_time = 0.0
