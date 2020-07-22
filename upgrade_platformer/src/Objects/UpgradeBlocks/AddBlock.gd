@@ -14,18 +14,14 @@ var cost: float
 var cost_ramp: = 2
 var level: = 1
 var attack_direction: Vector2
+var save_dictionary: Dictionary
 
 func _ready():
 	add_area.connect("area_entered", self, "_on_add_area_entered")
 	add_area.connect("area_exited", self, "_on_add_area_exited")
 	subtract_area.connect("area_entered", self, "_on_subtract_area_entered")
 	subtract_area.connect("area_exited", self, "_on_subtract_area_exited")
-	#load level here
-#	if level == 1:
-#		cost = starting_cost
-#	else: cost *= cost_ramp * level
-#	level_label.text = str(level)
-#	cost_label.text = str("$",cost)
+	save_persist_state()
 
 
 func _on_you_got_thwacked(area, thwack_id, attack_dir):
@@ -57,6 +53,7 @@ func _on_subtract_area_entered(area):
 			cost = round(cost/cost_ramp)
 			level_label.text = str(level)
 			cost_label.text = str("$",cost)
+			save_persist_state()
 
 
 
@@ -80,18 +77,43 @@ func _on_add_area_entered(area):
 				cost = round(cost * cost_ramp)
 				level_label.text = str(level)
 				cost_label.text = str("$",cost)
+				save_persist_state()
 
 
 
 func _on_add_area_exited(area):
 	pass
 
-# To be overwritten by children to give their specific blocks functionality
+# Functions belod to be overwritten by children to give their specific blocks functionality
 func subtract_some_stuff():
 	pass
 
 
-# To be overwritten by children to give their specific blocks functionality
 func add_some_stuff():
 	pass
 
+
+func save_persist_state():
+	save_dictionary =  {
+		"object_name" : self.name,
+		"object_path" : self.get_path(),
+		"points_spent" : points_spent,
+		"starting_cost" : starting_cost,
+		"cost" : cost,
+		"cost_ramp" : cost_ramp,
+		"level" : level
+	}
+
+
+func load_persist_state(load_dictionary: Dictionary):
+	if (load_dictionary.object_name == self.name
+		and load_dictionary.object_path == self.get_path()):
+		points_spent = load_dictionary.points_spent
+		starting_cost = load_dictionary.starting_cost
+		cost = load_dictionary.cost
+		cost_ramp - load_dictionary.cost_ramp
+		level = load_dictionary.level
+
+
+func get_save_dictionary() -> Dictionary:
+	return save_dictionary

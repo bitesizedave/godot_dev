@@ -25,6 +25,7 @@ extents = Vector2( 10, 9 )
 [sub_resource type="RectangleShape2D" id=5]
 
 [node name="AddBlock" type="StaticBody2D" groups=[
+"PERSIST",
 "UPGRADE_BLOCK",
 ]]
 script = ExtResource( 4 )

@@ -12,6 +12,7 @@ var time_away_in_seconds: int
 var time_away_score_timer_cycles: float
 var game_loaded: bool
 var load_error: bool
+var persisting_objects: Array
 onready var score_timer: Timer = $ScoreTimer
 
 func _ready():
@@ -49,6 +50,7 @@ func save_game() -> bool:
 	else: last_save_epoch = save_game_epoch
 	var save_game = File.new()
 	save_game.open(savefile_directory_string, File.WRITE)
+	var persisting_objects = _get_persisting_objects()
 	var save_dictionary: = {
 		"score" : WorldData.score,
 		"score_time" : ScoreTimer.score_time,
@@ -57,7 +59,9 @@ func save_game() -> bool:
 		"last_save_epoch" : last_save_epoch,
 		"total_number_of_saves" : total_number_of_saves,
 		"first_save_epoch" : first_save_epoch,
-		"game_started_epoch" : game_started_epoch
+		"game_started_epoch" : game_started_epoch,
+		"persisting_objects" : persisting_objects
+		
 	}
 	save_game.store_var(save_dictionary)
 	save_game.close()
@@ -67,7 +71,6 @@ func save_game() -> bool:
 func load_game() -> bool:
 	var loadfile = File.new()
 	if loadfile.file_exists(savefile_directory_string):
-
 		loadfile.open(savefile_directory_string, File.READ)
 	else: 
 		print("no savefile")
@@ -125,6 +128,17 @@ func load_game() -> bool:
 		print("no game_started_epoch")
 		load_error = true
 		return false
+	if load_dictionary.has("persisting_objects"):
+		persisting_objects = load_dictionary.persisting_objects
+	else:
+		print("no persisting_objects")
+		load_error = true
+		return false
+	if total_number_of_saves > 1:
+		for dict in persisting_objects:
+			var load_node = get_node(dict.get("object_path"))
+			load_node.load_persist_state(dict)
+
 	return true
 
 
@@ -142,6 +156,9 @@ func _add_time_away_points():
 	print("score timer cycles: ", time_away_score_timer_cycles)
 	print("latest_battle_score: ", ScoreTimer.latest_battle_score)
 	var score_to_add: int = int(time_away_score_timer_cycles) * ScoreTimer.latest_battle_score
+	if score_to_add < 0:
+		print("ERROR NEGATIVE SCORE TO ADD DUDE!")
+		return
 	WorldData.score += score_to_add
 	print("score_to_add: ", score_to_add)
 
@@ -161,3 +178,11 @@ func reset():
 	var save_file_location = str(OS.get_user_data_dir(),"/savefile/save")
 	print("removed save file: ", dir.remove(save_file_location))
 
+
+func _get_persisting_objects() -> Array:
+	var return_array = []
+	var persist_group = get_tree().get_nodes_in_group("PERSIST")
+	for node in persist_group:
+		return_array.append(node.get_save_dictionary())
+	return return_array
+	
