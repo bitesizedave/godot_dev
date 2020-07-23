@@ -42,7 +42,6 @@ func _ready():
 
 func save_game() -> bool:
 	var save_game_epoch: = OS.get_unix_time()
-	print("save game epoch ",save_game_epoch)
 	total_number_of_saves += 1
 	number_of_saves_this_session += 1
 	if number_of_saves_this_session == 1:

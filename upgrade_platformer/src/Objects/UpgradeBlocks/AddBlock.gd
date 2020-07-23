@@ -21,6 +21,8 @@ func _ready():
 	add_area.connect("area_exited", self, "_on_add_area_exited")
 	subtract_area.connect("area_entered", self, "_on_subtract_area_entered")
 	subtract_area.connect("area_exited", self, "_on_subtract_area_exited")
+	if level == 1:
+		cost = starting_cost
 	save_persist_state()
 
 
@@ -86,6 +88,7 @@ func _on_add_area_exited(area):
 
 # Functions belod to be overwritten by children to give their specific blocks functionality
 func subtract_some_stuff():
+	#Make sure this is being saved!
 	pass
 
 
@@ -113,6 +116,7 @@ func load_persist_state(load_dictionary: Dictionary):
 		cost = load_dictionary.cost
 		cost_ramp - load_dictionary.cost_ramp
 		level = load_dictionary.level
+		print(name," loaded, cost ", cost, " level ", level)
 
 
 func get_save_dictionary() -> Dictionary:

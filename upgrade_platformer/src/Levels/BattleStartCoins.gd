@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var start_coins: = WorldData.start_coins
+onready var start_coins: = CoinData.start_coins
 var coin_positions: = []
 onready var coin_scene = preload("res://src/Objects/Coin/Coin.tscn")
 var coins: = []
@@ -12,8 +12,8 @@ func _ready():
 	
 
 func _on_battling_entered():
-	if coin_positions.size() >= WorldData.start_coins:
-		start_coins = WorldData.start_coins
+	if coin_positions.size() >= CoinData.start_coins:
+		start_coins = CoinData.start_coins
 	else:
 		start_coins = coin_positions.size()
 	for n in start_coins:
