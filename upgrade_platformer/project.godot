@@ -93,7 +93,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Wrap Battle"
-run/main_scene="res://src/Levels/OverWorld.tscn"
+run/main_scene="res://src/Levels/MainLevel.tscn"
 config/icon="res://icon.png"
 
 [autoload]

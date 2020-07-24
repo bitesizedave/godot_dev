@@ -3,7 +3,7 @@ extends AddBlock
 
 func _ready():
 	
-	starting_cost = 5
+	starting_cost = 100
 	cost_ramp = 2
 	if level <= 1:
 		level = 1
@@ -11,13 +11,13 @@ func _ready():
 	else: cost *= cost_ramp * level
 	level_label.text = str(level)
 	cost_label.text = str("$",cost)
-	CoinData.start_coins = level
+	CoinData.coin_value = level
 
 
 func subtract_some_stuff():
-	CoinData.start_coins -= 1
+	CoinData.coin_value -= 1
 
 
 
 func add_some_stuff():
-	CoinData.start_coins += 1
+	CoinData.coin_value += 1

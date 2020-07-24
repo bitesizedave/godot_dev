@@ -4,7 +4,7 @@ class_name CoinArea
 signal coin_collected
 signal you_got_coin_thwacked
 
-onready var coin_value: = WorldData.coin_value
+onready var coin_value: = CoinData.coin_value
 onready var _coin_state_machine = $CoinStateMachine
 onready var thwack_timer: = $CoinStateMachine/CoinThwacked/CoinThwackedTimer
 onready var coin_ap: = get_parent().get_node("CoinAP")

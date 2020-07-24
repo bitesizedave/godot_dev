@@ -5,6 +5,7 @@ signal thwack_acceleration_updated
 signal thwack_score_added_updated
 signal coin_tween_speed_updated
 signal start_coins_updated
+signal coin_value_updated
 
 
 var base_thwack_impulse: = 120000.0 setget set_base_thwack_impulse, get_base_thwack_impulse
@@ -13,6 +14,7 @@ var thwack_score_added: = 1 setget set_thwack_score_added, get_thwack_score_adde
 var coin_tween_speed: = 0.3 setget set_coin_tween_speed, get_coin_tween_speed
 onready var start_coins: = 1 setget set_start_coins, get_start_coins
 var save_dictionary: Dictionary
+var coin_value: int = 1
 
 
 func _ready():
@@ -68,11 +70,21 @@ func get_start_coins() -> int:
 	return start_coins
 
 
+func set_coin_value(value: int):
+	coin_value = value
+	emit_signal("coin_value_updated")
+
+
+func get_coin_value() -> int:
+	return coin_value
+
+
 func save_persist_state():
 	save_dictionary = {
 			"object_name" : self.name,
 			"object_path" : self.get_path(),
 			"start_coins" : start_coins,
+			"coin_value" : coin_value,
 			"thwack_score_added" : thwack_score_added
 		}
 
