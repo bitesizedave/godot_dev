@@ -3,9 +3,9 @@ extends Node
 var savefile_directory_string = "user://savefile.save"
 var score_timer_wait_time: float
 var game_started_epoch: int
-var loaded_save_epoch: int
-var first_save_epoch: int
-var last_save_epoch: int
+var loaded_game_this_session_epoch: int
+var first_save_last_session_epoch: int
+var ended_last_session_epoch: int
 var total_number_of_saves: int
 onready var number_of_saves_this_session: int = 0
 var time_away_in_seconds: int
@@ -18,23 +18,19 @@ onready var score_timer: Timer = $ScoreTimer
 func _ready():
 	GameStateData.connect("not_battling_entered", self, "_on_not_battling_entered")
 	ScoreTimer.connect("timeout", self, "_on_score_timer_timeout")
-	var ready_epoch = OS.get_unix_time()
+	loaded_game_this_session_epoch = OS.get_unix_time()
 	game_loaded = load_game()
 	print("game loaded: ", game_loaded)
-	if (last_save_epoch != loaded_save_epoch
-		and loaded_save_epoch != 0
-		and total_number_of_saves > 0): 
+	#Add time away points if there's a save
+	if (total_number_of_saves > 1
+		and not load_error): 
 			_add_time_away_points()
-			loaded_save_epoch = ready_epoch
-	if (total_number_of_saves == 0
+	#If there's no save file
+	if (total_number_of_saves <= 0
 		and not load_error):
-		game_started_epoch = ready_epoch
-		print("initializing game started epoch")
-	print("game_started_epoch: ", game_started_epoch)
-	if (total_number_of_saves == 1
-	and number_of_saves_this_session == 1):
-		first_save_epoch = ready_epoch
-		print("initializing first_save_epoch: ", first_save_epoch)
+		game_started_epoch = loaded_game_this_session_epoch
+	
+
 
 #func _on_not_battling_entered():
 #	save_game()
@@ -45,8 +41,8 @@ func save_game() -> bool:
 	total_number_of_saves += 1
 	number_of_saves_this_session += 1
 	if number_of_saves_this_session == 1:
-		loaded_save_epoch = save_game_epoch
-	else: last_save_epoch = save_game_epoch
+		first_save_last_session_epoch = save_game_epoch
+	ended_last_session_epoch = save_game_epoch
 	var save_game = File.new()
 	save_game.open(savefile_directory_string, File.WRITE)
 	var persisting_objects = _get_persisting_objects()
@@ -54,10 +50,9 @@ func save_game() -> bool:
 		"score" : WorldData.score,
 		"score_time" : ScoreTimer.score_time,
 		"latest_battle_score" : ScoreTimer.latest_battle_score,
-		"loaded_save_epoch" : loaded_save_epoch,
-		"last_save_epoch" : last_save_epoch,
+		"ended_last_session_epoch" : ended_last_session_epoch,
 		"total_number_of_saves" : total_number_of_saves,
-		"first_save_epoch" : first_save_epoch,
+		"first_save_last_session_epoch" : first_save_last_session_epoch,
 		"game_started_epoch" : game_started_epoch,
 		"persisting_objects" : persisting_objects
 		
@@ -96,16 +91,10 @@ func load_game() -> bool:
 		print("no latest_battle_score in savefile")
 		load_error = true
 		return false
-	if load_dictionary.has("loaded_save_epoch"):
-		loaded_save_epoch = load_dictionary.loaded_save_epoch
+	if load_dictionary.has("ended_last_session_epoch"):
+		ended_last_session_epoch = load_dictionary.ended_last_session_epoch
 	else:
-		print("no loaded_save_epoch")
-		load_error = true
-		return false
-	if load_dictionary.has("last_save_epoch"):
-		last_save_epoch = load_dictionary.last_save_epoch
-	else:
-		print("no last_save_epoch")
+		print("no ended_last_session_epoch")
 		load_error = true
 		return false
 	if load_dictionary.has("total_number_of_saves"):
@@ -115,10 +104,10 @@ func load_game() -> bool:
 		print("no total_number_of_saves")
 		load_error = true
 		return false
-	if load_dictionary.has("first_save_epoch"):
-		first_save_epoch = load_dictionary.first_save_epoch
+	if load_dictionary.has("first_save_last_session_epoch"):
+		first_save_last_session_epoch = load_dictionary.first_save_last_session_epoch
 	else:
-		print("no first_save_epoch")
+		print("no first_save_last_session_epoch")
 		load_error = true
 		return false
 	if load_dictionary.has("game_started_epoch"):
@@ -146,9 +135,9 @@ func _on_score_timer_timeout():
 
 
 func _add_time_away_points():
-	print("first save epoch: ", loaded_save_epoch)
-	print("last_save_epoch: ", last_save_epoch)
-	time_away_in_seconds = last_save_epoch - loaded_save_epoch
+	print("loaded_game_this_session epoch: ", loaded_game_this_session_epoch)
+	print("ended_last_session_epoch: ", ended_last_session_epoch)
+	time_away_in_seconds = loaded_game_this_session_epoch - ended_last_session_epoch
 	if ScoreTimer.score_time > 0.0:
 		time_away_score_timer_cycles = (time_away_in_seconds/ScoreTimer.score_time)
 	print("time away in seconds: ", time_away_in_seconds)
@@ -165,14 +154,14 @@ func _add_time_away_points():
 func reset():
 	score_timer_wait_time = 0.0
 	game_started_epoch = 0
-	loaded_save_epoch = 0
-	first_save_epoch = 0
-	last_save_epoch = 0
+	loaded_game_this_session_epoch = 0
+	first_save_last_session_epoch = 0
+	ended_last_session_epoch = 0
 	total_number_of_saves = 0
 	number_of_saves_this_session = 0
 	time_away_in_seconds = 0
 	time_away_score_timer_cycles = 0.0
-#	save_game()
+	save_game()
 	var dir = Directory.new()
 	var save_file_location = str(OS.get_user_data_dir(),"/savefile/save")
 	print("removed save file: ", dir.remove(save_file_location))

@@ -9,10 +9,10 @@ onready var level_label = $LevelLabel
 onready var cost_label = $CostLabel
 onready var block_animation = $AddBlockAP
 var points_spent: int
-var starting_cost: = 1
+var starting_cost: int
 var cost: float
-var cost_ramp: = 2
-var level: = 1
+var cost_ramp: float
+var level: int
 var attack_direction: Vector2
 var save_dictionary: Dictionary
 
@@ -21,8 +21,6 @@ func _ready():
 	add_area.connect("area_exited", self, "_on_add_area_exited")
 	subtract_area.connect("area_entered", self, "_on_subtract_area_entered")
 	subtract_area.connect("area_exited", self, "_on_subtract_area_exited")
-	if level == 1:
-		cost = starting_cost
 	save_persist_state()
 
 
