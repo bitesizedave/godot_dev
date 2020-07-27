@@ -37,26 +37,29 @@ func wrap_position(top_wrap: bool, right_wrap: bool, bottom_wrap: bool, left_wra
 	return new_position
 
 
-func create_rising_label_animation(value: String, transform: Transform2D, color: Color):
+func create_rising_label_animation(value: String, color: Color):
 	var global_position = get_global_position()
+	var center_container = CenterContainer.new()
 	var label = Label.new()
-	main_level.add_child(label)
+	main_level.add_child(center_container)
+	center_container.add_child(label)
+	center_container.use_top_left = true
 	label.text = value
 	label.modulate = color
 	label.align = Label.ALIGN_CENTER
 	label.show_on_top = true
-	label.rect_global_position = global_position - transform.get_scale()
+	center_container.rect_global_position = global_position
 #	label.rect_global_position = get_global_position() - Vector2(transform.x.x,transform.y.y)*2
 	var label_animation = Tween.new()
 	add_child(label_animation)
 	label_animation.connect("tween_completed", self, "_on_animation_tween_completed")
-	label_animation.interpolate_property(label, "rect_position", global_position, 
+	label_animation.interpolate_property(center_container, "rect_position", global_position, 
 		Vector2(global_position.x, global_position.y - rising_label_animation_distance),
 		rising_label_animation_time, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	label_animation.start()
 	var fade_out_animation = Tween.new()
 	add_child(fade_out_animation)
-	fade_out_animation.interpolate_property(label, "modulate", color, Color(color.r, color.g, color.b, 0),
+	fade_out_animation.interpolate_property(label, "modulate", color, Color(color.r, color.g, color.b, 0.2),
 	rising_label_animation_time, Tween.TRANS_SINE, Tween.EASE_OUT)
 	fade_out_animation.start()
 

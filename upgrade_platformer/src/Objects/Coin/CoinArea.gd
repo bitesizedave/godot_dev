@@ -26,7 +26,7 @@ func _ready():
 	connect("coin_collected", battle_score_gui, "_on_coin_collected")
 
 func collect_coin():
-	coin.create_rising_label_animation(str("+",coin_value), coin_sprite.transform, Color.green)
+	coin.create_rising_label_animation(str("+",coin_value), Color.green)
 	_coin_state_machine.transition_to("CoinStationary")
 	var coin_tween = Tween.new()
 	add_child(coin_tween)
