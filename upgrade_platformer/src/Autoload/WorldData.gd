@@ -25,13 +25,21 @@ onready var battle_room_dimensions: = {
 	"br_top": -ProjectSettings.get("display/window/size/height")/2,
 	"br_bottom": ProjectSettings.get("display/window/size/height")/2 
 }
-
 onready var project_window_size = Vector2(ProjectSettings.get("display/window/size/width"), ProjectSettings.get("display/window/size/height"))
 
 
+func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
+
+
 func _unhandled_input(event):
-	if event.is_action_pressed("hard_reset"):
-		hard_reset()
+	if get_tree().paused == false:
+		if event.is_action_pressed("hard_reset"):
+			hard_reset()
+		if event.is_action_pressed("pause"):
+			get_tree().paused = true
+	elif event.is_action_pressed("pause"):
+		get_tree().paused = false
 
 
 

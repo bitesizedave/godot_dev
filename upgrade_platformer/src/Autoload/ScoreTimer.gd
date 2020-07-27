@@ -12,6 +12,7 @@ func _ready():
 	one_shot = false
 	connect("timeout", self, "on_timeout")
 	WorldData.connect("hard_reset", self, "_on_hard_reset")
+	pause_mode = Node.PAUSE_MODE_PROCESS
 
 
 func set_score_time(value: float):
