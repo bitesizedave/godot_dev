@@ -23,6 +23,9 @@ onready var gravity: = WorldData.gravity
 onready var thwack_timer = $CoinThwackedTimer
 onready var coin = get_parent().owner
 var consecutive_thwack_value: int
+var coin_thwacked_pause_time_default: float = .017
+var maximum_coin_thwacked_pause_time_mulitiplier: = 10 
+
 
 
 func physics_process(delta: float) -> void:
@@ -60,7 +63,11 @@ func enter(msg: Dictionary = {}) -> void:
 		modified_thwack_velocity += thwack_impulse * thwack_direction
 		modified_thwack_velocity += consecutive_thwack_value * (thwack_impulse/10) * thwack_direction
 	coin.get_node("CoinAreaDetector/CoinSprite").modulate = Color.green
-
+	var coin_thwacked_pause_time = min(coin_thwacked_pause_time_default * consecutive_thwack_value, 
+		coin_thwacked_pause_time_default * maximum_coin_thwacked_pause_time_mulitiplier)
+	get_tree().paused = true
+	yield(get_tree().create_timer(coin_thwacked_pause_time), "timeout")
+	get_tree().paused = false
 func exit() -> void:
 	consecutive_thwack_value = 0
 
