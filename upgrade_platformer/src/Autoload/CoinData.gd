@@ -6,6 +6,7 @@ signal thwack_score_added_updated
 signal coin_tween_speed_updated
 signal start_coins_updated
 signal coin_value_updated
+signal coin_collecting_coin_multiplier_updated
 
 
 var base_thwack_impulse: = 120000.0 setget set_base_thwack_impulse, get_base_thwack_impulse
@@ -15,6 +16,7 @@ var coin_tween_speed: = 0.3 setget set_coin_tween_speed, get_coin_tween_speed
 onready var start_coins: = 1 setget set_start_coins, get_start_coins
 var save_dictionary: Dictionary
 var coin_value: int = 1
+var coin_collecting_coin_multiplier: int = 2 setget set_coin_collecting_coin_multiplier, get_coin_collecting_coin_multiplier
 
 
 func _ready():
@@ -77,6 +79,16 @@ func set_coin_value(value: int):
 
 func get_coin_value() -> int:
 	return coin_value
+
+
+func set_coin_collecting_coin_multiplier(value :int):
+	coin_collecting_coin_multiplier = value
+	emit_signal("coin_collecting_coin_multiplier_updated")
+
+
+func get_coin_collecting_coin_multiplier() -> int:
+	return  coin_collecting_coin_multiplier
+
 
 
 func save_persist_state():

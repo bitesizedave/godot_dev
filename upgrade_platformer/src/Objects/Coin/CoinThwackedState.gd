@@ -62,6 +62,7 @@ func enter(msg: Dictionary = {}) -> void:
 		consecutive_thwack_value = msg["consecutive_thwack_value"]
 		modified_thwack_velocity += thwack_impulse * thwack_direction
 		modified_thwack_velocity += consecutive_thwack_value * (thwack_impulse/10) * thwack_direction
+#		modified_thwack_velocity += (thwack_impulse/5) * thwack_direction
 	coin.get_node("CoinAreaDetector/CoinSprite").modulate = Color.green
 	var coin_thwacked_pause_time = min(coin_thwacked_pause_time_default * consecutive_thwack_value, 
 		coin_thwacked_pause_time_default * maximum_coin_thwacked_pause_time_mulitiplier)

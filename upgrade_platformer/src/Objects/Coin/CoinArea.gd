@@ -18,6 +18,7 @@ onready var thwack_score_added: = CoinData.thwack_score_added
 var thwack_instance_id: int
 const COIN_LAYER: = 2
 onready var tween_speed: = CoinData.coin_tween_speed
+onready var coin_collecting_coin_multiplier = CoinData.coin_collecting_coin_multiplier
 
 
 func _ready():
@@ -25,8 +26,12 @@ func _ready():
 	battle_score_gui = coin.find_parent("MainLevel").find_node("BattleScore")
 	connect("coin_collected", battle_score_gui, "_on_coin_collected")
 
-func collect_coin():
-	coin.create_rising_label_animation(str("+",coin_value), Color.green)
+func collect_coin(collected_from_other_coin: bool = false):
+	var coin_collected_value: int
+	if collected_from_other_coin:
+		coin_collected_value = coin_value * coin_collecting_coin_multiplier
+	else: coin_collected_value = coin_value
+	coin.create_rising_label_animation(str("+",coin_collected_value), Color.green)
 	_coin_state_machine.transition_to("CoinStationary")
 	var coin_tween = Tween.new()
 	add_child(coin_tween)
@@ -44,8 +49,8 @@ func collect_coin():
 		coin_sprite.scale * 0.6, tween_speed, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	coin_size_tween.start()
 	emit_signal("coin_collected", tween_speed)
-	WorldData.battle_score += coin_value
-	WorldData.score += coin_value
+	WorldData.battle_score += coin_collected_value
+	WorldData.score += coin_collected_value
 
 
 func _on_coin_tween_completed():
@@ -83,7 +88,7 @@ func _on_you_got_thwacked(area, thwack_id, attack_direction):
 
 func _on_you_got_coin_thwacked(area):
 	if area == self:
-		collect_coin()
+		collect_coin(true)
 
 func get_consecutive_thwack_value():
 	return consecutive_thwack_value
