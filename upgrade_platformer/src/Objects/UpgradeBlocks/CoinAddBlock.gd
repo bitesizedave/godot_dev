@@ -2,7 +2,6 @@ extends AddBlock
 
 
 func _ready():
-	
 	starting_cost = 5
 	cost_ramp = 2
 	if level <= 1:

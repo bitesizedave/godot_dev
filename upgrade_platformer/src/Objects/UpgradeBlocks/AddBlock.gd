@@ -21,6 +21,7 @@ func _ready():
 	add_area.connect("area_exited", self, "_on_add_area_exited")
 	subtract_area.connect("area_entered", self, "_on_subtract_area_entered")
 	subtract_area.connect("area_exited", self, "_on_subtract_area_exited")
+	WorldData.connect("hard_reset", self, "_on_hard_reset")
 	save_persist_state()
 
 
@@ -112,10 +113,19 @@ func load_persist_state(load_dictionary: Dictionary):
 		points_spent = load_dictionary.points_spent
 		starting_cost = load_dictionary.starting_cost
 		cost = load_dictionary.cost
-		cost_ramp - load_dictionary.cost_ramp
+		cost_ramp = load_dictionary.cost_ramp
 		level = load_dictionary.level
 		print(name," loaded, cost ", cost, " level ", level)
 
 
 func get_save_dictionary() -> Dictionary:
 	return save_dictionary
+
+
+func _on_hard_reset():
+	print("reset blocks")
+	level = 1
+	level_label.text = str(level)
+	cost = starting_cost
+	cost_label.text = str("$",cost)
+	save_persist_state()
