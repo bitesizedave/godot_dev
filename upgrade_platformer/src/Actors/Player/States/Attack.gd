@@ -16,10 +16,10 @@ var direction: = Vector2.ZERO
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash"):
 		direction = get_attack_direction()
-		_state_machine.transition_to("Attack/Dash")
+		_state_machine.transition_to("Move/Dash")
 	if event.is_action_pressed("thwack"):
 		direction = get_attack_direction()
-		_state_machine.transition_to("Attack/Thwack")
+		_state_machine.transition_to("Move/Thwack")
 
 
 

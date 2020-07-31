@@ -22,10 +22,10 @@ func _ready():
 
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash"):
-		_state_machine.transition_to("Attack/Dash", { "facing_direction": facing_direction })
+		_state_machine.transition_to("Move/Dash", { "facing_direction": facing_direction })
 		velocity = Vector2.ZERO
 	elif event.is_action_pressed("thwack"):
-		_state_machine.transition_to("Attack/Thwack", { "facing_direction": facing_direction })
+		_state_machine.transition_to("Move/Thwack", { "facing_direction": facing_direction })
 	if owner.is_on_floor() and Input.is_action_just_pressed("jump") and Input.get_action_strength("down") > 0.0:
 		owner.set_collision_mask_bit(PASSTHROUGH_BIT_LAYER, false)
 		velocity.y -= drop_velocity
@@ -90,3 +90,10 @@ func _set_facing_direction():
 
 func on_DropTimer_timeout():
 	owner.set_collision_mask_bit(PASSTHROUGH_BIT_LAYER, true)
+
+
+static func get_attack_direction() -> Vector2:
+	return Vector2(
+		Input.get_action_strength("right") - Input.get_action_strength("left"),
+		Input.get_action_strength("down") - Input.get_action_strength("up")
+	)

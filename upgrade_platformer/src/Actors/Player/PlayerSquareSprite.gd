@@ -1,6 +1,6 @@
 extends Sprite
 
-onready var dash_state = $PlayerSquare/StateMachine/Attack/Dash
+onready var dash_state = $PlayerSquare/StateMachine/Move/Dash
 
 func ready():
 	dash_state.connect("dash_started", self, "_on_dash_started")

@@ -22,7 +22,7 @@ func _ready():
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("thwack"):
 		after_thwack_delay_timer.stop()
-		_state_machine.transition_to("Attack/Thwack", { "facing_direction": facing_direction })
+		_state_machine.transition_to("Move/Thwack", { "facing_direction": facing_direction })
 
 
 func physics_process(delta: float) -> void:
