@@ -25,6 +25,7 @@ var drop_velocity: = 10.0
 
 
 onready var ledge_assist: Timer = $LedgeAssist
+onready var jump_buffer: Timer = $JumpBuffer
 
 func _ready():
 	ledge_assist.connect("timeout", self, "_on_ledge_assist_timeout")
@@ -32,6 +33,14 @@ func _ready():
 
 func unhandled_input(event: InputEvent) -> void:
 	var move: = get_parent()
+	var has_air_jumps_left = (jump_count < PlayerData.jump_count)
+	# Jump buffer
+	if event.is_action_released("jump"):
+		jump_buffer.stop()
+	elif (event.is_action_pressed("jump")
+		and not has_air_jumps_left):
+			jump_buffer.start()
+	# Ledge assist
 	if (event.is_action_pressed("jump") #jumping from the ground with ledge_assist
 		and ledge_assist.time_left > 0.0):
 			jump()
@@ -41,8 +50,9 @@ func unhandled_input(event: InputEvent) -> void:
 			jump()
 	elif (event.is_action_pressed("jump")
 		and not is_ledge_falling
-		and jump_count < PlayerData.jump_count):
+		and has_air_jumps_left):
 			jump()
+	# Partial jump
 	if event.is_action_released("jump") and move.velocity.y < 0:
 		move.velocity.y *= .55
 	move.unhandled_input(event)
@@ -62,14 +72,14 @@ func physics_process(delta: float) -> void:
 	#adjust velocity when dropping
 	if (drop_timer.time_left > 0.0):
 		move.velocity.y += drop_velocity
-
-
-
 	# Landing
 	if owner.is_on_floor():
-		is_dropping = false
-		var target_state: = "Move/Idle" if move.get_move_direction().x == 0 else "Move/Run"
-		_state_machine.transition_to(target_state)
+		if jump_buffer.time_left > 0.0:
+			jump()
+		else:
+			is_dropping = false
+			var target_state: = "Move/Idle" if move.get_move_direction().x == 0 else "Move/Run"
+			_state_machine.transition_to(target_state)
 
 
 func enter(msg: Dictionary = {}) -> void:
@@ -90,6 +100,7 @@ func exit() -> void:
 	is_dropping = false
 	jump_count = 0
 	is_ledge_falling = false
+	jump_buffer.stop()
 	if (top_of_jump_float_factor != top_of_jump_float_factor_default):
 			top_of_jump_float_factor = top_of_jump_float_factor_default
 	move.exit()
