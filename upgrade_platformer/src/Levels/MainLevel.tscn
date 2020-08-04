@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/Levels/MainTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/UI/GUI/GUI.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://src/Objects/UpgradeBlocks/CoinAddBlock.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Levels/GameManager.gd" type="Script" id=9]
 [ext_resource path="res://src/Objects/UpgradeBlocks/CoinValueAddBlock.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/Objects/UpgradeBlocks/CoinCollectCoinValueAddBlock.tscn" type="PackedScene" id=11]
 
 [node name="MainLevel" type="Node2D"]
 script = ExtResource( 9 )
@@ -42,6 +43,9 @@ position = Vector2( 636, 103 )
 position = Vector2( 636, 36 )
 
 [node name="BattleStartCoins" parent="." instance=ExtResource( 7 )]
+
+[node name="CoinCollectCoinValueAddBlock" parent="." instance=ExtResource( 11 )]
+position = Vector2( 636, -32 )
 
 [editable path="GameStateMachine"]
 

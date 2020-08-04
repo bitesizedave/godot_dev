@@ -12,15 +12,19 @@ signal coin_collecting_coin_multiplier_updated
 var base_thwack_impulse: = 120000.0 setget set_base_thwack_impulse, get_base_thwack_impulse
 var thwack_acceleration: = 1.5 setget set_thwack_acceleration, get_thwack_acceleration
 var thwack_score_added: = 1 setget set_thwack_score_added, get_thwack_score_added
+var default_thwack_score_added: = 1
 var coin_tween_speed: = 0.3 setget set_coin_tween_speed, get_coin_tween_speed
 onready var start_coins: = 1 setget set_start_coins, get_start_coins
 var save_dictionary: Dictionary
 var coin_value: int = 1
+var default_coin_value: = 1
 var coin_collecting_coin_multiplier: int = 2 setget set_coin_collecting_coin_multiplier, get_coin_collecting_coin_multiplier
+var default_coin_collecting_coin_multiplier: = 2
 
 
 func _ready():
 	ScoreTimer.connect("timeout", self, "_on_score_timer_timeout")
+	WorldData.connect("hard_reset", self, "_on_hard_reset")
 
 
 func set_base_thwack_impulse(value) -> bool:
@@ -113,3 +117,13 @@ func get_save_dictionary() -> Dictionary:
 
 func _on_score_timer_timout():
 	save_persist_state()
+
+
+func _on_hard_reset():
+	_reset_default_coin_values()
+
+
+func _reset_default_coin_values():
+	thwack_score_added = default_thwack_score_added
+	coin_value = default_coin_value
+	coin_collecting_coin_multiplier = default_coin_collecting_coin_multiplier

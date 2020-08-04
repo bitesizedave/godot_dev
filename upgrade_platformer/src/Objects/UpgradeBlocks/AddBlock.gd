@@ -123,7 +123,6 @@ func get_save_dictionary() -> Dictionary:
 
 
 func _on_hard_reset():
-	print("reset blocks")
 	level = 1
 	level_label.text = str(level)
 	cost = starting_cost
