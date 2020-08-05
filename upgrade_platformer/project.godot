@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Actors/Player/ThwackArea.gd"
 }, {
+"base": "Line2D",
+"class": "Trail2D",
+"language": "GDScript",
+"path": "res://src/FX/Trail2D.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "WrappingObject",
 "language": "GDScript",
@@ -87,6 +92,7 @@ _global_script_class_icons={
 "State": "res://assets/icons/state.svg",
 "StateMachine": "res://assets/icons/state_machine.svg",
 "ThwackArea": "res://assets/thwack.png",
+"Trail2D": "",
 "WrappingObject": ""
 }
 
