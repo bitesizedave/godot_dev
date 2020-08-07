@@ -15,13 +15,16 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="Gradient" id=4]
-
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 8 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0.0234656 ), 0.0, 1.2851, 0, 0, Vector2( 1, 1 ), 0.824806, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=4]
+resource_local_to_scene = true
+offsets = PoolRealArray( 0, 0.0233918, 0.0350877, 1 )
+colors = PoolColorArray( 0.239662, 0.239662, 0.239662, 0.227545, 1, 1, 1, 0, 0.304497, 0.304497, 0.304497, 0.293413, 1, 1, 1, 1 )
 
 [node name="PlayerSquare" type="KinematicBody2D" groups=[
 "PLAYER",
@@ -88,13 +91,6 @@ shape = SubResource( 1 )
 texture = ExtResource( 1 )
 script = ExtResource( 10 )
 
-[node name="PlayerTrail2D" parent="PlayerSquareSprite" instance=ExtResource( 3 )]
-width = 50.0
-width_curve = SubResource( 3 )
-default_color = Color( 1, 1, 1, 1 )
-gradient = SubResource( 4 )
-target_path = NodePath("..")
-
 [node name="OuchieDetector" type="Area2D" parent="." groups=[
 "PLAYER",
 ]]
@@ -102,6 +98,19 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OuchieDetector"]
 shape = SubResource( 2 )
+
+[node name="PlayerTrail2D" parent="." instance=ExtResource( 3 )]
+show_behind_parent = true
+points = PoolVector2Array( 101.938, 54.3546 )
+width = 16.0
+width_curve = SubResource( 5 )
+default_color = Color( 1, 1, 1, 1 )
+gradient = SubResource( 4 )
+is_emitting = true
+resolution = 5.0
+lifetime = 0.1
+max_points = 10
+target_path = NodePath("..")
 [connection signal="dash_ended" from="StateMachine/Move/Dash" to="PlayerSquareSprite" method="_on_dash_ended"]
 [connection signal="dash_ended" from="StateMachine/Move/Dash" to="." method="_on_dash_ended"]
 [connection signal="dash_started" from="StateMachine/Move/Dash" to="PlayerSquareSprite" method="_on_dash_started"]

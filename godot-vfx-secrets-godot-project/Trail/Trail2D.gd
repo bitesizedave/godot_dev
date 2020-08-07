@@ -28,7 +28,7 @@ onready var target: Node2D = get_node_or_null(target_path)
 
 
 func _ready() -> void:
-#	if not target:
+	if not target:
 	target = get_parent() as Node2D
 	
 	if Engine.editor_hint:
