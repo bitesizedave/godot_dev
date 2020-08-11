@@ -43,6 +43,7 @@ position = Vector2( 636, 103 )
 position = Vector2( 636, 36 )
 
 [node name="BattleStartCoins" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, -25 )
 
 [node name="CoinCollectCoinValueAddBlock" parent="." instance=ExtResource( 11 )]
 position = Vector2( 636, -32 )

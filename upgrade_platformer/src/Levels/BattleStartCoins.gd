@@ -37,11 +37,9 @@ func _on_battling_exited():
 func _toggle_coin_collision_layers(value: bool):
 	var all_the_coins = get_tree().get_nodes_in_group("COINS")
 	if all_the_coins.size() > 0:
-#		print(str(all_the_coins))
 		for coin in all_the_coins:
 			var coin_area = owner.get_node(str(coin.get_path(),"/CoinAreaDetector"))
 			coin.visible = value
-			print(str(coin_area))
 			coin_area.set_collision_mask_bit(CoinData.COIN_LAYER, value)
 			coin_area.set_collision_mask_bit(PlayerData.PLAYER_LAYER, value)
 			coin_area.set_collision_mask_bit(PlayerData.PLAYER_ATTACK_LAYER, value)

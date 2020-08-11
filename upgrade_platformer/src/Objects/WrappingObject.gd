@@ -49,7 +49,6 @@ func create_rising_label_animation(value: String, color: Color):
 	label.align = Label.ALIGN_CENTER
 	label.show_on_top = true
 	center_container.rect_global_position = global_position
-	print(self.get_path())
 	var label_animation = Tween.new()
 	main_level.add_child(label_animation)
 	label_animation.connect("tween_completed", self, "_on_animation_tween_completed")

@@ -7,54 +7,1390 @@ position = Vector2( 0, -23 )
 script = ExtResource( 1 )
 
 [node name="Coin1" type="Position2D" parent="."]
+position = Vector2( 0, -1 )
 
 [node name="Coin2" type="Position2D" parent="."]
-position = Vector2( -24, 0 )
+position = Vector2( -24, -1 )
 
 [node name="Coin3" type="Position2D" parent="."]
-position = Vector2( 24, 0 )
+position = Vector2( 24, -1 )
 
 [node name="Coin4" type="Position2D" parent="."]
-position = Vector2( -48, 0 )
+position = Vector2( -48, -1 )
 
 [node name="Coin5" type="Position2D" parent="."]
-position = Vector2( 48, 0 )
+position = Vector2( 48, -1 )
 
 [node name="Coin6" type="Position2D" parent="."]
-position = Vector2( -72, 0 )
+position = Vector2( -72, -1 )
 
 [node name="Coin7" type="Position2D" parent="."]
-position = Vector2( 72, 0 )
+position = Vector2( 72, -1 )
 
 [node name="Coin8" type="Position2D" parent="."]
-position = Vector2( -96, 0 )
+position = Vector2( -96, -1 )
 
 [node name="Coin9" type="Position2D" parent="."]
-position = Vector2( 96, 0 )
+position = Vector2( 96, -1 )
 
 [node name="Coin10" type="Position2D" parent="."]
-position = Vector2( 0, -24 )
+position = Vector2( 0, -25 )
 
 [node name="Coin11" type="Position2D" parent="."]
-position = Vector2( -24, -24 )
+position = Vector2( -24, -25 )
 
 [node name="Coin12" type="Position2D" parent="."]
-position = Vector2( 24, -24 )
+position = Vector2( 24, -25 )
 
 [node name="Coin13" type="Position2D" parent="."]
-position = Vector2( -48, -24 )
+position = Vector2( -48, -25 )
 
 [node name="Coin14" type="Position2D" parent="."]
-position = Vector2( 48, -24 )
+position = Vector2( 48, -25 )
 
 [node name="Coin15" type="Position2D" parent="."]
-position = Vector2( -72, -24 )
+position = Vector2( -72, -25 )
 
 [node name="Coin16" type="Position2D" parent="."]
-position = Vector2( 72, -24 )
+position = Vector2( 72, -25 )
 
 [node name="Coin17" type="Position2D" parent="."]
-position = Vector2( -96, -24 )
+position = Vector2( -96, -25 )
 
 [node name="Coin18" type="Position2D" parent="."]
-position = Vector2( 96, -24 )
+position = Vector2( 96, -25 )
+
+[node name="Coin19" type="Position2D" parent="."]
+position = Vector2( 0, -49 )
+
+[node name="Coin20" type="Position2D" parent="."]
+position = Vector2( -24, -49 )
+
+[node name="Coin21" type="Position2D" parent="."]
+position = Vector2( 24, -49 )
+
+[node name="Coin22" type="Position2D" parent="."]
+position = Vector2( -48, -49 )
+
+[node name="Coin23" type="Position2D" parent="."]
+position = Vector2( 48, -49 )
+
+[node name="Coin24" type="Position2D" parent="."]
+position = Vector2( -72, -49 )
+
+[node name="Coin25" type="Position2D" parent="."]
+position = Vector2( 72, -49 )
+
+[node name="Coin26" type="Position2D" parent="."]
+position = Vector2( -96, -49 )
+
+[node name="Coin27" type="Position2D" parent="."]
+position = Vector2( 96, -49 )
+
+[node name="Coin28" type="Position2D" parent="."]
+position = Vector2( 0, -73 )
+
+[node name="Coin29" type="Position2D" parent="."]
+position = Vector2( -24, -73 )
+
+[node name="Coin30" type="Position2D" parent="."]
+position = Vector2( 24, -73 )
+
+[node name="Coin31" type="Position2D" parent="."]
+position = Vector2( -48, -73 )
+
+[node name="Coin32" type="Position2D" parent="."]
+position = Vector2( 48, -73 )
+
+[node name="Coin33" type="Position2D" parent="."]
+position = Vector2( -72, -73 )
+
+[node name="Coin34" type="Position2D" parent="."]
+position = Vector2( 72, -73 )
+
+[node name="Coin35" type="Position2D" parent="."]
+position = Vector2( -96, -73 )
+
+[node name="Coin36" type="Position2D" parent="."]
+position = Vector2( 96, -73 )
+
+[node name="Coin37" type="Position2D" parent="."]
+position = Vector2( 0, -97 )
+
+[node name="Coin38" type="Position2D" parent="."]
+position = Vector2( -24, -97 )
+
+[node name="Coin39" type="Position2D" parent="."]
+position = Vector2( 24, -97 )
+
+[node name="Coin40" type="Position2D" parent="."]
+position = Vector2( -48, -97 )
+
+[node name="Coin41" type="Position2D" parent="."]
+position = Vector2( 48, -97 )
+
+[node name="Coin42" type="Position2D" parent="."]
+position = Vector2( -72, -97 )
+
+[node name="Coin43" type="Position2D" parent="."]
+position = Vector2( 72, -97 )
+
+[node name="Coin44" type="Position2D" parent="."]
+position = Vector2( -96, -97 )
+
+[node name="Coin45" type="Position2D" parent="."]
+position = Vector2( 96, -97 )
+
+[node name="Coin46" type="Position2D" parent="."]
+position = Vector2( 0, -121 )
+
+[node name="Coin47" type="Position2D" parent="."]
+position = Vector2( -24, -120 )
+
+[node name="Coin48" type="Position2D" parent="."]
+position = Vector2( 24, -120 )
+
+[node name="Coin49" type="Position2D" parent="."]
+position = Vector2( -48, -120 )
+
+[node name="Coin50" type="Position2D" parent="."]
+position = Vector2( 48, -120 )
+
+[node name="Coin51" type="Position2D" parent="."]
+position = Vector2( -72, -120 )
+
+[node name="Coin52" type="Position2D" parent="."]
+position = Vector2( 72, -120 )
+
+[node name="Coin53" type="Position2D" parent="."]
+position = Vector2( -96, -120 )
+
+[node name="Coin54" type="Position2D" parent="."]
+position = Vector2( 96, -120 )
+
+[node name="Coin55" type="Position2D" parent="."]
+position = Vector2( 0, -146 )
+
+[node name="Coin56" type="Position2D" parent="."]
+position = Vector2( -24, -145 )
+
+[node name="Coin57" type="Position2D" parent="."]
+position = Vector2( 24, -145 )
+
+[node name="Coin58" type="Position2D" parent="."]
+position = Vector2( -48, -145 )
+
+[node name="Coin59" type="Position2D" parent="."]
+position = Vector2( 48, -145 )
+
+[node name="Coin60" type="Position2D" parent="."]
+position = Vector2( -72, -145 )
+
+[node name="Coin61" type="Position2D" parent="."]
+position = Vector2( 72, -145 )
+
+[node name="Coin62" type="Position2D" parent="."]
+position = Vector2( -96, -145 )
+
+[node name="Coin64" type="Position2D" parent="."]
+position = Vector2( -120, -1 )
+
+[node name="Coin65" type="Position2D" parent="."]
+position = Vector2( -120, -25 )
+
+[node name="Coin66" type="Position2D" parent="."]
+position = Vector2( -120, -49 )
+
+[node name="Coin67" type="Position2D" parent="."]
+position = Vector2( -120, -73 )
+
+[node name="Coin68" type="Position2D" parent="."]
+position = Vector2( -120, -97 )
+
+[node name="Coin69" type="Position2D" parent="."]
+position = Vector2( -120, -120 )
+
+[node name="Coin70" type="Position2D" parent="."]
+position = Vector2( -120, -145 )
+
+[node name="Coin78" type="Position2D" parent="."]
+position = Vector2( -144, -1 )
+
+[node name="Coin79" type="Position2D" parent="."]
+position = Vector2( -144, -25 )
+
+[node name="Coin80" type="Position2D" parent="."]
+position = Vector2( -144, -49 )
+
+[node name="Coin81" type="Position2D" parent="."]
+position = Vector2( -144, -73 )
+
+[node name="Coin82" type="Position2D" parent="."]
+position = Vector2( -144, -97 )
+
+[node name="Coin83" type="Position2D" parent="."]
+position = Vector2( -144, -120 )
+
+[node name="Coin84" type="Position2D" parent="."]
+position = Vector2( -144, -145 )
+
+[node name="Coin92" type="Position2D" parent="."]
+position = Vector2( -168, -1 )
+
+[node name="Coin93" type="Position2D" parent="."]
+position = Vector2( -168, -25 )
+
+[node name="Coin94" type="Position2D" parent="."]
+position = Vector2( -168, -49 )
+
+[node name="Coin95" type="Position2D" parent="."]
+position = Vector2( -168, -73 )
+
+[node name="Coin96" type="Position2D" parent="."]
+position = Vector2( -168, -97 )
+
+[node name="Coin97" type="Position2D" parent="."]
+position = Vector2( -168, -120 )
+
+[node name="Coin98" type="Position2D" parent="."]
+position = Vector2( -168, -145 )
+
+[node name="Coin106" type="Position2D" parent="."]
+position = Vector2( -192, -1 )
+
+[node name="Coin107" type="Position2D" parent="."]
+position = Vector2( -192, -25 )
+
+[node name="Coin108" type="Position2D" parent="."]
+position = Vector2( -192, -49 )
+
+[node name="Coin109" type="Position2D" parent="."]
+position = Vector2( -192, -73 )
+
+[node name="Coin110" type="Position2D" parent="."]
+position = Vector2( -192, -97 )
+
+[node name="Coin111" type="Position2D" parent="."]
+position = Vector2( -192, -120 )
+
+[node name="Coin112" type="Position2D" parent="."]
+position = Vector2( -192, -145 )
+
+[node name="Coin120" type="Position2D" parent="."]
+position = Vector2( -216, -1 )
+
+[node name="Coin121" type="Position2D" parent="."]
+position = Vector2( -216, -25 )
+
+[node name="Coin122" type="Position2D" parent="."]
+position = Vector2( -216, -49 )
+
+[node name="Coin123" type="Position2D" parent="."]
+position = Vector2( -216, -73 )
+
+[node name="Coin124" type="Position2D" parent="."]
+position = Vector2( -216, -97 )
+
+[node name="Coin125" type="Position2D" parent="."]
+position = Vector2( -216, -120 )
+
+[node name="Coin126" type="Position2D" parent="."]
+position = Vector2( -216, -145 )
+
+[node name="Coin134" type="Position2D" parent="."]
+position = Vector2( -240, -1 )
+
+[node name="Coin135" type="Position2D" parent="."]
+position = Vector2( -240, -25 )
+
+[node name="Coin136" type="Position2D" parent="."]
+position = Vector2( -240, -49 )
+
+[node name="Coin137" type="Position2D" parent="."]
+position = Vector2( -240, -73 )
+
+[node name="Coin138" type="Position2D" parent="."]
+position = Vector2( -240, -97 )
+
+[node name="Coin139" type="Position2D" parent="."]
+position = Vector2( -240, -120 )
+
+[node name="Coin140" type="Position2D" parent="."]
+position = Vector2( -240, -145 )
+
+[node name="Coin148" type="Position2D" parent="."]
+position = Vector2( -264, -1 )
+
+[node name="Coin149" type="Position2D" parent="."]
+position = Vector2( -264, -25 )
+
+[node name="Coin150" type="Position2D" parent="."]
+position = Vector2( -264, -49 )
+
+[node name="Coin151" type="Position2D" parent="."]
+position = Vector2( -264, -73 )
+
+[node name="Coin152" type="Position2D" parent="."]
+position = Vector2( -264, -97 )
+
+[node name="Coin153" type="Position2D" parent="."]
+position = Vector2( -264, -120 )
+
+[node name="Coin154" type="Position2D" parent="."]
+position = Vector2( -264, -145 )
+
+[node name="Coin162" type="Position2D" parent="."]
+position = Vector2( -288, -1 )
+
+[node name="Coin163" type="Position2D" parent="."]
+position = Vector2( -288, -25 )
+
+[node name="Coin164" type="Position2D" parent="."]
+position = Vector2( -288, -49 )
+
+[node name="Coin165" type="Position2D" parent="."]
+position = Vector2( -288, -73 )
+
+[node name="Coin166" type="Position2D" parent="."]
+position = Vector2( -288, -97 )
+
+[node name="Coin167" type="Position2D" parent="."]
+position = Vector2( -288, -120 )
+
+[node name="Coin168" type="Position2D" parent="."]
+position = Vector2( -288, -145 )
+
+[node name="Coin176" type="Position2D" parent="."]
+position = Vector2( -312, -1 )
+
+[node name="Coin177" type="Position2D" parent="."]
+position = Vector2( -312, -25 )
+
+[node name="Coin178" type="Position2D" parent="."]
+position = Vector2( -312, -49 )
+
+[node name="Coin179" type="Position2D" parent="."]
+position = Vector2( -312, -73 )
+
+[node name="Coin180" type="Position2D" parent="."]
+position = Vector2( -312, -97 )
+
+[node name="Coin181" type="Position2D" parent="."]
+position = Vector2( -312, -120 )
+
+[node name="Coin182" type="Position2D" parent="."]
+position = Vector2( -312, -145 )
+
+[node name="Coin190" type="Position2D" parent="."]
+position = Vector2( -336, -1 )
+
+[node name="Coin191" type="Position2D" parent="."]
+position = Vector2( -336, -25 )
+
+[node name="Coin192" type="Position2D" parent="."]
+position = Vector2( -336, -49 )
+
+[node name="Coin193" type="Position2D" parent="."]
+position = Vector2( -336, -73 )
+
+[node name="Coin194" type="Position2D" parent="."]
+position = Vector2( -336, -97 )
+
+[node name="Coin195" type="Position2D" parent="."]
+position = Vector2( -336, -120 )
+
+[node name="Coin196" type="Position2D" parent="."]
+position = Vector2( -336, -145 )
+
+[node name="Coin204" type="Position2D" parent="."]
+position = Vector2( -360, -1 )
+
+[node name="Coin205" type="Position2D" parent="."]
+position = Vector2( -360, -25 )
+
+[node name="Coin206" type="Position2D" parent="."]
+position = Vector2( -360, -49 )
+
+[node name="Coin207" type="Position2D" parent="."]
+position = Vector2( -360, -73 )
+
+[node name="Coin208" type="Position2D" parent="."]
+position = Vector2( -360, -97 )
+
+[node name="Coin209" type="Position2D" parent="."]
+position = Vector2( -360, -120 )
+
+[node name="Coin210" type="Position2D" parent="."]
+position = Vector2( -360, -145 )
+
+[node name="Coin63" type="Position2D" parent="."]
+position = Vector2( 96, -145 )
+
+[node name="Coin71" type="Position2D" parent="."]
+position = Vector2( 120, -1 )
+
+[node name="Coin72" type="Position2D" parent="."]
+position = Vector2( 120, -25 )
+
+[node name="Coin73" type="Position2D" parent="."]
+position = Vector2( 120, -49 )
+
+[node name="Coin74" type="Position2D" parent="."]
+position = Vector2( 120, -73 )
+
+[node name="Coin75" type="Position2D" parent="."]
+position = Vector2( 120, -97 )
+
+[node name="Coin76" type="Position2D" parent="."]
+position = Vector2( 120, -120 )
+
+[node name="Coin77" type="Position2D" parent="."]
+position = Vector2( 120, -145 )
+
+[node name="Coin85" type="Position2D" parent="."]
+position = Vector2( 144, -1 )
+
+[node name="Coin86" type="Position2D" parent="."]
+position = Vector2( 144, -25 )
+
+[node name="Coin87" type="Position2D" parent="."]
+position = Vector2( 144, -49 )
+
+[node name="Coin88" type="Position2D" parent="."]
+position = Vector2( 144, -73 )
+
+[node name="Coin89" type="Position2D" parent="."]
+position = Vector2( 144, -97 )
+
+[node name="Coin90" type="Position2D" parent="."]
+position = Vector2( 144, -120 )
+
+[node name="Coin91" type="Position2D" parent="."]
+position = Vector2( 144, -145 )
+
+[node name="Coin99" type="Position2D" parent="."]
+position = Vector2( 168, -1 )
+
+[node name="Coin100" type="Position2D" parent="."]
+position = Vector2( 168, -25 )
+
+[node name="Coin101" type="Position2D" parent="."]
+position = Vector2( 168, -49 )
+
+[node name="Coin102" type="Position2D" parent="."]
+position = Vector2( 168, -73 )
+
+[node name="Coin103" type="Position2D" parent="."]
+position = Vector2( 168, -97 )
+
+[node name="Coin104" type="Position2D" parent="."]
+position = Vector2( 168, -120 )
+
+[node name="Coin105" type="Position2D" parent="."]
+position = Vector2( 168, -145 )
+
+[node name="Coin113" type="Position2D" parent="."]
+position = Vector2( 192, -1 )
+
+[node name="Coin114" type="Position2D" parent="."]
+position = Vector2( 192, -25 )
+
+[node name="Coin115" type="Position2D" parent="."]
+position = Vector2( 192, -49 )
+
+[node name="Coin116" type="Position2D" parent="."]
+position = Vector2( 192, -73 )
+
+[node name="Coin117" type="Position2D" parent="."]
+position = Vector2( 192, -97 )
+
+[node name="Coin118" type="Position2D" parent="."]
+position = Vector2( 192, -120 )
+
+[node name="Coin119" type="Position2D" parent="."]
+position = Vector2( 192, -145 )
+
+[node name="Coin127" type="Position2D" parent="."]
+position = Vector2( 216, -1 )
+
+[node name="Coin128" type="Position2D" parent="."]
+position = Vector2( 216, -25 )
+
+[node name="Coin129" type="Position2D" parent="."]
+position = Vector2( 216, -49 )
+
+[node name="Coin130" type="Position2D" parent="."]
+position = Vector2( 216, -73 )
+
+[node name="Coin131" type="Position2D" parent="."]
+position = Vector2( 216, -97 )
+
+[node name="Coin132" type="Position2D" parent="."]
+position = Vector2( 216, -120 )
+
+[node name="Coin133" type="Position2D" parent="."]
+position = Vector2( 216, -145 )
+
+[node name="Coin141" type="Position2D" parent="."]
+position = Vector2( 240, -1 )
+
+[node name="Coin142" type="Position2D" parent="."]
+position = Vector2( 240, -25 )
+
+[node name="Coin143" type="Position2D" parent="."]
+position = Vector2( 240, -49 )
+
+[node name="Coin144" type="Position2D" parent="."]
+position = Vector2( 240, -73 )
+
+[node name="Coin145" type="Position2D" parent="."]
+position = Vector2( 240, -97 )
+
+[node name="Coin146" type="Position2D" parent="."]
+position = Vector2( 240, -120 )
+
+[node name="Coin147" type="Position2D" parent="."]
+position = Vector2( 240, -145 )
+
+[node name="Coin155" type="Position2D" parent="."]
+position = Vector2( 264, -1 )
+
+[node name="Coin156" type="Position2D" parent="."]
+position = Vector2( 264, -25 )
+
+[node name="Coin157" type="Position2D" parent="."]
+position = Vector2( 264, -49 )
+
+[node name="Coin158" type="Position2D" parent="."]
+position = Vector2( 264, -73 )
+
+[node name="Coin159" type="Position2D" parent="."]
+position = Vector2( 264, -97 )
+
+[node name="Coin160" type="Position2D" parent="."]
+position = Vector2( 264, -120 )
+
+[node name="Coin161" type="Position2D" parent="."]
+position = Vector2( 264, -145 )
+
+[node name="Coin169" type="Position2D" parent="."]
+position = Vector2( 288, -1 )
+
+[node name="Coin170" type="Position2D" parent="."]
+position = Vector2( 288, -25 )
+
+[node name="Coin171" type="Position2D" parent="."]
+position = Vector2( 288, -49 )
+
+[node name="Coin172" type="Position2D" parent="."]
+position = Vector2( 288, -73 )
+
+[node name="Coin173" type="Position2D" parent="."]
+position = Vector2( 288, -97 )
+
+[node name="Coin174" type="Position2D" parent="."]
+position = Vector2( 288, -120 )
+
+[node name="Coin175" type="Position2D" parent="."]
+position = Vector2( 288, -145 )
+
+[node name="Coin183" type="Position2D" parent="."]
+position = Vector2( 312, -1 )
+
+[node name="Coin184" type="Position2D" parent="."]
+position = Vector2( 312, -25 )
+
+[node name="Coin185" type="Position2D" parent="."]
+position = Vector2( 312, -49 )
+
+[node name="Coin186" type="Position2D" parent="."]
+position = Vector2( 312, -73 )
+
+[node name="Coin187" type="Position2D" parent="."]
+position = Vector2( 312, -97 )
+
+[node name="Coin188" type="Position2D" parent="."]
+position = Vector2( 312, -120 )
+
+[node name="Coin189" type="Position2D" parent="."]
+position = Vector2( 312, -145 )
+
+[node name="Coin197" type="Position2D" parent="."]
+position = Vector2( 336, -1 )
+
+[node name="Coin198" type="Position2D" parent="."]
+position = Vector2( 336, -25 )
+
+[node name="Coin199" type="Position2D" parent="."]
+position = Vector2( 336, -49 )
+
+[node name="Coin200" type="Position2D" parent="."]
+position = Vector2( 336, -73 )
+
+[node name="Coin201" type="Position2D" parent="."]
+position = Vector2( 336, -97 )
+
+[node name="Coin202" type="Position2D" parent="."]
+position = Vector2( 336, -120 )
+
+[node name="Coin203" type="Position2D" parent="."]
+position = Vector2( 336, -145 )
+
+[node name="Coin211" type="Position2D" parent="."]
+position = Vector2( 360, -1 )
+
+[node name="Coin218" type="Position2D" parent="."]
+position = Vector2( 0, 23 )
+
+[node name="Coin219" type="Position2D" parent="."]
+position = Vector2( -24, 23 )
+
+[node name="Coin220" type="Position2D" parent="."]
+position = Vector2( 24, 23 )
+
+[node name="Coin221" type="Position2D" parent="."]
+position = Vector2( -48, 23 )
+
+[node name="Coin222" type="Position2D" parent="."]
+position = Vector2( 48, 23 )
+
+[node name="Coin223" type="Position2D" parent="."]
+position = Vector2( -72, 23 )
+
+[node name="Coin224" type="Position2D" parent="."]
+position = Vector2( 72, 23 )
+
+[node name="Coin225" type="Position2D" parent="."]
+position = Vector2( -96, 23 )
+
+[node name="Coin226" type="Position2D" parent="."]
+position = Vector2( 96, 23 )
+
+[node name="Coin227" type="Position2D" parent="."]
+position = Vector2( -120, 23 )
+
+[node name="Coin228" type="Position2D" parent="."]
+position = Vector2( -144, 23 )
+
+[node name="Coin229" type="Position2D" parent="."]
+position = Vector2( -168, 23 )
+
+[node name="Coin230" type="Position2D" parent="."]
+position = Vector2( -192, 23 )
+
+[node name="Coin231" type="Position2D" parent="."]
+position = Vector2( -216, 23 )
+
+[node name="Coin232" type="Position2D" parent="."]
+position = Vector2( -240, 23 )
+
+[node name="Coin233" type="Position2D" parent="."]
+position = Vector2( -264, 23 )
+
+[node name="Coin234" type="Position2D" parent="."]
+position = Vector2( -288, 23 )
+
+[node name="Coin235" type="Position2D" parent="."]
+position = Vector2( -312, 23 )
+
+[node name="Coin236" type="Position2D" parent="."]
+position = Vector2( -336, 23 )
+
+[node name="Coin237" type="Position2D" parent="."]
+position = Vector2( -360, 23 )
+
+[node name="Coin238" type="Position2D" parent="."]
+position = Vector2( 120, 23 )
+
+[node name="Coin239" type="Position2D" parent="."]
+position = Vector2( 144, 23 )
+
+[node name="Coin240" type="Position2D" parent="."]
+position = Vector2( 168, 23 )
+
+[node name="Coin241" type="Position2D" parent="."]
+position = Vector2( 192, 23 )
+
+[node name="Coin242" type="Position2D" parent="."]
+position = Vector2( 216, 23 )
+
+[node name="Coin243" type="Position2D" parent="."]
+position = Vector2( 240, 23 )
+
+[node name="Coin244" type="Position2D" parent="."]
+position = Vector2( 264, 23 )
+
+[node name="Coin245" type="Position2D" parent="."]
+position = Vector2( 288, 23 )
+
+[node name="Coin246" type="Position2D" parent="."]
+position = Vector2( 312, 23 )
+
+[node name="Coin247" type="Position2D" parent="."]
+position = Vector2( 336, 23 )
+
+[node name="Coin248" type="Position2D" parent="."]
+position = Vector2( 360, 23 )
+
+[node name="Coin249" type="Position2D" parent="."]
+position = Vector2( 144, 47 )
+
+[node name="Coin250" type="Position2D" parent="."]
+position = Vector2( 168, 47 )
+
+[node name="Coin251" type="Position2D" parent="."]
+position = Vector2( 192, 47 )
+
+[node name="Coin252" type="Position2D" parent="."]
+position = Vector2( 216, 47 )
+
+[node name="Coin253" type="Position2D" parent="."]
+position = Vector2( 240, 47 )
+
+[node name="Coin254" type="Position2D" parent="."]
+position = Vector2( 264, 47 )
+
+[node name="Coin255" type="Position2D" parent="."]
+position = Vector2( 288, 47 )
+
+[node name="Coin256" type="Position2D" parent="."]
+position = Vector2( 312, 47 )
+
+[node name="Coin257" type="Position2D" parent="."]
+position = Vector2( 336, 47 )
+
+[node name="Coin258" type="Position2D" parent="."]
+position = Vector2( 360, 47 )
+
+[node name="Coin259" type="Position2D" parent="."]
+position = Vector2( 144, 71 )
+
+[node name="Coin260" type="Position2D" parent="."]
+position = Vector2( 168, 71 )
+
+[node name="Coin261" type="Position2D" parent="."]
+position = Vector2( 192, 71 )
+
+[node name="Coin262" type="Position2D" parent="."]
+position = Vector2( 216, 71 )
+
+[node name="Coin263" type="Position2D" parent="."]
+position = Vector2( 240, 71 )
+
+[node name="Coin264" type="Position2D" parent="."]
+position = Vector2( 264, 71 )
+
+[node name="Coin265" type="Position2D" parent="."]
+position = Vector2( 288, 71 )
+
+[node name="Coin266" type="Position2D" parent="."]
+position = Vector2( 312, 71 )
+
+[node name="Coin267" type="Position2D" parent="."]
+position = Vector2( 336, 71 )
+
+[node name="Coin268" type="Position2D" parent="."]
+position = Vector2( 360, 71 )
+
+[node name="Coin269" type="Position2D" parent="."]
+position = Vector2( 144, 95 )
+
+[node name="Coin270" type="Position2D" parent="."]
+position = Vector2( 168, 95 )
+
+[node name="Coin271" type="Position2D" parent="."]
+position = Vector2( 192, 95 )
+
+[node name="Coin272" type="Position2D" parent="."]
+position = Vector2( 216, 95 )
+
+[node name="Coin273" type="Position2D" parent="."]
+position = Vector2( 240, 95 )
+
+[node name="Coin274" type="Position2D" parent="."]
+position = Vector2( 264, 95 )
+
+[node name="Coin275" type="Position2D" parent="."]
+position = Vector2( 288, 95 )
+
+[node name="Coin276" type="Position2D" parent="."]
+position = Vector2( 312, 95 )
+
+[node name="Coin277" type="Position2D" parent="."]
+position = Vector2( 336, 95 )
+
+[node name="Coin278" type="Position2D" parent="."]
+position = Vector2( 360, 95 )
+
+[node name="Coin279" type="Position2D" parent="."]
+position = Vector2( 144, 119 )
+
+[node name="Coin280" type="Position2D" parent="."]
+position = Vector2( 168, 119 )
+
+[node name="Coin281" type="Position2D" parent="."]
+position = Vector2( 192, 119 )
+
+[node name="Coin282" type="Position2D" parent="."]
+position = Vector2( 216, 119 )
+
+[node name="Coin283" type="Position2D" parent="."]
+position = Vector2( 240, 119 )
+
+[node name="Coin284" type="Position2D" parent="."]
+position = Vector2( 264, 119 )
+
+[node name="Coin285" type="Position2D" parent="."]
+position = Vector2( 288, 119 )
+
+[node name="Coin286" type="Position2D" parent="."]
+position = Vector2( 312, 119 )
+
+[node name="Coin287" type="Position2D" parent="."]
+position = Vector2( 336, 119 )
+
+[node name="Coin288" type="Position2D" parent="."]
+position = Vector2( 360, 119 )
+
+[node name="Coin289" type="Position2D" parent="."]
+position = Vector2( 144, 143 )
+
+[node name="Coin290" type="Position2D" parent="."]
+position = Vector2( 168, 143 )
+
+[node name="Coin291" type="Position2D" parent="."]
+position = Vector2( 192, 143 )
+
+[node name="Coin292" type="Position2D" parent="."]
+position = Vector2( 216, 143 )
+
+[node name="Coin293" type="Position2D" parent="."]
+position = Vector2( 240, 143 )
+
+[node name="Coin294" type="Position2D" parent="."]
+position = Vector2( 264, 143 )
+
+[node name="Coin295" type="Position2D" parent="."]
+position = Vector2( 288, 143 )
+
+[node name="Coin296" type="Position2D" parent="."]
+position = Vector2( 312, 143 )
+
+[node name="Coin297" type="Position2D" parent="."]
+position = Vector2( 336, 143 )
+
+[node name="Coin298" type="Position2D" parent="."]
+position = Vector2( 360, 143 )
+
+[node name="Coin299" type="Position2D" parent="."]
+position = Vector2( 144, 167 )
+
+[node name="Coin309" type="Position2D" parent="."]
+position = Vector2( 120, 71 )
+
+[node name="Coin310" type="Position2D" parent="."]
+position = Vector2( 120, 95 )
+
+[node name="Coin311" type="Position2D" parent="."]
+position = Vector2( 120, 119 )
+
+[node name="Coin312" type="Position2D" parent="."]
+position = Vector2( 120, 143 )
+
+[node name="Coin313" type="Position2D" parent="."]
+position = Vector2( 120, 167 )
+
+[node name="Coin314" type="Position2D" parent="."]
+position = Vector2( 96, 71 )
+
+[node name="Coin315" type="Position2D" parent="."]
+position = Vector2( 96, 95 )
+
+[node name="Coin316" type="Position2D" parent="."]
+position = Vector2( 96, 119 )
+
+[node name="Coin317" type="Position2D" parent="."]
+position = Vector2( 96, 143 )
+
+[node name="Coin318" type="Position2D" parent="."]
+position = Vector2( 96, 167 )
+
+[node name="Coin319" type="Position2D" parent="."]
+position = Vector2( 72, 71 )
+
+[node name="Coin320" type="Position2D" parent="."]
+position = Vector2( 72, 95 )
+
+[node name="Coin321" type="Position2D" parent="."]
+position = Vector2( 72, 119 )
+
+[node name="Coin322" type="Position2D" parent="."]
+position = Vector2( 72, 143 )
+
+[node name="Coin323" type="Position2D" parent="."]
+position = Vector2( 72, 167 )
+
+[node name="Coin324" type="Position2D" parent="."]
+position = Vector2( 48, 71 )
+
+[node name="Coin325" type="Position2D" parent="."]
+position = Vector2( 48, 95 )
+
+[node name="Coin326" type="Position2D" parent="."]
+position = Vector2( 48, 119 )
+
+[node name="Coin327" type="Position2D" parent="."]
+position = Vector2( 48, 143 )
+
+[node name="Coin328" type="Position2D" parent="."]
+position = Vector2( 48, 167 )
+
+[node name="Coin329" type="Position2D" parent="."]
+position = Vector2( 24, 71 )
+
+[node name="Coin330" type="Position2D" parent="."]
+position = Vector2( 24, 95 )
+
+[node name="Coin331" type="Position2D" parent="."]
+position = Vector2( 24, 119 )
+
+[node name="Coin332" type="Position2D" parent="."]
+position = Vector2( 24, 143 )
+
+[node name="Coin333" type="Position2D" parent="."]
+position = Vector2( 24, 167 )
+
+[node name="Coin334" type="Position2D" parent="."]
+position = Vector2( 0, 71 )
+
+[node name="Coin335" type="Position2D" parent="."]
+position = Vector2( 0, 95 )
+
+[node name="Coin336" type="Position2D" parent="."]
+position = Vector2( 0, 119 )
+
+[node name="Coin337" type="Position2D" parent="."]
+position = Vector2( 0, 143 )
+
+[node name="Coin338" type="Position2D" parent="."]
+position = Vector2( 0, 167 )
+
+[node name="Coin339" type="Position2D" parent="."]
+position = Vector2( -24, 71 )
+
+[node name="Coin340" type="Position2D" parent="."]
+position = Vector2( -24, 95 )
+
+[node name="Coin341" type="Position2D" parent="."]
+position = Vector2( -24, 119 )
+
+[node name="Coin342" type="Position2D" parent="."]
+position = Vector2( -24, 143 )
+
+[node name="Coin343" type="Position2D" parent="."]
+position = Vector2( -24, 167 )
+
+[node name="Coin344" type="Position2D" parent="."]
+position = Vector2( -48, 71 )
+
+[node name="Coin345" type="Position2D" parent="."]
+position = Vector2( -48, 95 )
+
+[node name="Coin346" type="Position2D" parent="."]
+position = Vector2( -48, 119 )
+
+[node name="Coin347" type="Position2D" parent="."]
+position = Vector2( -48, 143 )
+
+[node name="Coin348" type="Position2D" parent="."]
+position = Vector2( -48, 167 )
+
+[node name="Coin349" type="Position2D" parent="."]
+position = Vector2( -72, 71 )
+
+[node name="Coin350" type="Position2D" parent="."]
+position = Vector2( -72, 95 )
+
+[node name="Coin351" type="Position2D" parent="."]
+position = Vector2( -72, 119 )
+
+[node name="Coin352" type="Position2D" parent="."]
+position = Vector2( -72, 143 )
+
+[node name="Coin353" type="Position2D" parent="."]
+position = Vector2( -72, 167 )
+
+[node name="Coin354" type="Position2D" parent="."]
+position = Vector2( -96, 71 )
+
+[node name="Coin355" type="Position2D" parent="."]
+position = Vector2( -96, 95 )
+
+[node name="Coin356" type="Position2D" parent="."]
+position = Vector2( -96, 119 )
+
+[node name="Coin357" type="Position2D" parent="."]
+position = Vector2( -96, 143 )
+
+[node name="Coin358" type="Position2D" parent="."]
+position = Vector2( -96, 167 )
+
+[node name="Coin424" type="Position2D" parent="."]
+position = Vector2( 96, 191 )
+
+[node name="Coin425" type="Position2D" parent="."]
+position = Vector2( 72, 191 )
+
+[node name="Coin426" type="Position2D" parent="."]
+position = Vector2( 48, 191 )
+
+[node name="Coin427" type="Position2D" parent="."]
+position = Vector2( 24, 191 )
+
+[node name="Coin428" type="Position2D" parent="."]
+position = Vector2( 0, 191 )
+
+[node name="Coin429" type="Position2D" parent="."]
+position = Vector2( -24, 191 )
+
+[node name="Coin430" type="Position2D" parent="."]
+position = Vector2( -48, 191 )
+
+[node name="Coin431" type="Position2D" parent="."]
+position = Vector2( -72, 191 )
+
+[node name="Coin432" type="Position2D" parent="."]
+position = Vector2( -96, 191 )
+
+[node name="Coin359" type="Position2D" parent="."]
+position = Vector2( -120, 71 )
+
+[node name="Coin360" type="Position2D" parent="."]
+position = Vector2( -120, 95 )
+
+[node name="Coin361" type="Position2D" parent="."]
+position = Vector2( -120, 119 )
+
+[node name="Coin362" type="Position2D" parent="."]
+position = Vector2( -120, 143 )
+
+[node name="Coin363" type="Position2D" parent="."]
+position = Vector2( -120, 167 )
+
+[node name="Coin364" type="Position2D" parent="."]
+position = Vector2( -144, 47 )
+
+[node name="Coin365" type="Position2D" parent="."]
+position = Vector2( -144, 71 )
+
+[node name="Coin366" type="Position2D" parent="."]
+position = Vector2( -144, 95 )
+
+[node name="Coin367" type="Position2D" parent="."]
+position = Vector2( -144, 119 )
+
+[node name="Coin368" type="Position2D" parent="."]
+position = Vector2( -144, 143 )
+
+[node name="Coin369" type="Position2D" parent="."]
+position = Vector2( -144, 167 )
+
+[node name="Coin370" type="Position2D" parent="."]
+position = Vector2( -168, 47 )
+
+[node name="Coin371" type="Position2D" parent="."]
+position = Vector2( -168, 71 )
+
+[node name="Coin372" type="Position2D" parent="."]
+position = Vector2( -168, 95 )
+
+[node name="Coin373" type="Position2D" parent="."]
+position = Vector2( -168, 119 )
+
+[node name="Coin374" type="Position2D" parent="."]
+position = Vector2( -168, 143 )
+
+[node name="Coin375" type="Position2D" parent="."]
+position = Vector2( -168, 167 )
+
+[node name="Coin376" type="Position2D" parent="."]
+position = Vector2( -192, 47 )
+
+[node name="Coin377" type="Position2D" parent="."]
+position = Vector2( -192, 71 )
+
+[node name="Coin378" type="Position2D" parent="."]
+position = Vector2( -192, 95 )
+
+[node name="Coin379" type="Position2D" parent="."]
+position = Vector2( -192, 119 )
+
+[node name="Coin380" type="Position2D" parent="."]
+position = Vector2( -192, 143 )
+
+[node name="Coin381" type="Position2D" parent="."]
+position = Vector2( -192, 167 )
+
+[node name="Coin382" type="Position2D" parent="."]
+position = Vector2( -216, 47 )
+
+[node name="Coin383" type="Position2D" parent="."]
+position = Vector2( -216, 71 )
+
+[node name="Coin384" type="Position2D" parent="."]
+position = Vector2( -216, 95 )
+
+[node name="Coin385" type="Position2D" parent="."]
+position = Vector2( -216, 119 )
+
+[node name="Coin386" type="Position2D" parent="."]
+position = Vector2( -216, 143 )
+
+[node name="Coin387" type="Position2D" parent="."]
+position = Vector2( -216, 167 )
+
+[node name="Coin388" type="Position2D" parent="."]
+position = Vector2( -240, 47 )
+
+[node name="Coin389" type="Position2D" parent="."]
+position = Vector2( -240, 71 )
+
+[node name="Coin390" type="Position2D" parent="."]
+position = Vector2( -240, 95 )
+
+[node name="Coin391" type="Position2D" parent="."]
+position = Vector2( -240, 119 )
+
+[node name="Coin392" type="Position2D" parent="."]
+position = Vector2( -240, 143 )
+
+[node name="Coin393" type="Position2D" parent="."]
+position = Vector2( -240, 167 )
+
+[node name="Coin394" type="Position2D" parent="."]
+position = Vector2( -264, 47 )
+
+[node name="Coin395" type="Position2D" parent="."]
+position = Vector2( -264, 71 )
+
+[node name="Coin396" type="Position2D" parent="."]
+position = Vector2( -264, 95 )
+
+[node name="Coin397" type="Position2D" parent="."]
+position = Vector2( -264, 119 )
+
+[node name="Coin398" type="Position2D" parent="."]
+position = Vector2( -264, 143 )
+
+[node name="Coin399" type="Position2D" parent="."]
+position = Vector2( -264, 167 )
+
+[node name="Coin400" type="Position2D" parent="."]
+position = Vector2( -288, 47 )
+
+[node name="Coin401" type="Position2D" parent="."]
+position = Vector2( -288, 71 )
+
+[node name="Coin402" type="Position2D" parent="."]
+position = Vector2( -288, 95 )
+
+[node name="Coin403" type="Position2D" parent="."]
+position = Vector2( -288, 119 )
+
+[node name="Coin404" type="Position2D" parent="."]
+position = Vector2( -288, 143 )
+
+[node name="Coin405" type="Position2D" parent="."]
+position = Vector2( -288, 167 )
+
+[node name="Coin406" type="Position2D" parent="."]
+position = Vector2( -312, 47 )
+
+[node name="Coin407" type="Position2D" parent="."]
+position = Vector2( -312, 71 )
+
+[node name="Coin408" type="Position2D" parent="."]
+position = Vector2( -312, 95 )
+
+[node name="Coin409" type="Position2D" parent="."]
+position = Vector2( -312, 119 )
+
+[node name="Coin410" type="Position2D" parent="."]
+position = Vector2( -312, 143 )
+
+[node name="Coin411" type="Position2D" parent="."]
+position = Vector2( -312, 167 )
+
+[node name="Coin412" type="Position2D" parent="."]
+position = Vector2( -336, 47 )
+
+[node name="Coin413" type="Position2D" parent="."]
+position = Vector2( -336, 71 )
+
+[node name="Coin414" type="Position2D" parent="."]
+position = Vector2( -336, 95 )
+
+[node name="Coin415" type="Position2D" parent="."]
+position = Vector2( -336, 119 )
+
+[node name="Coin416" type="Position2D" parent="."]
+position = Vector2( -336, 143 )
+
+[node name="Coin417" type="Position2D" parent="."]
+position = Vector2( -336, 167 )
+
+[node name="Coin418" type="Position2D" parent="."]
+position = Vector2( -360, 47 )
+
+[node name="Coin419" type="Position2D" parent="."]
+position = Vector2( -360, 71 )
+
+[node name="Coin420" type="Position2D" parent="."]
+position = Vector2( -360, 95 )
+
+[node name="Coin421" type="Position2D" parent="."]
+position = Vector2( -360, 119 )
+
+[node name="Coin422" type="Position2D" parent="."]
+position = Vector2( -360, 143 )
+
+[node name="Coin423" type="Position2D" parent="."]
+position = Vector2( -360, 167 )
+
+[node name="Coin300" type="Position2D" parent="."]
+position = Vector2( 168, 167 )
+
+[node name="Coin301" type="Position2D" parent="."]
+position = Vector2( 192, 167 )
+
+[node name="Coin302" type="Position2D" parent="."]
+position = Vector2( 216, 167 )
+
+[node name="Coin303" type="Position2D" parent="."]
+position = Vector2( 240, 167 )
+
+[node name="Coin304" type="Position2D" parent="."]
+position = Vector2( 264, 167 )
+
+[node name="Coin305" type="Position2D" parent="."]
+position = Vector2( 288, 167 )
+
+[node name="Coin306" type="Position2D" parent="."]
+position = Vector2( 312, 167 )
+
+[node name="Coin307" type="Position2D" parent="."]
+position = Vector2( 336, 167 )
+
+[node name="Coin308" type="Position2D" parent="."]
+position = Vector2( 360, 167 )
+
+[node name="Coin433" type="Position2D" parent="."]
+position = Vector2( 144, 215 )
+
+[node name="Coin434" type="Position2D" parent="."]
+position = Vector2( 120, 215 )
+
+[node name="Coin435" type="Position2D" parent="."]
+position = Vector2( 96, 215 )
+
+[node name="Coin436" type="Position2D" parent="."]
+position = Vector2( 72, 215 )
+
+[node name="Coin437" type="Position2D" parent="."]
+position = Vector2( 48, 215 )
+
+[node name="Coin438" type="Position2D" parent="."]
+position = Vector2( 24, 215 )
+
+[node name="Coin439" type="Position2D" parent="."]
+position = Vector2( 0, 215 )
+
+[node name="Coin440" type="Position2D" parent="."]
+position = Vector2( -24, 215 )
+
+[node name="Coin441" type="Position2D" parent="."]
+position = Vector2( -48, 215 )
+
+[node name="Coin442" type="Position2D" parent="."]
+position = Vector2( -72, 215 )
+
+[node name="Coin443" type="Position2D" parent="."]
+position = Vector2( -96, 215 )
+
+[node name="Coin444" type="Position2D" parent="."]
+position = Vector2( -120, 215 )
+
+[node name="Coin445" type="Position2D" parent="."]
+position = Vector2( -144, 215 )
+
+[node name="Coin446" type="Position2D" parent="."]
+position = Vector2( -168, 215 )
+
+[node name="Coin447" type="Position2D" parent="."]
+position = Vector2( -192, 215 )
+
+[node name="Coin448" type="Position2D" parent="."]
+position = Vector2( -216, 215 )
+
+[node name="Coin449" type="Position2D" parent="."]
+position = Vector2( -240, 215 )
+
+[node name="Coin450" type="Position2D" parent="."]
+position = Vector2( -264, 215 )
+
+[node name="Coin451" type="Position2D" parent="."]
+position = Vector2( -288, 215 )
+
+[node name="Coin452" type="Position2D" parent="."]
+position = Vector2( -312, 215 )
+
+[node name="Coin453" type="Position2D" parent="."]
+position = Vector2( -336, 215 )
+
+[node name="Coin454" type="Position2D" parent="."]
+position = Vector2( -360, 215 )
+
+[node name="Coin455" type="Position2D" parent="."]
+position = Vector2( 168, 215 )
+
+[node name="Coin456" type="Position2D" parent="."]
+position = Vector2( 192, 215 )
+
+[node name="Coin457" type="Position2D" parent="."]
+position = Vector2( 216, 215 )
+
+[node name="Coin458" type="Position2D" parent="."]
+position = Vector2( 240, 215 )
+
+[node name="Coin459" type="Position2D" parent="."]
+position = Vector2( 264, 215 )
+
+[node name="Coin460" type="Position2D" parent="."]
+position = Vector2( 288, 215 )
+
+[node name="Coin461" type="Position2D" parent="."]
+position = Vector2( 312, 215 )
+
+[node name="Coin462" type="Position2D" parent="."]
+position = Vector2( 336, 215 )
+
+[node name="Coin463" type="Position2D" parent="."]
+position = Vector2( 360, 215 )
+
+[node name="Coin212" type="Position2D" parent="."]
+position = Vector2( 360, -25 )
+
+[node name="Coin213" type="Position2D" parent="."]
+position = Vector2( 360, -49 )
+
+[node name="Coin214" type="Position2D" parent="."]
+position = Vector2( 360, -73 )
+
+[node name="Coin215" type="Position2D" parent="."]
+position = Vector2( 360, -97 )
+
+[node name="Coin216" type="Position2D" parent="."]
+position = Vector2( 360, -120 )
+
+[node name="Coin217" type="Position2D" parent="."]
+position = Vector2( 360, -145 )
