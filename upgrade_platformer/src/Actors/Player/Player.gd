@@ -29,7 +29,7 @@ func _on_dash_started():
 func _on_dash_ended():
 	set_collision_mask_bit(PASSTHROUGH_BIT_LAYER, true)
 	#need to yield a bit because the "end" of the dash is technically Move State
-	yield(get_tree().create_timer(0.08), "timeout")
+	yield(get_tree().create_timer(0.06), "timeout")
 	trail.set_emitting(false)
 
 func _on_instant_battle_started():

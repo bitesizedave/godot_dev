@@ -110,9 +110,9 @@ is_emitting = true
 lifetime = 0.1
 max_points = 10
 target_path = NodePath("..")
-[connection signal="dash_ended" from="StateMachine/Move/Dash" to="." method="_on_dash_ended"]
 [connection signal="dash_ended" from="StateMachine/Move/Dash" to="PlayerSquareSprite" method="_on_dash_ended"]
-[connection signal="dash_started" from="StateMachine/Move/Dash" to="." method="_on_dash_started"]
+[connection signal="dash_ended" from="StateMachine/Move/Dash" to="." method="_on_dash_ended"]
 [connection signal="dash_started" from="StateMachine/Move/Dash" to="PlayerSquareSprite" method="_on_dash_started"]
+[connection signal="dash_started" from="StateMachine/Move/Dash" to="." method="_on_dash_started"]
 [connection signal="area_entered" from="OuchieDetector" to="." method="_on_area_entered"]
 [connection signal="body_entered" from="OuchieDetector" to="." method="_on_body_entered"]

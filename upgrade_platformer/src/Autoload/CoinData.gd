@@ -20,6 +20,7 @@ var coin_value: int = 1
 var default_coin_value: = 1
 var coin_collecting_coin_multiplier: int = 2 setget set_coin_collecting_coin_multiplier, get_coin_collecting_coin_multiplier
 var default_coin_collecting_coin_multiplier: = 2
+const COIN_LAYER = 2
 
 
 func _ready():

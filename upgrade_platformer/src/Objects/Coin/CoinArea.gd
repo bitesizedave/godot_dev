@@ -16,7 +16,7 @@ var consecutive_thwacks: int
 var consecutive_thwack_value = 1
 onready var thwack_score_added: = CoinData.thwack_score_added
 var thwack_instance_id: int
-const COIN_LAYER: = 2
+var COIN_LAYER: = CoinData.COIN_LAYER
 onready var tween_speed: = CoinData.coin_tween_speed
 onready var coin_collecting_coin_multiplier = CoinData.coin_collecting_coin_multiplier
 
@@ -55,6 +55,7 @@ func collect_coin(collected_from_other_coin: bool = false):
 
 func _on_coin_tween_completed():
 	queue_free()
+	owner.queue_free()
 
 
 func _on_area_entered(area):
